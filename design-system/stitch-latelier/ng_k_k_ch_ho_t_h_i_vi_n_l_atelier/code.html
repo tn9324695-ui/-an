@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"inverse-surface":"#31302d","error":"#ba1a1a","on-primary":"#ffffff","inverse-on-surface":"#f3f0eb","surface-container-lowest":"#ffffff","on-secondary":"#ffffff","primary-fixed-dim":"#dac2b5","surface-bright":"#fcf9f4","primary-container":"#2c1e16","tertiary-container":"#282016","error-container":"#ffdad6","on-primary-fixed-variant":"#54433a","primary-fixed":"#f7ddd0","on-tertiary":"#ffffff","on-tertiary-fixed":"#221a10","on-surface":"#1c1c19","surface-container":"#f0ede9","surface-tint":"#6d5a50","secondary-container":"#fdd5bc","on-secondary-fixed":"#2b1707","secondary":"#765844","secondary-fixed":"#ffdcc6","on-tertiary-fixed-variant":"#504539","secondary-fixed-dim":"#e5bfa6","on-primary-container":"#9a8479","surface-variant":"#e5e2dd","background":"#fcf9f4","tertiary-fixed-dim":"#d4c4b4","outline":"#80756f","primary":"#130803","on-background":"#1c1c19","surface":"#fcf9f4","tertiary-fixed":"#f1e0cf","on-secondary-container":"#785b47","on-secondary-fixed-variant":"#5c412e","on-error-container":"#93000a","inverse-primary":"#dac2b5","on-surface-variant":"#4e4540","tertiary":"#100903","on-error":"#ffffff","surface-container-low":"#f6f3ee","outline-variant":"#d2c4bd","surface-dim":"#dcdad5","on-primary-fixed":"#261911","surface-container-high":"#ebe8e3","on-tertiary-container":"#948678","surface-container-highest":"#e5e2dd"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-sm":"0.5rem","gutter":"1.5rem","space-md":"1rem","space-xs":"0.25rem","space-lg":"2rem","margin":"2rem","space-xl":"4rem"},"fontFamily":{"title-lg":["DM Sans"],"body-lg":["DM Sans"],"display-lg-mobile":["Playfair Display"],"body-md":["DM Sans"],"label-sm":["DM Sans"],"display-lg":["Playfair Display"],"title-md":["DM Sans"],"headline-lg":["Playfair Display"],"headline-sm":["Playfair Display"],"headline-lg-mobile":["Playfair Display"],"headline-md":["Playfair Display"],"label-md":["DM Sans"]},"fontSize":{"title-lg":["20px",{"lineHeight":"28px","fontWeight":"500"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"display-lg-mobile":["40px",{"lineHeight":"46px","letterSpacing":"-0.015em","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.14em","fontWeight":"500"}],"display-lg":["64px",{"lineHeight":"72px","letterSpacing":"-0.02em","fontWeight":"400"}],"title-md":["16px",{"lineHeight":"24px","fontWeight":"500"}],"headline-lg":["44px",{"lineHeight":"52px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-sm":["24px",{"lineHeight":"32px","fontWeight":"500"}],"headline-lg-mobile":["30px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-md":["32px",{"lineHeight":"40px","letterSpacing":"-0.005em","fontWeight":"400"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.12em","fontWeight":"500"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(44,30,22,0.06)]"><div class="h-20 w-full px-margin flex items-center justify-between"><a class="flex flex-col" data-path="trang-chu" href="#"><span class="font-headline-sm text-headline-sm tracking-tight text-primary uppercase">L'Atelier</span><span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.25em]">Haute Cuisine</span></a><nav class="hidden md:flex items-center gap-gutter" data-active-classes="text-primary font-medium border-b border-primary"><a class="font-label-md text-label-md uppercase text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="trang-chu" href="#">Trang Chủ</a><a class="font-label-md text-label-md uppercase text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="thuc-don" href="#">Thực Đơn</a><a class="font-label-md text-label-md uppercase text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="dat-ban" href="#">Đặt Bàn</a><a class="font-label-md text-label-md uppercase text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="hoi-vien" href="#">Hội Viên</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex items-center justify-center px-space-md py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase rounded hover:bg-secondary hover:text-on-secondary transition-colors" data-path="dang-nhap-hoi-vien" href="#">Đăng Nhập</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-20rem)]"><div class="flex flex-col w-full">
+<!-- Subtle ambient decorative glow behind editorial header -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-gradient-to-b from-secondary-container/40 via-surface-container-low/60 to-transparent blur-3xl pointer-events-none -z-10"></div>
+<!-- Editorial Intro Section -->
+<section class="w-full px-margin pt-space-lg pb-space-lg max-w-7xl mx-auto">
+<div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+<!-- Prestige Badge -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-1 bg-surface-container-high rounded-full shadow-sm mb-space-md">
+<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.25em]">L'Atelier Privilège • Gia Nhập Hội Viên Danh Dự</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-space-sm">
+          Khởi Đầu Hành Trình Đặc Quyền Ẩm Thực
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-normal leading-relaxed">
+          Nơi gìn giữ những trải nghiệm ẩm thực đương đại thuần khiết nhất. Chúng tôi trân trọng đón chào Quý khách vào vòng tròn thượng khách riêng biệt — với sự chăm sóc chuẩn may đo từ Concierge và bàn tiệc cá nhân hóa độc bản.
+        </p>
+<!-- Mode Toggle Tabs (No border, elegant container shifts) -->
+<div class="mt-space-lg p-1.5 bg-surface-container-high rounded-full inline-flex items-center shadow-sm" id="tab-switcher">
+<button class="px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 bg-primary text-on-primary shadow-sm flex items-center gap-2" id="tab-btn-activate" onclick="switchMode('activate')">
+<span class="material-symbols-outlined text-[18px]">key</span>
+            Kích Hoạt Thẻ Được Trao Tặng
+          </button>
+<button class="px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 text-on-surface-variant hover:text-primary flex items-center gap-2" id="tab-btn-register" onclick="switchMode('register')">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+            Đăng Ký Hội Viên Mới
+          </button>
+</div>
+</div>
+</section>
+<!-- Main Content Dual-Column Section -->
+<section class="w-full px-margin pb-space-xl max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- LEFT COLUMN: Registration & Activation Form (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-md sm:p-space-lg shadow-xl shadow-primary-container/5 relative">
+<!-- Mode Banner / Notice -->
+<div class="p-space-md bg-surface-container-low rounded-lg mb-space-lg flex items-start gap-space-sm" id="mode-notice-activate">
+<span class="material-symbols-outlined text-secondary text-[22px] mt-0.5">verified_user</span>
+<div>
+<p class="font-title-md text-title-md text-primary">Kích Hoạt Mã Thư Mời Cá Nhân</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Dành cho thượng khách đã nhận bộ quà tặng phong bì thượng hạng hoặc thẻ vật lý từ Tổng Bếp Trưởng.</p>
+</div>
+</div>
+<div class="p-space-md bg-secondary-container/30 rounded-lg mb-space-lg hidden flex items-start gap-space-sm" id="mode-notice-register">
+<span class="material-symbols-outlined text-secondary text-[22px] mt-0.5">diamond</span>
+<div>
+<p class="font-title-md text-title-md text-primary">Hồ Sơ Đăng Ký Hội Viên Thân Thiết</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Hồ sơ sẽ được Ban Giám Đốc Ẩm Thực xét duyệt trong 24 giờ. Mã thẻ số hóa sẽ gửi tới Quý khách qua email &amp; SMS.</p>
+</div>
+</div>
+<form class="space-y-space-lg" id="membership-form" onsubmit="event.preventDefault(); handleSubmit();">
+<!-- SECTION 1: Invitation / Card Code -->
+<div class="space-y-space-xs" id="invitation-code-container">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md uppercase text-primary tracking-wider flex items-center gap-1.5">
+<span>Mã Thẻ Vật Lý / Mã Thư Mời Đặc Quyền</span>
+<span class="text-error">*</span>
+</label>
+<span class="font-label-sm text-label-sm uppercase text-secondary flex items-center gap-1" id="code-status">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                  Hợp lệ: L'Atelier Envoyé
+                </span>
+</div>
+<div class="relative">
+<input class="w-full h-12 px-space-md bg-surface-container-low rounded font-title-md text-title-md text-primary focus:outline-none focus:bg-surface-container transition-all uppercase tracking-widest pl-11" id="invitation-input" oninput="updateCardNumber(this.value)" placeholder="LA-VIP-2025-XXXX" required="" type="text" value="LA-VIP-2025-8869"/>
+<span class="material-symbols-outlined absolute left-3 top-3 text-secondary text-[20px]">credit_card</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Mã in dập nổi ở mặt sau thẻ kim loại hoặc góc dưới phong thư dạ quang.</p>
+</div>
+<!-- SECTION 2: Noble Identity -->
+<div class="space-y-space-md pt-space-xs">
+<div class="flex items-center gap-space-xs pb-space-xs">
+<span class="font-label-md text-label-md uppercase text-secondary tracking-[0.2em]">01. Thông Tin Danh Xưng Thượng Khách</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<!-- Title Selection -->
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant">Danh Xưng</label>
+<select class="w-full h-12 px-space-sm bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none focus:bg-surface-container" id="title-select" onchange="updateCardHolder()">
+<option value="Ông">Ông (Monsieur)</option>
+<option value="Bà">Bà (Madame)</option>
+<option value="Cô">Cô (Mademoiselle)</option>
+<option value="Ngài">Ngài (Excellency / Sir)</option>
+</select>
+</div>
+<!-- Full Name -->
+<div class="sm:col-span-2 space-y-space-xs">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant">Họ &amp; Tên Đầy Đủ <span class="text-error">*</span></label>
+<input class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none focus:bg-surface-container" id="fullname-input" oninput="updateCardHolder()" placeholder="VD: Nguyễn Hoàng Bảo Long" required="" type="text" value="Nguyễn Hoàng Bảo Long"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Birthday -->
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant flex items-center justify-between">
+<span>Ngày Sinh Nhật</span>
+<span class="text-secondary text-[10px] tracking-normal lowercase">(quà ẩm thực độc quyền)</span>
+</label>
+<input class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none focus:bg-surface-container" type="date" value="1988-10-18"/>
+</div>
+<!-- Phone -->
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant">Điện Thoại (WhatsApp / Zalo) <span class="text-error">*</span></label>
+<input class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none focus:bg-surface-container" placeholder="+84 908 xxx xxx" required="" type="tel" value="+84 908 123 456"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant">Thư Điện Tử Nhận Thư Mời Tiệc Kín <span class="text-error">*</span></label>
+<input class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none focus:bg-surface-container" placeholder="name@luxury-domain.vn" required="" type="email" value="baolong.nguyen@monarch-holdings.com"/>
+</div>
+</div>
+<!-- SECTION 3: PIN / Password Setup -->
+<div class="space-y-space-md pt-space-xs">
+<div class="flex items-center gap-space-xs pb-space-xs">
+<span class="font-label-md text-label-md uppercase text-secondary tracking-[0.2em]">02. Bảo Mật Đặt Bàn &amp; Tích Lũy</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant">Mã PIN Thẻ 6 Số (Concierge PIN)</label>
+<input class="w-full h-12 px-space-md bg-surface-container-low rounded font-title-md text-title-md tracking-widest text-primary focus:outline-none focus:bg-surface-container text-center" maxlength="6" placeholder="••••••" required="" type="password" value="986899"/>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Dùng để xác nhận nhanh khi gọi tổng đài Butler.</p>
+</div>
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant">Mật Khẩu Cổng Hội Viên</label>
+<input class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none focus:bg-surface-container" placeholder="Mật khẩu trực tuyến" required="" type="password" value="EleganceAtelier2025!"/>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Tối thiểu 8 ký tự, gồm chữ và số.</p>
+</div>
+</div>
+</div>
+<!-- SECTION 4: Tailored Culinary Preferences -->
+<div class="space-y-space-md pt-space-xs">
+<div class="flex items-center gap-space-xs pb-space-xs">
+<span class="font-label-md text-label-md uppercase text-secondary tracking-[0.2em]">03. Tùy Chọn Sở Thích Ẩm Thực (Tailored Profile)</span>
+</div>
+<!-- Dietary restrictions chips -->
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant block mb-1">Dị Ứng Hoặc Khẩu Vị Kiêng Khem</label>
+<div class="flex flex-wrap gap-2" id="dietary-tags">
+<button class="px-space-md py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-surface-container text-on-surface hover:bg-secondary-container/40 transition-colors" onclick="toggleChip(this)" type="button">Không Kiêng Khem</button>
+<button class="px-space-md py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-primary text-on-primary transition-colors" onclick="toggleChip(this)" type="button">Hải Sản Có Vỏ (Crustacean)</button>
+<button class="px-space-md py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-surface-container text-on-surface hover:bg-secondary-container/40 transition-colors" onclick="toggleChip(this)" type="button">Không Gluten (GF)</button>
+<button class="px-space-md py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-surface-container text-on-surface hover:bg-secondary-container/40 transition-colors" onclick="toggleChip(this)" type="button">Ăn Chay Bán Phần (Pescatarian)</button>
+<button class="px-space-md py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-surface-container text-on-surface hover:bg-secondary-container/40 transition-colors" onclick="toggleChip(this)" type="button">Không Sữa Động Vật</button>
+<button class="px-space-md py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-surface-container text-on-surface hover:bg-secondary-container/40 transition-colors" onclick="toggleChip(this)" type="button">Không Nấm Rừng Truffle</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md pt-space-xs">
+<!-- Wine Preference -->
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant">Gu Rượu Vang Ưu Tiên</label>
+<select class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none focus:bg-surface-container">
+<option>Bordeaux Grand Cru Classé</option>
+<option selected="">Burgundy Pinot Noir &amp; Chardonnay</option>
+<option>Champagne Vintage &amp; Prestige Cuvée</option>
+<option>Bio-dynamic &amp; Rượu Tự Nhiên</option>
+<option>Bộ Sưu Tập Vang Ý (Barolo, Brunello)</option>
+<option>Không Dùng Đồ Uống Có Cồn (Mocktail Pairing)</option>
+</select>
+</div>
+<!-- Seating Placement -->
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md uppercase text-on-surface-variant">Vị Trí Bàn Thường Trực</label>
+<select class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none focus:bg-surface-container">
+<option selected="">Phòng VIP Kín Đáo (Salon Privé)</option>
+<option>Chef's Counter (Trực diện không gian Bếp mở)</option>
+<option>Bàn Nhìn Ra Vườn Ban Công Ánh Sáng Tự Nhiên</option>
+<option>Góc Tĩnh Lặng Salon Trung Tâm</option>
+</select>
+</div>
+</div>
+</div>
+<!-- SECTION 5: Terms Checkbox -->
+<div class="space-y-space-sm pt-space-xs bg-surface-container-low p-space-md rounded-lg">
+<label class="flex items-start gap-space-sm cursor-pointer select-none">
+<input checked="" class="mt-1 w-4 h-4 accent-primary rounded cursor-pointer" required="" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">
+                  Tôi đồng thuận với <a class="underline text-secondary font-medium hover:text-primary" href="#">Quy chế Bảo mật Hội viên Thượng lưu</a> và cho phép lưu trữ sở thích ẩm thực cá nhân nhằm phục vụ những bữa tiệc chuẩn xác.
+                </span>
+</label>
+<label class="flex items-start gap-space-sm cursor-pointer select-none">
+<input checked="" class="mt-1 w-4 h-4 accent-primary rounded cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant">
+                  Nhận đặc san ẩm thực định kỳ, danh mục rượu vang niên vụ hiếm phân bổ riêng và thư mời tiệc nếm thử kín (Private Gala Dinners) từ Sommelier.
+                </span>
+</label>
+</div>
+<!-- Submit Action Button -->
+<div class="pt-space-sm">
+<button class="w-full h-14 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-[0.2em] rounded flex items-center justify-center gap-space-sm hover:bg-secondary transition-all duration-300 shadow-md group" id="submit-action-btn" type="submit">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed group-hover:rotate-12 transition-transform">workspace_premium</span>
+<span id="btn-label-text">Hoàn Tất Kích Hoạt Thẻ Hội Viên</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="flex items-center justify-center gap-space-xs mt-space-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">lock</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Xác thực mã hóa đầu cuối 256-bit chuẩn Haute Concierge</span>
+</div>
+</div>
+</form>
+</div>
+<!-- RIGHT COLUMN: Interactive VIP Card Preview & Prestige Benefits (5 Cols) -->
+<div class="lg:col-span-5 space-y-space-lg">
+<!-- VIP Physical Card Mockup (Black Brushed Metal & Champagne Gold) -->
+<div class="relative w-full rounded-2xl p-7 text-white overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-[1.01]" style="background: radial-gradient(120% 120% at 85% 15%, #3d2b20 0%, #170d08 65%, #0d0704 100%);">
+<!-- Brushed metal fine overlay effect -->
+<div class="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#dac2b5_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<!-- Metallic corner accent -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br from-[#ffdcc6]/20 to-transparent rounded-full blur-xl"></div>
+<div class="relative z-10 flex flex-col justify-between h-56 sm:h-64">
+<!-- Card Header -->
+<div class="flex items-start justify-between">
+<div>
+<div class="font-headline-sm text-headline-sm uppercase tracking-wider text-[#f7ddd0]">L'Atelier</div>
+<div class="font-label-sm text-label-sm uppercase tracking-[0.3em] text-[#e5bfa6]">Privilège Noir</div>
+</div>
+<!-- EMV Gold Security Chip -->
+<div class="w-12 h-9 rounded bg-gradient-to-tr from-[#c89d6d] via-[#f5deb3] to-[#9e7240] p-1 shadow-inner flex flex-col justify-between">
+<div class="w-full h-1 bg-[#865d2c]/40 rounded-sm"></div>
+<div class="flex justify-between">
+<div class="w-3 h-3 border border-[#865d2c]/60 rounded-sm"></div>
+<div class="w-3 h-3 border border-[#865d2c]/60 rounded-sm"></div>
+</div>
+<div class="w-full h-1 bg-[#865d2c]/40 rounded-sm"></div>
+</div>
+</div>
+<!-- Middle: Contactless Icon & Masked Number -->
+<div class="flex items-center justify-between">
+<span class="font-display-lg text-[20px] tracking-[0.25em] text-[#f7ddd0] font-light" id="preview-card-number">
+                  LA • 2025 • 8869 • VIP
+                </span>
+<span class="material-symbols-outlined text-[#dac2b5] text-[24px]">contactless</span>
+</div>
+<!-- Card Footer: VIP Name & Expiry -->
+<div class="flex items-end justify-between border-t border-white/10 pt-3">
+<div>
+<div class="font-label-sm text-[10px] uppercase tracking-[0.15em] text-[#e5bfa6]/70">Chủ Sở Hữu Thẻ</div>
+<div class="font-title-md text-title-md text-[#fcf9f4] tracking-wider uppercase font-medium" id="preview-card-holder">
+                    Ông Nguyễn Hoàng Bảo Long
+                  </div>
+</div>
+<div class="text-right">
+<div class="font-label-sm text-[10px] uppercase tracking-[0.15em] text-[#e5bfa6]/70">Hiệu Lực</div>
+<div class="font-label-md text-label-md text-[#fcf9f4] font-mono tracking-widest">
+                    PERPETUEL
+                  </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Membership Tier Privileges List -->
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-sm space-y-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<h2 class="font-title-lg text-title-lg text-primary tracking-tight">Đặc Quyền Thành Viên</h2>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Biểu Cân Quyền Lợi</span>
+</div>
+<!-- Tier 1: Privilège Noir -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg shadow-sm space-y-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md uppercase text-primary tracking-wider font-semibold">Hạng Privilège Noir</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary uppercase bg-secondary-container/40 px-2 py-0.5 rounded">Hiện Tại</span>
+</div>
+<ul class="space-y-1.5 pt-1">
+<li class="flex items-start gap-2 font-body-md text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">check</span>
+                  Ưu tiên giữ bàn bảo lưu trước 12 giờ cho các đêm cuối tuần kín chỗ.
+                </li>
+<li class="flex items-start gap-2 font-body-md text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">check</span>
+                  Tặng 01 ly Champagne Grand Cru khai vị cho chủ thẻ và 01 vị khách đồng hành.
+                </li>
+<li class="flex items-start gap-2 font-body-md text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">check</span>
+                  Quyền đặt trước bàn danh dự Chef's Table ngắm trọn gian bếp sáng tạo.
+                </li>
+</ul>
+</div>
+<!-- Tier 2: Grand Élite -->
+<div class="p-space-md bg-surface-container rounded-lg space-y-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md uppercase text-primary tracking-wider font-semibold">Hạng Grand Élite</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Mời Đặc Biệt</span>
+</div>
+<ul class="space-y-1.5 pt-1">
+<li class="flex items-start gap-2 font-body-md text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">star</span>
+                  Đường dây Trưởng Bộ Phận Concierge riêng biệt phục vụ 24/7.
+                </li>
+<li class="flex items-start gap-2 font-body-md text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">star</span>
+                  Miễn toàn bộ phí phục vụ mở rượu vang cá nhân (Corkage Waiver - 2 chai/lần).
+                </li>
+<li class="flex items-start gap-2 font-body-md text-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">star</span>
+                  Thư mời song hành cùng Tổng Bếp Trưởng trong đêm ra mắt thực đơn bốn mùa.
+                </li>
+</ul>
+</div>
+</div>
+<!-- Direct Concierge Butler Support Box -->
+<div class="bg-primary text-on-primary rounded-xl p-space-lg shadow-lg relative overflow-hidden">
+<!-- Subtle decorative wine illustration -->
+<div class="absolute -right-4 -bottom-6 opacity-10">
+<span class="material-symbols-outlined text-[140px]">wine_bar</span>
+</div>
+<div class="relative z-10 space-y-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[#ffdcc6] text-[20px]">room_service</span>
+<span class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-[#ffdcc6]">Hỗ Trợ Thượng Khách Trực Tiếp</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-[#fcf9f4]">
+                Cần Trợ Giúp Kích Hoạt Thẻ?
+              </h3>
+<p class="font-body-md text-body-md text-primary-fixed-dim leading-relaxed">
+                Nếu Quý khách gặp trở ngại với mã thư mời hoặc muốn gửi gắm yêu cầu đặt bàn riêng ngay trong tối nay, Trưởng Lễ Tân Concierge luôn sẵn sàng lắng nghe.
+              </p>
+<div class="pt-space-xs space-y-1.5">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[#ffdcc6] text-[18px]">call</span>
+<a class="font-title-md text-title-md text-white hover:text-[#ffdcc6] transition-colors" href="tel:+842838229999">
+                    (+84) 28 3822 9999 (Phím 1 cho VIP)
+                  </a>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[#ffdcc6] text-[18px]">mail</span>
+<span class="font-body-md text-body-md text-primary-fixed-dim">
+                    concierge@latelier-cuisine.vn
+                  </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Atmospheric Mini Gallery / Provenance -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex items-center gap-space-md">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Exquisite Michelin fine dining dish plating with black truffle shavings, delicate edible gold leaf, warm moody candlelight, deep espresso ceramic plate, soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYORpKLYyq9b4Md8zZgjvQncaQ0pcgXJJwchrzAWGlzU-Q_EtFk4UNlOUOBZSwx6onnZNDQ06iDAdgsqQFwtUswBxXzdI3W1KAqqL_3CLWVO4_1vjvGxao7QKo8LioDyxnBmBUt3PCkawxc8oyPKalZzhTZq7QBRmldYgexWEX8XY7DDtox-1VcFvo2zCKNO1QF1WhN1TmSumC0iiSUPGekZnunlQy43QrQg7FElgI"/>
+</div>
+<div>
+<p class="font-label-sm text-label-sm uppercase text-secondary tracking-widest">Sự Khởi Đầu Hoàn Hảo</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">Bữa Tiệc Tiếp Đón Dành Riêng Cho Quý Hội Viên</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Một món khai vị Amuse-bouche đặc chế sẽ được phục vụ ngay lần đầu Quý khách đặt chân đến.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Success Feedback Modal Toast (Hidden by default) -->
+<div class="fixed inset-0 bg-primary/60 backdrop-blur-sm z-50 flex items-center justify-center p-space-md hidden opacity-0 transition-opacity duration-300" id="success-modal">
+<div class="bg-surface rounded-2xl max-w-lg w-full p-space-xl shadow-2xl text-center space-y-space-md transform scale-95 transition-transform duration-300" id="modal-box">
+<div class="w-16 h-16 rounded-full bg-secondary-container/50 mx-auto flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[36px]">verified</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase text-secondary tracking-[0.25em]">Đặc Quyền Đã Được Xác Nhận</span>
+<h4 class="font-headline-md text-headline-md text-primary mt-1">Kính Chào Quý Hội Viên L'Atelier</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed" id="modal-desc">
+          Thẻ hội viên danh dự của Quý khách đã kích hoạt thành công. Thư chào mừng cùng mật mã ưu tiên Concierge đã được gửi tới hòm thư cá nhân.
+        </p>
+<div class="p-space-md bg-surface-container rounded-lg text-left">
+<div class="font-label-sm text-label-sm uppercase text-secondary">Mã Hội Viên Chính Thức</div>
+<div class="font-title-lg text-title-lg text-primary tracking-widest" id="modal-card-id">LA-2025-VIP-8869</div>
+</div>
+<button class="w-full h-12 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest rounded hover:bg-secondary transition-colors" onclick="closeModal()">
+          Đến Trang Cá Nhân &amp; Đặt Bàn Ngay
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive script for dynamic card sync, tab switching, and chips -->
+<script>
+    let currentMode = 'activate';
+
+    function switchMode(mode) {
+      currentMode = mode;
+      const tabActivate = document.getElementById('tab-btn-activate');
+      const tabRegister = document.getElementById('tab-btn-register');
+      const noticeActivate = document.getElementById('mode-notice-activate');
+      const noticeRegister = document.getElementById('mode-notice-register');
+      const invitationContainer = document.getElementById('invitation-code-container');
+      const btnLabel = document.getElementById('btn-label-text');
+
+      if (mode === 'activate') {
+        tabActivate.className = 'px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 bg-primary text-on-primary shadow-sm flex items-center gap-2';
+        tabRegister.className = 'px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 text-on-surface-variant hover:text-primary flex items-center gap-2';
+        noticeActivate.classList.remove('hidden');
+        noticeRegister.classList.add('hidden');
+        invitationContainer.classList.remove('hidden');
+        btnLabel.innerText = 'HOÀN TẤT KÍCH HOẠT THẺ HỘI VIÊN';
+      } else {
+        tabRegister.className = 'px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 bg-primary text-on-primary shadow-sm flex items-center gap-2';
+        tabActivate.className = 'px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 text-on-surface-variant hover:text-primary flex items-center gap-2';
+        noticeRegister.classList.remove('hidden');
+        noticeActivate.classList.add('hidden');
+        invitationContainer.classList.add('hidden');
+        btnLabel.innerText = 'GỬI HỒ SƠ XÉT DUYỆT HỘI VIÊN MỚI';
+      }
+    }
+
+    function updateCardHolder() {
+      const title = document.getElementById('title-select').value;
+      const name = document.getElementById('fullname-input').value.trim();
+      const displayHolder = document.getElementById('preview-card-holder');
+      if (name.length > 0) {
+        displayHolder.innerText = `${title} ${name}`;
+      } else {
+        displayHolder.innerText = `${title} [TÊN THƯỢNG KHÁCH]`;
+      }
+    }
+
+    function updateCardNumber(val) {
+      const displayNum = document.getElementById('preview-card-number');
+      const cleanVal = val.trim().toUpperCase();
+      if (cleanVal.length > 0) {
+        displayNum.innerText = cleanVal.replace(/[^A-Z0-9]/g, ' • ');
+      } else {
+        displayNum.innerText = 'LA • 2025 • VIP • MEMBER';
+      }
+    }
+
+    function toggleChip(btn) {
+      if (btn.classList.contains('bg-primary')) {
+        btn.classList.remove('bg-primary', 'text-on-primary');
+        btn.classList.add('bg-surface-container', 'text-on-surface');
+      } else {
+        btn.classList.remove('bg-surface-container', 'text-on-surface');
+        btn.classList.add('bg-primary', 'text-on-primary');
+      }
+    }
+
+    function handleSubmit() {
+      const modal = document.getElementById('success-modal');
+      const modalBox = document.getElementById('modal-box');
+      const modalDesc = document.getElementById('modal-desc');
+      const modalId = document.getElementById('modal-card-id');
+      const inputVal = document.getElementById('invitation-input').value.trim();
+
+      if (currentMode === 'register') {
+        modalDesc.innerText = 'Hồ sơ đăng ký của Quý khách đã được chuyển tới Ban Giám Đốc Ẩm Thực. Quản lý Concierge sẽ liên lạc xác nhận trong 24 giờ tới.';
+        modalId.innerText = 'HỒ SƠ ĐANG XÉT DUYỆT • LA-REQ-9921';
+      } else {
+        modalDesc.innerText = 'Thẻ Privilège Noir đã được kích hoạt trọn vẹn. Thư mời dùng ly Champagne khai vị đã sẵn sàng trong tài khoản của Quý khách.';
+        modalId.innerText = inputVal || 'LA-2025-VIP-8869';
+      }
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modalBox.classList.remove('scale-95');
+      }, 20);
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('success-modal');
+      const modalBox = document.getElementById('modal-box');
+      modal.classList.add('opacity-0');
+      modalBox.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl"><div class="w-full px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-space-xl"><div><span class="font-headline-sm text-headline-sm tracking-tight text-primary uppercase block mb-space-xs">L'Atelier</span><p class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mb-space-md">Haute Cuisine</p><p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Nơi hội tụ tinh hoa ẩm thực đương đại, phong vị Pháp chuẩn mực trong không gian tĩnh lặng và trang nhã.</p></div><div><h4 class="font-label-md text-label-md uppercase text-primary mb-space-md tracking-[0.15em]">Khám Phá</h4><ul class="space-y-space-sm"><li class="font-body-md text-body-md text-on-surface-variant"><a class="hover:text-primary transition-colors" data-path="thuc-don" href="#">Tasting Menu</a></li><li class="font-body-md text-body-md text-on-surface-variant"><a class="hover:text-primary transition-colors" data-path="thuc-don" href="#">Bộ Sưu Tập Rượu Vang</a></li><li class="font-body-md text-body-md text-on-surface-variant"><a class="hover:text-primary transition-colors" data-path="dat-ban" href="#">Bàn Tiệc Riêng Tư</a></li><li class="font-body-md text-body-md text-on-surface-variant"><a class="hover:text-primary transition-colors" data-path="hoi-vien" href="#">Đặc Quyền Hội Viên</a></li></ul></div><div><h4 class="font-label-md text-label-md uppercase text-primary mb-space-md tracking-[0.15em]">Thời Gian Phục Vụ</h4><p class="font-body-md text-body-md text-on-surface-variant mb-space-xs">Bữa Tối: Thứ Ba – Chủ Nhật</p><p class="font-body-md text-body-md text-on-surface mb-space-md">18:00 — 22:30 (Đóng cửa Thứ Hai)</p><p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Trang phục lịch sự (Smart Casual)</p></div><div><h4 class="font-label-md text-label-md uppercase text-primary mb-space-md tracking-[0.15em]">Liên Hệ Đặt Chỗ</h4><p class="font-body-md text-body-md text-on-surface-variant mb-space-xs">Số 18 Đại Lộ Thống Nhất, Quận 1, TP. HCM</p><p class="font-body-md text-body-md text-on-surface-variant mb-space-xs">+84 (0) 28 3822 9999</p><p class="font-body-md text-body-md text-secondary">concierge@latelier-cuisine.vn</p></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><p class="font-label-sm text-label-sm text-on-surface-variant uppercase">© 2024 L'Atelier Haute Cuisine. Bảo lưu mọi quyền.</p><div class="flex items-center gap-space-lg"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface uppercase" href="#">Chính Sách Bảo Mật</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface uppercase" href="#">Điều Khoản Dịch Vụ</a></div></div></div></footer></body></html>

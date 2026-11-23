@@ -1,0 +1,47 @@
+@model List<Order>
+@{
+    ViewData["Title"] = "Quản Lý Đơn Gọi Món";
+    string[] statuses = new[] { "Chờ xử lý", "Đang chế biến", "Đang giao / Phục vụ", "Hoàn thành", "Đã hủy" };
+}
+
+<section class="w-full py-12 px-margin bg-surface">
+    <div class="max-w-7xl mx-auto">
+        <a asp-action="Index" class="font-label-sm text-label-sm uppercase text-secondary">&larr; Quay lại Bảng điều khiển</a>
+        <h1 class="font-headline-md text-headline-md text-primary mt-1 mb-6">Quản Lý Đơn Gọi Món (@Model.Count đơn)</h1>
+
+        <div class="space-y-4">
+            @foreach (var o in Model)
+            {
+                <div class="bg-surface-container-low p-6 rounded-xl grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+                    <div class="lg:col-span-4">
+                        <div class="font-title-md text-primary">@o.OrderCode — @o.CustomerName</div>
+                        <div class="text-xs text-on-surface-variant">SĐT: @o.CustomerPhone | @o.OrderType</div>
+                        <div class="text-xs text-on-surface-variant">Bàn/Địa chỉ: @o.CustomerAddress</div>
+                    </div>
+                    <div class="lg:col-span-5 text-xs text-on-surface-variant space-y-1">
+                        @foreach (var item in o.OrderItems)
+                        {
+                            <div class="flex justify-between">
+                                <span>@item.Quantity x @item.MenuItem?.Name</span>
+                                <span>@item.SubTotal.ToString("N0") ₫</span>
+                            </div>
+                        }
+                    </div>
+                    <div class="lg:col-span-3">
+                        <div class="font-title-md text-secondary mb-2">Tổng: @o.TotalAmount.ToString("N0") ₫</div>
+                        <form asp-action="UpdateOrderStatus" method="post" class="flex gap-2">
+                            <input type="hidden" name="id" value="@o.Id" />
+                            <select name="status" class="flex-1 px-3 py-1.5 rounded bg-surface text-xs text-on-surface border border-outline-variant/50">
+                                @foreach (var st in statuses)
+                                {
+                                    <option value="@st" selected="@(o.Status == st)">@st</option>
+                                }
+                            </select>
+                            <button type="submit" class="px-4 py-1.5 bg-primary text-on-primary font-label-sm text-label-sm uppercase rounded hover:bg-secondary">Lưu</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

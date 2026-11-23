@@ -1,0 +1,611 @@
+@model Reservation
+@{
+    ViewData["Title"] = "Đặt Bàn Trực Tuyến";
+    var next7Days = Enumerable.Range(0, 7).Select(i => DateTime.Today.AddDays(i)).ToList();
+    string[] dayNames = new[] { "CN", "Th 2", "Th 3", "Th 4", "Th 5", "Th 6", "Th 7" };
+}
+
+<div class="flex flex-col w-full">
+    <!-- Top Ambient Banner & Header Title -->
+    <section class="relative w-full pt-12 pb-16 px-margin overflow-hidden bg-surface">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-space-sm">
+                    <span class="w-8 h-[1px] bg-secondary"></span>
+                    <span class="font-label-sm text-label-sm uppercase tracking-[0.25em] text-secondary">Trải nghiệm ẩm thực độc bản</span>
+                    <span class="w-8 h-[1px] bg-secondary"></span>
+                </div>
+                <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-space-md">
+                    Đặt Bàn Trực Tuyến
+                </h1>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed font-light">
+                    Để mỗi khoảnh khắc tại L'Atelier trở nên trọn vẹn và chu đáo nhất, chúng tôi khuyến khích quý khách đặt bàn trước ít nhất 24 giờ. Nhà hàng chỉ phục vụ tối đa 14 bàn mỗi tối nhằm đảm bảo tính riêng tư tuyệt đối và chuẩn mực phụng sự thượng đỉnh.
+                </p>
+                <div class="mt-space-lg flex flex-wrap items-center justify-center gap-6 py-3 px-6 bg-surface-container-low rounded-full">
+                    <div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+                        <span class="w-2 h-2 rounded-full bg-secondary"></span>
+                        <span>Giới hạn 14 bàn / ca tiệc</span>
+                    </div>
+                    <span class="text-outline-variant">•</span>
+                    <div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+                        <span class="material-symbols-outlined text-[16px] text-secondary">workspace_premium</span>
+                        <span>Michelin Guide Selection 2024</span>
+                    </div>
+                    <span class="text-outline-variant">•</span>
+                    <div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+                        <span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+                        <span>Xác nhận tức thì qua Concierge</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Workflow Main Container (6 Steps + Live Summary) -->
+    <section class="w-full pb-24 px-margin bg-surface">
+        <div class="max-w-7xl mx-auto">
+            <form asp-controller="Reservation" asp-action="Create" method="post" id="reservationForm">
+                <!-- Hidden inputs synced with interactive steps -->
+                <input type="hidden" asp-for="ReservationDate" id="inputReservationDate" value="@Model.ReservationDate.ToString("yyyy-MM-dd")" />
+                <input type="hidden" asp-for="ReservationTime" id="inputReservationTime" />
+                <input type="hidden" asp-for="NumberOfGuests" id="inputNumberOfGuests" />
+                <input type="hidden" asp-for="GuestGroupLabel" id="inputGuestGroupLabel" />
+                <input type="hidden" asp-for="SeatingArea" id="inputSeatingArea" />
+                <input type="hidden" asp-for="SelectedMenuPackage" id="inputSelectedMenuPackage" />
+                <input type="hidden" asp-for="HasWinePairing" id="inputHasWinePairing" />
+                <input type="hidden" asp-for="EstimatedTotal" id="inputEstimatedTotal" />
+                <input type="hidden" asp-for="Occasion" id="inputOccasion" />
+                <input type="hidden" asp-for="DiningTableId" />
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+                    <!-- Left Column: 6-Step Selection Flow (7 cols) -->
+                    <div class="lg:col-span-7 flex flex-col gap-space-xl">
+                        <!-- BƯỚC 1: Chọn ngày & Khung giờ -->
+                        <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+                            <div class="flex items-center justify-between mb-space-md">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center">1</span>
+                                    <h2 class="font-headline-sm text-headline-sm text-primary mb-0">Ngày &amp; Khung Giờ Dùng Tiệc</h2>
+                                </div>
+                                <span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Bước 1/6</span>
+                            </div>
+
+                            <label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-space-sm">Chọn ngày phục vụ</label>
+                            <div class="grid grid-cols-4 sm:grid-cols-7 gap-2 mb-space-lg" id="datePickerContainer">
+                                @for (int i = 0; i < next7Days.Count; i++)
+                                {
+                                    var d = next7Days[i];
+                                    var isSelected = d.Date == Model.ReservationDate.Date;
+                                    var dayLabel = dayNames[(int)d.DayOfWeek];
+                                    var displayLabel = $"{dayLabel}, {d:dd/MM/yyyy}";
+                                    <button type="button"
+                                            class="date-btn flex flex-col items-center py-3 px-2 rounded-lg transition-all text-center @(isSelected ? "bg-primary text-on-primary shadow-md" : "bg-surface hover:bg-surface-container")"
+                                            onclick="selectDate(this, '@d.ToString("yyyy-MM-dd")', '@displayLabel')">
+                                        <span class="date-day font-label-sm text-label-sm @(isSelected ? "text-primary-fixed" : "text-on-surface-variant")">@dayLabel</span>
+                                        <span class="date-num font-title-lg text-title-lg font-medium @(isSelected ? "text-on-primary" : "text-primary")">@d.ToString("dd")</span>
+                                        <span class="date-month font-label-sm text-[10px] @(isSelected ? "text-primary-fixed" : "text-outline")">Th@(d.Month)</span>
+                                    </button>
+                                }
+                            </div>
+
+                            <!-- Lunch Slots -->
+                            <div class="mb-space-md">
+                                <div class="flex items-center gap-2 mb-space-xs">
+                                    <span class="material-symbols-outlined text-[18px] text-secondary">light_mode</span>
+                                    <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface font-medium">Bữa Trưa (11:30 - 14:00)</span>
+                                </div>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                    @foreach (var slot in new[] { "11:30 (Trưa)", "12:00 (Trưa)", "12:30 (Trưa)", "13:00 (Trưa)" })
+                                    {
+                                        <button type="button" class="time-btn py-2.5 px-3 rounded text-center font-label-md text-label-md bg-surface hover:bg-secondary-fixed text-primary transition-colors" onclick="selectTime(this, '@slot')">
+                                            @slot.Split(' ')[0]
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Dinner Slots -->
+                            <div>
+                                <div class="flex items-center gap-2 mb-space-xs">
+                                    <span class="material-symbols-outlined text-[18px] text-secondary">dark_mode</span>
+                                    <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface font-medium">Bữa Tối (17:30 - 22:30)</span>
+                                </div>
+                                <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                                    @foreach (var slot in new[] { "17:30 (Tối)", "18:00 (Tối)", "18:30 (Tối)", "19:30 (Tối)", "20:00 (Tối)", "20:30 (Tối)" })
+                                    {
+                                        var active = slot == "19:30 (Tối)";
+                                        <button type="button" class="time-btn py-2.5 px-2 rounded text-center font-label-md text-label-md transition-colors @(active ? "bg-primary text-on-primary shadow-sm" : "bg-surface hover:bg-secondary-fixed text-primary")" onclick="selectTime(this, '@slot')">
+                                            @slot.Split(' ')[0]
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BƯỚC 2: Số lượng khách -->
+                        <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+                            <div class="flex items-center justify-between mb-space-md">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center">2</span>
+                                    <h2 class="font-headline-sm text-headline-sm text-primary mb-0">Số Lượng Thực Khách</h2>
+                                </div>
+                                <span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Bước 2/6</span>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3" id="guestCountGroup">
+                                <button class="guest-btn flex flex-col items-center justify-center p-4 rounded bg-surface hover:bg-surface-container transition-all text-center" onclick="selectGuest(this, '1 khách (Solo Tasting)', 1)" type="button">
+                                    <span class="guest-num font-headline-sm text-headline-sm text-primary">1</span>
+                                    <span class="guest-label font-label-sm text-[11px] text-on-surface-variant">Khách lẻ</span>
+                                </button>
+                                <button class="guest-btn flex flex-col items-center justify-center p-4 rounded bg-primary text-on-primary transition-all text-center shadow-md" onclick="selectGuest(this, '2 khách (Duo)', 2)" type="button">
+                                    <span class="guest-num font-headline-sm text-headline-sm text-on-primary">2</span>
+                                    <span class="guest-label font-label-sm text-[11px] text-primary-fixed">Bàn đôi</span>
+                                </button>
+                                <button class="guest-btn flex flex-col items-center justify-center p-4 rounded bg-surface hover:bg-surface-container transition-all text-center" onclick="selectGuest(this, '3-4 khách (Nhóm nhỏ)', 4)" type="button">
+                                    <span class="guest-num font-headline-sm text-headline-sm text-primary">3-4</span>
+                                    <span class="guest-label font-label-sm text-[11px] text-on-surface-variant">Gia đình</span>
+                                </button>
+                                <button class="guest-btn flex flex-col items-center justify-center p-4 rounded bg-surface hover:bg-surface-container transition-all text-center" onclick="selectGuest(this, '5-8 khách (Bàn tiệc)', 6)" type="button">
+                                    <span class="guest-num font-headline-sm text-headline-sm text-primary">5-8</span>
+                                    <span class="guest-label font-label-sm text-[11px] text-on-surface-variant">Tiệc thân mật</span>
+                                </button>
+                                <button class="guest-btn flex flex-col items-center justify-center p-4 rounded bg-surface hover:bg-surface-container transition-all text-center col-span-2 sm:col-span-1" onclick="selectGuest(this, '8+ khách (Phòng tiệc riêng VIP)', 8)" type="button">
+                                    <span class="guest-num font-headline-sm text-headline-sm text-primary">8+</span>
+                                    <span class="guest-label font-label-sm text-[11px] text-secondary font-medium" data-default-class="guest-label font-label-sm text-[11px] text-secondary font-medium">VIP Salon</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- BƯỚC 3: Khu vực ngồi mong muốn -->
+                        <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+                            <div class="flex items-center justify-between mb-space-md">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center">3</span>
+                                    <h2 class="font-headline-sm text-headline-sm text-primary mb-0">Không Gian Ngồi Mong Muốn</h2>
+                                </div>
+                                <span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Bước 3/6</span>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="seatingAreaGroup">
+                                <div class="seating-card cursor-pointer p-4 rounded-xl bg-secondary-fixed/40 hover:bg-secondary-fixed/50 transition-all flex gap-4 items-start shadow-sm" onclick="selectSeating(this, 'Bàn Cạnh Cửa Sổ Hướng Vườn')">
+                                    <div class="w-20 h-20 rounded bg-cover bg-center shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDa_KRF2AnFu2PkS_DHNKDraQQ6FxZ3oz61n18Tyhkz0d-CzTHWe8NKzInjGkv76oSGfctF88XekBYp0xesKGjM79m6TlPlMYEFLajGZvQku6_0wDNL08NkUp5IUPSwL4Nmihnf5jfpwwyXIABKvpN8WanuTsgZS0mLSsFJXxV9sf2fYhvRa-z86J5amhxcy7wa2rKpmKnUwBgZNFv7WJ7ZrXnhSeLNP4s-KO8Tw9BM')"></div>
+                                    <div class="flex flex-col flex-1">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <h3 class="font-title-md text-title-md text-primary mb-0">Bàn Cạnh Cửa Sổ</h3>
+                                            <span class="material-symbols-outlined text-[20px] text-secondary seating-check">check_circle</span>
+                                        </div>
+                                        <p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-0">Hướng vườn tĩnh lặng, ánh sáng tự nhiên dịu nhẹ lý tưởng cho các buổi hẹn lãng mạn.</p>
+                                    </div>
+                                </div>
+
+                                <div class="seating-card cursor-pointer p-4 rounded-xl bg-surface hover:bg-secondary-fixed/30 transition-all flex gap-4 items-start shadow-sm" onclick="selectSeating(this, 'Bàn Trung Tâm Ấm Cúng')">
+                                    <div class="w-20 h-20 rounded bg-cover bg-center shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDEcJ63Imf0AP0wZDmo-BXQjJ9B5IMouDH4x0SBde2ataovKlCSCsrsmiWxskMjqTmsXU3s8p2YC9j-0bC0g4mQiy-8FGpzEEd1XnVvQne69ybz6b0OWtTWuQxxtykqLgADZ6Zj_CfPFDIXe5AEvPl37465Kw6D0gDK3g9w_6H8AL8HhJXgGnkVodNbUSPVoypoJatngj7yT40-KOSBZ8_cBkURkk3r-LRXD8IyyCKi')"></div>
+                                    <div class="flex flex-col flex-1">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <h3 class="font-title-md text-title-md text-primary mb-0">Bàn Trung Tâm</h3>
+                                            <span class="material-symbols-outlined text-[20px] text-outline-variant seating-check">radio_button_unchecked</span>
+                                        </div>
+                                        <p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-0">Không khí ấm cúng dưới ánh đèn chùm đồng mờ, cảm giác khoáng đạt và thư thái.</p>
+                                    </div>
+                                </div>
+
+                                <div class="seating-card cursor-pointer p-4 rounded-xl bg-surface hover:bg-secondary-fixed/30 transition-all flex gap-4 items-start shadow-sm" onclick="selectSeating(this, 'Chef\'s Counter (Quầy Bếp Trưởng)')">
+                                    <div class="w-20 h-20 rounded bg-cover bg-center shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALB4Ywfqzbpaq98gSZ8zrPTpcTUhPf0rWlYIrH_hIzbnsmAsIGDZRL9nJZ0LUSGNenJTy00ihvUcI-qyp8a5bcAPciKWdE0mj7bSRZPvLK4zeEFr4F0MgnopwjXx8wLHr1BjicOdUtEdWQJN1tvcOIadKQAUOFECcndopzLzChEmS86MXBAbuvcuKMaG3hHCGYqHeQhsBu2O0ooWOS3ORdvbQDbMbpAm66of3FqKYB')"></div>
+                                    <div class="flex flex-col flex-1">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <h3 class="font-title-md text-title-md text-primary mb-0">Chef's Counter</h3>
+                                            <span class="material-symbols-outlined text-[20px] text-outline-variant seating-check">radio_button_unchecked</span>
+                                        </div>
+                                        <p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-0">Quan sát trực diện kỹ nghệ chế tác của Bếp trưởng và đội ngũ ẩm thực đương đại.</p>
+                                    </div>
+                                </div>
+
+                                <div class="seating-card cursor-pointer p-4 rounded-xl bg-surface hover:bg-secondary-fixed/30 transition-all flex gap-4 items-start shadow-sm" onclick="selectSeating(this, 'Phòng Riêng VIP Atelier Salon')">
+                                    <div class="w-20 h-20 rounded bg-cover bg-center shrink-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAshZ6L6hLM0C_UU2_PZuCKR1NQXJdaOXp7ZEi-gkYBs7REFvuPiAf2nq3Rylcie8uqHGO396h5IUXDsAcQKrJcu0h2NYqujzIs8h20zm_nKxUkO_xKZ_dEznTvVGGlzitB8U74LBVqhFWrmrtQDW5Nc93gX5vojGIhT4TQx8HsgeJEgfRlWd0qSI24WlVxS9XDZJ_C-9BmPYA7foWd33Z5B3PH9zdb0fsSH9c_GqrS')"></div>
+                                    <div class="flex flex-col flex-1">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <h3 class="font-title-md text-title-md text-primary mb-0">Phòng Riêng VIP</h3>
+                                            <span class="material-symbols-outlined text-[20px] text-outline-variant seating-check">radio_button_unchecked</span>
+                                        </div>
+                                        <p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-0">Không gian cách biệt hoàn toàn, có phục vụ rượu cá nhân và quản gia chuyên biệt.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BƯỚC 4: Trải nghiệm ẩm thực lựa chọn trước -->
+                        <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+                            <div class="flex items-center justify-between mb-space-md">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center">4</span>
+                                    <h2 class="font-headline-sm text-headline-sm text-primary mb-0">Trải Nghiệm Ẩm Thực</h2>
+                                </div>
+                                <span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Bước 4/6</span>
+                            </div>
+                            <div class="flex flex-col gap-3" id="menuSelectionGroup">
+                                @{
+                                    var isDecouverte = Model.SelectedMenuPackage.Contains("Découverte");
+                                    var isPrestige = Model.SelectedMenuPackage.Contains("Prestige");
+                                    var isAlaCarte = !isDecouverte && !isPrestige;
+                                }
+                                <div class="menu-item cursor-pointer p-4 rounded-xl transition-all flex items-start justify-between gap-4 @(isDecouverte ? "bg-primary text-on-primary shadow-md" : "bg-surface hover:bg-surface-container")" data-menu-name="Tasting Menu Découverte (5 Món)" onclick="selectMenu(this, 'Tasting Menu Découverte (5 Món)', 1850000)">
+                                    <div class="flex flex-col">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <span class="menu-title font-title-md text-title-md font-medium @(isDecouverte ? "text-on-primary" : "text-primary")">Tasting Menu Découverte</span>
+                                            <span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-[10px] uppercase">5 Món</span>
+                                        </div>
+                                        <p class="menu-desc font-body-md text-xs leading-relaxed mb-0 @(isDecouverte ? "text-primary-fixed" : "text-on-surface-variant")">Hành trình khám phá hương vị theo mùa lấy cảm hứng từ nguyên liệu thảo mộc cao nguyên và biển khơi.</p>
+                                    </div>
+                                    <div class="text-right shrink-0">
+                                        <span class="menu-price font-title-md text-title-md font-medium block @(isDecouverte ? "text-on-primary" : "text-primary")">1.850.000₫</span>
+                                        <span class="menu-unit font-label-sm text-[10px] @(isDecouverte ? "text-primary-fixed" : "text-outline")">/ khách</span>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item cursor-pointer p-4 rounded-xl transition-all flex items-start justify-between gap-4 @(isPrestige ? "bg-primary text-on-primary shadow-md" : "bg-surface hover:bg-surface-container")" data-menu-name="Tasting Menu Prestige (7 Món)" onclick="selectMenu(this, 'Tasting Menu Prestige (7 Món)', 2650000)">
+                                    <div class="flex flex-col">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <span class="menu-title font-title-md text-title-md font-medium @(isPrestige ? "text-on-primary" : "text-primary")">Tasting Menu Prestige</span>
+                                            <span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-[10px] uppercase">Signature 7 Món</span>
+                                        </div>
+                                        <p class="menu-desc font-body-md text-xs leading-relaxed mb-0 @(isPrestige ? "text-primary-fixed" : "text-on-surface-variant")">Tuyệt tác ẩm thực hoàn chỉnh với Bò Wagyu A5 ủ nấm Truffle đen và Tôm hùm xanh nướng bơ tỏi đen.</p>
+                                    </div>
+                                    <div class="text-right shrink-0">
+                                        <span class="menu-price font-title-md text-title-md font-medium block @(isPrestige ? "text-on-primary" : "text-primary")">2.650.000₫</span>
+                                        <span class="menu-unit font-label-sm text-[10px] @(isPrestige ? "text-primary-fixed" : "text-outline")">/ khách</span>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item cursor-pointer p-4 rounded-xl transition-all flex items-start justify-between gap-4 @(isAlaCarte ? "bg-primary text-on-primary shadow-md" : "bg-surface hover:bg-surface-container")" data-menu-name="Thực Đơn Gọi Món (À La Carte)" onclick="selectMenu(this, 'Thực Đơn Gọi Món (À La Carte)', 0)">
+                                    <div class="flex flex-col">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <span class="menu-title font-title-md text-title-md font-medium @(isAlaCarte ? "text-on-primary" : "text-primary")">Thực Đơn Gọi Món (À La Carte)</span>
+                                        </div>
+                                        <p class="menu-desc font-body-md text-xs leading-relaxed mb-0 @(isAlaCarte ? "text-primary-fixed" : "text-on-surface-variant")">Lựa chọn tự do theo sở thích khi đến nhà hàng từ danh mục món ăn đương đại mới nhất.</p>
+                                    </div>
+                                    <div class="text-right shrink-0">
+                                        <span class="menu-price font-title-md text-title-md font-medium block @(isAlaCarte ? "text-on-primary" : "text-primary")">Tùy chọn</span>
+                                        <span class="menu-unit font-label-sm text-[10px] @(isAlaCarte ? "text-primary-fixed" : "text-outline")">tại bàn</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add-on: Wine Pairing Toggle -->
+                            <div class="mt-4 p-4 rounded-xl bg-surface flex items-center justify-between gap-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+                                        <span class="material-symbols-outlined text-[20px]">wine_bar</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-title-md text-title-md text-primary mb-0">Sommelier Grand Cru Wine Pairing</h4>
+                                        <p class="font-body-md text-xs text-on-surface-variant mb-0">Tuyển tập 5 ly vang hảo hạng do Sommelier tuyển chọn riêng (+1.250.000₫ / khách)</p>
+                                    </div>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer shrink-0">
+                                    <input class="sr-only peer" id="winePairingCheck" onchange="toggleWinePairing(this)" type="checkbox" />
+                                    <div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- BƯỚC 5: Dị ứng thực phẩm & Yêu cầu đặc biệt -->
+                        <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+                            <div class="flex items-center justify-between mb-space-md">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center">5</span>
+                                    <h2 class="font-headline-sm text-headline-sm text-primary mb-0">Yêu Cầu &amp; Dị Ứng Ẩm Thực</h2>
+                                </div>
+                                <span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Bước 5/6</span>
+                            </div>
+
+                            <label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-space-xs">Dịp đặc biệt của quý khách</label>
+                            <div class="flex flex-wrap gap-2 mb-space-md" id="occasionGroup">
+                                @foreach (var occ in new[] { "Kỷ niệm ngày cưới", "Sinh nhật", "Hẹn hò lãng mạn", "Tiệc chiêu đãi đối tác", "Tụ họp gia đình" })
+                                {
+                                    var isDefault = occ == "Hẹn hò lãng mạn";
+                                    <button type="button" class="px-3.5 py-1.5 rounded-full font-label-sm text-label-sm transition-colors @(isDefault ? "bg-primary text-on-primary" : "bg-surface text-on-surface hover:bg-secondary-fixed")" onclick="toggleOccasion(this, '@occ')">
+                                        @occ
+                                    </button>
+                                }
+                            </div>
+
+                            <div class="flex flex-col gap-2">
+                                <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Lưu ý dị ứng &amp; Chế độ ăn uống (Gluten, Hải sản có vỏ, Hạt...)</label>
+                                <textarea asp-for="SpecialRequests" rows="3" class="w-full p-3 bg-surface rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" placeholder="Ví dụ: 1 khách không ăn được hải sản có vỏ; mong muốn chuẩn bị thêm nến nghệ thuật chúc mừng sinh nhật..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- BƯỚC 6: Thông tin người liên hệ -->
+                        <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+                            <div class="flex items-center justify-between mb-space-md">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center">6</span>
+                                    <h2 class="font-headline-sm text-headline-sm text-primary mb-0">Thông Tin Liên Hệ</h2>
+                                </div>
+                                <span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Bước 6/6</span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Danh xưng &amp; Họ tên *</label>
+                                    <input asp-for="CustomerName" class="w-full px-4 py-3 bg-surface rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Ví dụ: Ông / Bà Nguyễn Hoàng Minh" required />
+                                </div>
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Số điện thoại liên lạc *</label>
+                                    <input asp-for="CustomerPhone" class="w-full px-4 py-3 bg-surface rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" placeholder="+84 90 812 3456" required />
+                                </div>
+                                <div class="flex flex-col gap-1.5 sm:col-span-2">
+                                    <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Địa chỉ Email (Nhận thư xác nhận)</label>
+                                    <input asp-for="CustomerEmail" type="email" class="w-full px-4 py-3 bg-surface rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" placeholder="hoangminh.nguyen@craftluxury.vn" />
+                                </div>
+                                <div class="flex flex-col gap-1.5 sm:col-span-2">
+                                    <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Tên cơ quan / Xuất hoá đơn VAT (Nếu có)</label>
+                                    <input asp-for="CompanyVatInfo" class="w-full px-4 py-3 bg-surface rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Tên đơn vị, MST và địa chỉ công ty..." />
+                                </div>
+                            </div>
+                            <label class="mt-space-md flex items-start gap-3 cursor-pointer">
+                                <input checked="" class="mt-1 w-4 h-4 rounded text-primary focus:ring-primary accent-primary" type="checkbox" required />
+                                <span class="font-body-md text-xs text-on-surface-variant leading-relaxed">
+                                    Tôi đồng ý với các tiêu chuẩn phục vụ, quy định trang phục Smart Casual và chính sách hủy bàn trong vòng 24 giờ của L'Atelier Fine Dining.
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Live Sticky Summary Card & Concierge Policy (5 cols) -->
+                    <div class="lg:col-span-5 flex flex-col gap-space-lg lg:sticky lg:top-28">
+                        <div class="bg-primary text-on-primary p-space-lg rounded-xl shadow-xl relative overflow-hidden">
+                            <div class="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-secondary/20 blur-3xl pointer-events-none"></div>
+                            <div class="flex items-center justify-between pb-space-md border-b border-white/10">
+                                <div>
+                                    <span class="font-label-sm text-[10px] tracking-[0.2em] uppercase text-primary-fixed">Phiếu Đặt Bàn L'Atelier</span>
+                                    <h3 class="font-headline-sm text-headline-sm text-on-primary tracking-tight mb-0">Chi Tiết Đặt Tiệc</h3>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-[20px] text-primary-fixed">room_service</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-3 py-space-md border-b border-white/10">
+                                <div class="flex items-start justify-between text-sm">
+                                    <span class="text-on-primary-container font-label-md text-label-md">Thời gian:</span>
+                                    <span class="text-right font-medium text-surface-bright" id="summaryTime">@Model.ReservationDate.ToString("dd/MM/yyyy") · @Model.ReservationTime</span>
+                                </div>
+                                <div class="flex items-start justify-between text-sm">
+                                    <span class="text-on-primary-container font-label-md text-label-md">Số thực khách:</span>
+                                    <span class="text-right font-medium text-surface-bright" id="summaryGuests">@Model.GuestGroupLabel</span>
+                                </div>
+                                <div class="flex items-start justify-between text-sm">
+                                    <span class="text-on-primary-container font-label-md text-label-md">Vị trí ngồi:</span>
+                                    <span class="text-right font-medium text-surface-bright" id="summarySeating">@Model.SeatingArea</span>
+                                </div>
+                                <div class="flex items-start justify-between text-sm">
+                                    <span class="text-on-primary-container font-label-md text-label-md">Thực đơn chọn:</span>
+                                    <span class="text-right font-medium text-secondary-fixed" id="summaryMenu">@Model.SelectedMenuPackage</span>
+                                </div>
+                                <div class="flex items-start justify-between text-sm hidden" id="summaryWineRow">
+                                    <span class="text-on-primary-container font-label-md text-label-md">Ghép rượu vang:</span>
+                                    <span class="text-right font-medium text-secondary-fixed-dim">Sommelier Wine Pairing (+1.250k/khách)</span>
+                                </div>
+                                <div class="flex items-start justify-between text-sm">
+                                    <span class="text-on-primary-container font-label-md text-label-md">Dịp tổ chức:</span>
+                                    <span class="text-right font-medium text-surface-bright" id="summaryOccasion">@Model.Occasion</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-space-md mb-space-lg flex items-center justify-between">
+                                <div>
+                                    <p class="font-label-sm text-label-sm uppercase tracking-wider text-on-primary-container mb-0">Tạm tính bàn tiệc</p>
+                                    <p class="font-body-md text-xs text-outline-variant font-light mb-0">Thanh toán trực tiếp sau bữa tối</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="font-headline-sm text-headline-sm text-secondary-fixed font-medium mb-0" id="totalPriceEstimate">5.300.000₫</p>
+                                    <p class="font-label-sm text-[10px] text-on-primary-container mb-0">Chưa bao gồm 8% VAT &amp; 5% Phí PV</p>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 px-6 bg-secondary hover:bg-on-secondary-fixed-variant text-on-secondary font-label-md text-label-md uppercase tracking-[0.18em] rounded-lg transition-all duration-300 shadow-md flex items-center justify-center gap-2 group">
+                                <span>Xác Nhận Đặt Bàn</span>
+                                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </button>
+                        </div>
+
+                        <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm flex flex-col gap-4">
+                            <h4 class="font-headline-sm text-headline-sm text-primary mb-1">Quy Định &amp; Lưu Ý</h4>
+                            <div class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-[20px] text-secondary shrink-0 mt-0.5">schedule</span>
+                                <div>
+                                    <p class="font-title-md text-title-md text-primary font-medium mb-0">Thời Gian Giữ Bàn</p>
+                                    <p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-0">Bàn được giữ tối đa 15 phút kể từ giờ hẹn.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-[20px] text-secondary shrink-0 mt-0.5">checkroom</span>
+                                <div>
+                                    <p class="font-title-md text-title-md text-primary font-medium mb-0">Quy Định Trang Phục (Dress Code)</p>
+                                    <p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-0"><strong class="text-primary">Smart Casual:</strong> Trang phục lịch thiệp, trang nhã.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <script>
+        let bookingData = {
+            isoDate: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ReservationDate.ToString("yyyy-MM-dd"))),
+            dateLabel: @Html.Raw(System.Text.Json.JsonSerializer.Serialize($"{dayNames[(int)Model.ReservationDate.DayOfWeek]}, {Model.ReservationDate:dd/MM/yyyy}")),
+            time: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ReservationTime)),
+            guests: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.GuestGroupLabel)),
+            guestsCount: @Model.NumberOfGuests,
+            seating: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.SeatingArea)),
+            menu: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.SelectedMenuPackage)),
+            menuPricePerPerson: @(Model.SelectedMenuPackage.Contains("Découverte") ? 1850000 : (Model.SelectedMenuPackage.Contains("Prestige") ? 2650000 : 0)),
+            winePairing: false,
+            winePricePerPerson: 1250000,
+            occasion: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Occasion))
+        };
+
+        function updateSummaryCard() {
+            document.getElementById('summaryTime').textContent = `${bookingData.dateLabel} · ${bookingData.time}`;
+            document.getElementById('summaryGuests').textContent = bookingData.guests;
+            document.getElementById('summarySeating').textContent = bookingData.seating;
+            document.getElementById('summaryMenu').textContent = bookingData.menu;
+            document.getElementById('summaryOccasion').textContent = bookingData.occasion;
+
+            const wineRow = document.getElementById('summaryWineRow');
+            if (bookingData.winePairing) wineRow.classList.remove('hidden');
+            else wineRow.classList.add('hidden');
+
+            let grandTotal = 0;
+            const totalEl = document.getElementById('totalPriceEstimate');
+            if (bookingData.menuPricePerPerson === 0) {
+                grandTotal = (bookingData.winePairing ? bookingData.winePricePerPerson : 0) * bookingData.guestsCount;
+                totalEl.textContent = grandTotal > 0 ? new Intl.NumberFormat('vi-VN').format(grandTotal) + '₫' : 'Theo thực đơn';
+            } else {
+                let singleTotal = bookingData.menuPricePerPerson + (bookingData.winePairing ? bookingData.winePricePerPerson : 0);
+                grandTotal = singleTotal * bookingData.guestsCount;
+                totalEl.textContent = new Intl.NumberFormat('vi-VN').format(grandTotal) + '₫';
+            }
+
+            // Sync hidden inputs for form POST
+            document.getElementById('inputReservationDate').value = bookingData.isoDate;
+            document.getElementById('inputReservationTime').value = bookingData.time;
+            document.getElementById('inputNumberOfGuests').value = bookingData.guestsCount;
+            document.getElementById('inputGuestGroupLabel').value = bookingData.guests;
+            document.getElementById('inputSeatingArea').value = bookingData.seating;
+            document.getElementById('inputSelectedMenuPackage').value = bookingData.menu;
+            document.getElementById('inputHasWinePairing').value = bookingData.winePairing;
+            document.getElementById('inputEstimatedTotal').value = grandTotal;
+            document.getElementById('inputOccasion').value = bookingData.occasion;
+        }
+
+        function selectDate(btn, isoDate, displayLabel) {
+            document.querySelectorAll('.date-btn').forEach(b => {
+                b.className = 'date-btn flex flex-col items-center py-3 px-2 rounded-lg transition-all text-center bg-surface hover:bg-surface-container';
+                const day = b.querySelector('.date-day');
+                const num = b.querySelector('.date-num');
+                const mon = b.querySelector('.date-month');
+                if (day) day.className = 'date-day font-label-sm text-label-sm text-on-surface-variant';
+                if (num) num.className = 'date-num font-title-lg text-title-lg font-medium text-primary';
+                if (mon) mon.className = 'date-month font-label-sm text-[10px] text-outline';
+            });
+            btn.className = 'date-btn flex flex-col items-center py-3 px-2 rounded-lg transition-all text-center bg-primary text-on-primary shadow-md';
+            const day = btn.querySelector('.date-day');
+            const num = btn.querySelector('.date-num');
+            const mon = btn.querySelector('.date-month');
+            if (day) day.className = 'date-day font-label-sm text-label-sm text-primary-fixed';
+            if (num) num.className = 'date-num font-title-lg text-title-lg font-medium text-on-primary';
+            if (mon) mon.className = 'date-month font-label-sm text-[10px] text-primary-fixed';
+
+            bookingData.isoDate = isoDate;
+            bookingData.dateLabel = displayLabel;
+            updateSummaryCard();
+        }
+
+        function selectTime(btn, timeStr) {
+            document.querySelectorAll('.time-btn').forEach(b => {
+                b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+                b.classList.add('bg-surface', 'text-primary');
+            });
+            btn.classList.remove('bg-surface', 'text-primary');
+            btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+            bookingData.time = timeStr;
+            updateSummaryCard();
+        }
+
+        function selectGuest(btn, guestStr, count) {
+            document.querySelectorAll('.guest-btn').forEach(b => {
+                b.classList.remove('bg-primary', 'text-on-primary', 'shadow-md');
+                b.classList.add('bg-surface', 'hover:bg-surface-container');
+                const num = b.querySelector('.guest-num');
+                const lbl = b.querySelector('.guest-label');
+                if (num) num.className = 'guest-num font-headline-sm text-headline-sm text-primary';
+                if (lbl) lbl.className = lbl.getAttribute('data-default-class') || 'guest-label font-label-sm text-[11px] text-on-surface-variant';
+            });
+            btn.classList.remove('bg-surface', 'hover:bg-surface-container');
+            btn.classList.add('bg-primary', 'text-on-primary', 'shadow-md');
+            const num = btn.querySelector('.guest-num');
+            const lbl = btn.querySelector('.guest-label');
+            if (num) num.className = 'guest-num font-headline-sm text-headline-sm text-on-primary';
+            if (lbl) lbl.className = 'guest-label font-label-sm text-[11px] text-primary-fixed';
+
+            bookingData.guests = guestStr;
+            bookingData.guestsCount = count;
+            updateSummaryCard();
+        }
+
+        function selectSeating(card, seatingName) {
+            document.querySelectorAll('.seating-card').forEach(c => {
+                c.classList.remove('bg-secondary-fixed/40');
+                c.classList.add('bg-surface');
+                const icon = c.querySelector('.seating-check');
+                if (icon) {
+                    icon.textContent = 'radio_button_unchecked';
+                    icon.classList.remove('text-secondary');
+                    icon.classList.add('text-outline-variant');
+                }
+            });
+            card.classList.remove('bg-surface');
+            card.classList.add('bg-secondary-fixed/40');
+            const icon = card.querySelector('.seating-check');
+            if (icon) {
+                icon.textContent = 'check_circle';
+                icon.classList.remove('text-outline-variant');
+                icon.classList.add('text-secondary');
+            }
+            bookingData.seating = seatingName;
+            updateSummaryCard();
+        }
+
+        function selectMenu(card, menuTitle, pricePerPerson) {
+            document.querySelectorAll('.menu-item').forEach(m => {
+                m.classList.remove('bg-primary', 'text-on-primary', 'shadow-md');
+                m.classList.add('bg-surface', 'hover:bg-surface-container');
+                const title = m.querySelector('.menu-title');
+                const desc = m.querySelector('.menu-desc');
+                const price = m.querySelector('.menu-price');
+                const unit = m.querySelector('.menu-unit');
+                if (title) title.className = 'menu-title font-title-md text-title-md text-primary font-medium';
+                if (desc) desc.className = 'menu-desc font-body-md text-xs text-on-surface-variant leading-relaxed mb-0';
+                if (price) price.className = 'menu-price font-title-md text-title-md text-primary font-medium block';
+                if (unit) unit.className = 'menu-unit font-label-sm text-[10px] text-outline';
+            });
+
+            card.classList.remove('bg-surface', 'hover:bg-surface-container');
+            card.classList.add('bg-primary', 'text-on-primary', 'shadow-md');
+            const title = card.querySelector('.menu-title');
+            const desc = card.querySelector('.menu-desc');
+            const price = card.querySelector('.menu-price');
+            const unit = card.querySelector('.menu-unit');
+            if (title) title.className = 'menu-title font-title-md text-title-md text-on-primary font-medium';
+            if (desc) desc.className = 'menu-desc font-body-md text-xs text-primary-fixed leading-relaxed mb-0';
+            if (price) price.className = 'menu-price font-title-md text-title-md text-on-primary font-medium block';
+            if (unit) unit.className = 'menu-unit font-label-sm text-[10px] text-primary-fixed';
+
+            bookingData.menu = menuTitle;
+            bookingData.menuPricePerPerson = pricePerPerson;
+            updateSummaryCard();
+        }
+
+        function toggleWinePairing(checkbox) {
+            bookingData.winePairing = checkbox.checked;
+            updateSummaryCard();
+        }
+
+        function toggleOccasion(btn, occasionName) {
+            document.querySelectorAll('#occasionGroup button').forEach(b => {
+                b.classList.remove('bg-primary', 'text-on-primary');
+                b.classList.add('bg-surface', 'text-on-surface');
+            });
+            btn.classList.remove('bg-surface', 'text-on-surface');
+            btn.classList.add('bg-primary', 'text-on-primary');
+            bookingData.occasion = occasionName;
+            updateSummaryCard();
+        }
+
+        document.addEventListener('DOMContentLoaded', updateSummaryCard);
+    </script>
+}
+

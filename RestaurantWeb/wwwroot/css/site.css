@@ -1,0 +1,45 @@
+@layer base {
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        overscroll-behavior: none;
+    }
+
+    main > :first-child {
+        margin-top: 0 !important;
+    }
+
+    main > :last-child {
+        margin-bottom: 0 !important;
+    }
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Sơ đồ bàn trạng thái chuẩn bảng màu Atelier Espresso */
+.table-node {
+    border: 1px solid #d2c4bd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: #fcf9f4;
+    transition: all 0.2s ease;
+}
+
+.table-node.status-empty {
+    border-left: 4px solid #765844;
+}
+
+.table-node.status-reserved {
+    border-left: 4px solid #2c1e16;
+    background-color: #f6f3ee;
+}
+
+.table-node.status-occupied {
+    border-left: 4px solid #ba1a1a;
+    background-color: #ffdad6;
+}

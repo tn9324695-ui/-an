@@ -1,0 +1,438 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-container": "#785b47", "surface-container-low": "#f6f3ee", "on-primary-container": "#9a8479", "secondary": "#765844", "secondary-fixed-dim": "#e5bfa6", "surface-tint": "#6d5a50", "surface-container-high": "#ebe8e3", "surface-container-highest": "#e5e2dd", "surface": "#fcf9f4", "primary": "#130803", "on-primary-fixed-variant": "#54433a", "on-primary-fixed": "#261911", "on-error": "#ffffff", "surface-container-lowest": "#ffffff", "on-secondary-fixed-variant": "#5c412e", "tertiary-container": "#282016", "on-tertiary-container": "#948678", "surface-container": "#f0ede9", "on-surface": "#1c1c19", "inverse-surface": "#31302d", "background": "#fcf9f4", "primary-fixed": "#f7ddd0", "tertiary-fixed": "#f1e0cf", "secondary-fixed": "#ffdcc6", "outline": "#80756f", "on-surface-variant": "#4e4540", "inverse-on-surface": "#f3f0eb", "surface-bright": "#fcf9f4", "surface-variant": "#e5e2dd", "surface-dim": "#dcdad5", "on-tertiary-fixed-variant": "#504539", "error-container": "#ffdad6", "inverse-primary": "#dac2b5", "on-tertiary": "#ffffff", "primary-container": "#2c1e16", "on-secondary-fixed": "#2b1707", "tertiary-fixed-dim": "#d4c4b4", "error": "#ba1a1a", "on-secondary": "#ffffff", "outline-variant": "#d2c4bd", "primary-fixed-dim": "#dac2b5", "on-error-container": "#93000a", "tertiary": "#100903", "on-primary": "#ffffff", "on-tertiary-fixed": "#221a10", "on-background": "#1c1c19", "secondary-container": "#fdd5bc" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-lg": "2rem", "space-xs": "0.25rem", "space-xl": "4rem", "gutter": "1.5rem", "space-md": "1rem", "space-sm": "0.5rem", "margin": "2rem" }, "fontFamily": { "headline-lg": ["Playfair Display"], "headline-lg-mobile": ["Playfair Display"], "title-md": ["DM Sans"], "display-lg": ["Playfair Display"], "body-lg": ["DM Sans"], "headline-md": ["Playfair Display"], "display-lg-mobile": ["Playfair Display"], "label-md": ["DM Sans"], "title-lg": ["DM Sans"], "headline-sm": ["Playfair Display"], "body-md": ["DM Sans"], "label-sm": ["DM Sans"] }, "fontSize": { "headline-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "headline-md": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "display-lg-mobile": ["40px", { "lineHeight": "46px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "500" }], "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "500" }], "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.14em", "fontWeight": "500" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(44,30,22,0.06)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Mở danh mục" class="w-11 h-11 flex items-center justify-center text-primary active:scale-95 transition-transform"><span class="material-symbols-outlined text-[24px]">menu</span></button><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">L'Atelier</span><span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mt-space-xs">Haute Cuisine</span></div></div><div class="flex items-center gap-space-sm"><a aria-label="Gọi điện đặt bàn" class="w-11 h-11 flex items-center justify-center text-secondary active:scale-95 transition-transform" href="tel:+842838228888"><span class="material-symbols-outlined text-[20px]">call</span></a><a class="h-9 px-space-md flex items-center justify-center bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded-lg active:bg-secondary transition-colors" data-path="dat-ban" href="#">Đặt bàn</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-20 bg-surface min-h-screen"><div class="flex flex-col w-full pb-24">
+<!-- Banner Top: Bộ sưu tập & Quick PDF -->
+<section class="relative px-gutter pt-6 pb-6 bg-surface-container-low overflow-hidden">
+<div class="relative z-10 flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Tuyển Chọn 2024</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">
+        Bộ Sưu Tập Mùa Thu &amp; Đông
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+        Thực đơn đương đại kết hợp tinh hoa thảo mộc bản địa Việt Nam cùng kỹ thuật ẩm thực Pháp cổ điển.
+      </p>
+<div class="flex items-center justify-between pt-2">
+<button class="inline-flex items-center gap-2 px-space-md py-2.5 bg-primary text-on-primary rounded-lg active:bg-secondary transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Tải PDF Menu</span>
+</button>
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px]">eco</span>
+<span class="font-label-sm text-label-sm">Bản in kỹ thuật số</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Horizontal Filter Pills (Scrollable) -->
+<section class="sticky top-16 z-30 bg-surface/95 backdrop-blur-md py-3 px-gutter shadow-sm">
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth" id="categoryTabs">
+<button class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all bg-primary text-on-primary shadow-sm" onclick="filterMenu('all', this)" type="button">
+        Tất cả
+      </button>
+<button class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all bg-surface-container text-on-surface-variant active:bg-surface-container-high" onclick="filterMenu('tasting', this)" type="button">
+        Tasting Menu
+      </button>
+<button class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all bg-surface-container text-on-surface-variant active:bg-surface-container-high" onclick="filterMenu('starter', this)" type="button">
+        Khai vị
+      </button>
+<button class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all bg-surface-container text-on-surface-variant active:bg-surface-container-high" onclick="filterMenu('main', this)" type="button">
+        Món chính
+      </button>
+<button class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all bg-surface-container text-on-surface-variant active:bg-surface-container-high" onclick="filterMenu('dessert', this)" type="button">
+        Tráng miệng
+      </button>
+<button class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all bg-surface-container text-on-surface-variant active:bg-surface-container-high" onclick="filterMenu('wine', this)" type="button">
+        Sommelier Wine
+      </button>
+</div>
+</section>
+<!-- Tasting Menu Section -->
+<section class="menu-section px-gutter pt-6 flex flex-col gap-4" data-category="tasting">
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Trải Nghiệm Đỉnh Cao</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Tasting Menu</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Phục vụ toàn bàn</span>
+</div>
+<!-- Card 1: Découverte -->
+<div class="bg-surface-container-low rounded-xl p-5 flex flex-col gap-4 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">5 Khóa Trải Nghiệm</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-1">Menu Découverte</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant italic">Hành trình khám phá hương sắc đất trời Thu Đông</p>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary tracking-tight font-medium">2.450.000₫</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">/ khách</span>
+</div>
+</div>
+<div class="bg-surface p-3.5 rounded-lg flex flex-col gap-2.5">
+<div class="flex items-start gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0"></span>
+<div class="flex-1 text-on-surface">
+<span class="font-title-md text-title-md text-primary block leading-snug">Hàu Sữa Nha Trang Tái Chanh &amp; Dầu Ngò Gai</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Amuse-Bouche thanh nhẹ</span>
+</div>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0"></span>
+<div class="flex-1 text-on-surface">
+<span class="font-title-md text-title-md text-primary block leading-snug">Súp Nấm Rừng Tây Bắc &amp; Bọt Sữa Hạnh Nhân</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hương thơm mộc mạc cao nguyên</span>
+</div>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0"></span>
+<div class="flex-1 text-on-surface">
+<span class="font-title-md text-title-md text-primary block leading-snug">Ức Vịt Nướng Mắc Khén &amp; Sốt Mận Mộc Châu</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Khóa vị ấm áp cân bằng</span>
+</div>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0"></span>
+<div class="flex-1 text-on-surface">
+<span class="font-title-md text-title-md text-primary block leading-snug">Bánh Tart Chanh Dây &amp; Kem Basil Rừng</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Kết màn tươi mới rạng rỡ</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[18px]">wine_bar</span>
+<span class="font-label-sm text-label-sm font-medium">Wine Pairing: +1.450.000₫ (4 ly)</span>
+</div>
+<button class="px-3.5 py-1.5 bg-surface text-primary rounded-lg font-label-sm text-label-sm uppercase tracking-wider active:bg-secondary-container transition-colors shadow-sm" type="button">
+          Chọn Menu
+        </button>
+</div>
+</div>
+<!-- Card 2: Prestige -->
+<div class="bg-primary text-on-primary rounded-xl p-5 flex flex-col gap-4 shadow-md relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-secondary/15 blur-2xl pointer-events-none"></div>
+<div class="flex justify-between items-start relative z-10">
+<div class="flex flex-col">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-secondary/30 w-fit mb-1">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed">workspace_premium</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-fixed">Signature Haute</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-primary">Menu Prestige</h3>
+<p class="font-label-sm text-label-sm text-on-primary-container italic">7 Tuyệt phẩm: Bò Wagyu A5, Truffle, Gan ngỗng, Tôm hùm</p>
+</div>
+<div class="text-right">
+<span class="font-title-lg text-title-lg text-primary-fixed tracking-tight font-medium">3.850.000₫</span>
+<span class="block font-label-sm text-label-sm text-on-primary-container">/ khách</span>
+</div>
+</div>
+<div class="bg-primary-container/80 p-3.5 rounded-lg flex flex-col gap-2.5 relative z-10">
+<div class="flex items-center justify-between text-on-primary">
+<span class="font-title-md text-title-md">1. Trứng Cá Tầm Caviar &amp; Kem Chua Thảo Mộc</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed">Sturia</span>
+</div>
+<div class="flex items-center justify-between text-on-primary">
+<span class="font-title-md text-title-md">2. Gan Ngỗng Áp Chảo &amp; Sốt Rượu Vang Port</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed">Foie Gras</span>
+</div>
+<div class="flex items-center justify-between text-on-primary">
+<span class="font-title-md text-title-md">3. Tôm Hùm Nha Trang Cháy Tỏi Đen &amp; Safron</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed">Homard</span>
+</div>
+<div class="flex items-center justify-between text-on-primary">
+<span class="font-title-md text-title-md">4. Bò Wagyu A5 Miyazaki &amp; Nấm Truffle Đen</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed">A5 Wagyu</span>
+</div>
+<div class="flex items-center justify-between text-on-primary">
+<span class="font-title-md text-title-md">5. Bánh Marou Grand Cru Soufflé Cacao</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed">Dessert</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 relative z-10">
+<div class="flex items-center gap-1.5 text-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]">wine_bar</span>
+<span class="font-label-sm text-label-sm">Wine Pairing VIP: +2.250.000₫ (6 ly)</span>
+</div>
+<button class="px-4 py-2 bg-secondary-fixed text-on-secondary-fixed rounded-lg font-label-md text-label-md uppercase tracking-wider active:bg-secondary transition-colors shadow-sm" type="button">
+          Đặt Trước
+        </button>
+</div>
+</div>
+</section>
+<!-- À La Carte Dishes -->
+<section class="menu-section px-gutter pt-8 flex flex-col gap-4" data-category="carte">
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Tuyển Chọn Đơn Lẻ</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Món Lẻ À La Carte</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4 Món nổi bật</span>
+</div>
+<!-- Dish 1: Scallop -->
+<article class="bg-surface-container-low rounded-xl overflow-hidden p-3.5 flex flex-col gap-3 shadow-sm" data-category="starter">
+<div class="relative w-full h-44 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Exquisitely plated pan-seared sea scallops resting on a vibrant golden saffron veloute emulsion, decorated with microgreens and delicate edible borage flowers, subtle candlelight ambience on warm linen textured table, luxury fine dining photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIQ5NHU28a85d_aFpJBImA3Qr4l2yme8umsl9Ni8YuIOjuHAOmT_6SD68XIx6bdMO_bY-BqT-DZhVqVz9ptANX1QKKNkdUtjxnKjQkatzXW1aGuIq06pV4My6y1N3FLDVriKdGPrBMENmF0Gid60r-jlKbkSKVf3d93ZHsx6o6U4xWFBBrRyFF9djqNe24C85ATBdNWy_ea2oGVVcfbCWMett-Fs1DRwgvN6RzazL7">
+<span class="absolute top-2.5 left-2.5 px-2.5 py-1 bg-surface/90 backdrop-blur-md rounded font-label-sm text-label-sm uppercase tracking-wider text-primary">Khai Vị</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Sò Điệp Áp Chảo &amp; Nghệ Tây</h3>
+<p class="font-label-sm text-label-sm text-secondary italic">Coquilles Saint-Jacques au Safran</p>
+</div>
+<span class="font-title-lg text-title-lg text-primary whitespace-nowrap">480.000₫</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+          Sò điệp Hokkaido áp chảo lướt bơ nâu, xốt nhụy hoa nghệ tây Iran, táo xanh ngâm rượu vang trắng thanh mát.
+        </p>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface-variant">Gluten Free</span>
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface-variant">Hokkaido</span>
+</div>
+<button aria-label="Thêm vào danh sách" class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Dish 2: Salmon Sa Pa -->
+<article class="bg-surface-container-low rounded-xl overflow-hidden p-3.5 flex flex-col gap-3 shadow-sm" data-category="starter">
+<div class="relative w-full h-44 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Cured Sa Pa highland trout gravlax, garnished with black sturgeon caviar pearls, pickled mountain shallots, dill emulsion, and crisp sourdough crisps, warm dusk ambient lighting, Michelin star presentation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB47Mr-14rdfkIG5DY6io-mzXXuAzENBh5P_PMQGsBWZhVa0iyNen-5ligm4NtWVejfKUpqs7z6CLwiR3lBXhcygOe1BDocrXVOUKITYzMi68Gcw4qjOuFRrN5Ywlv1ielIDzzlQtJEIEPE6QkzfqxkfFJ-JjLP-70uIioqmFlauD6nrQMZvtbvPOf0JQw0QLvzN0wi4ACGzUtMbIwTB1U-iskwIXe8N6mrf0K0Gv-0">
+<span class="absolute top-2.5 left-2.5 px-2.5 py-1 bg-surface/90 backdrop-blur-md rounded font-label-sm text-label-sm uppercase tracking-wider text-primary">Khai Vị</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cá Hồi Sa Pa &amp; Trứng Cá Tầm</h3>
+<p class="font-label-sm text-label-sm text-secondary italic">Truite de Sa Pa &amp; Caviar d'Esturgeon</p>
+</div>
+<span class="font-title-lg text-title-lg text-primary whitespace-nowrap">520.000₫</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+          Cá hồi núi tuyết Sa Pa ủ muối thảo mộc, điểm xuyết trứng cá tầm đen sông Đà, nhũ tương thì là tươi và củ dền nướng.
+        </p>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface-variant">Bản Địa</span>
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface-variant">Caviar</span>
+</div>
+<button aria-label="Thêm vào danh sách" class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Dish 3: Wagyu A5 -->
+<article class="bg-surface-container-low rounded-xl overflow-hidden p-3.5 flex flex-col gap-3 shadow-sm" data-category="main">
+<div class="relative w-full h-44 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Dry-aged Miyazaki A5 Wagyu beef tenderloin cooked medium rare with deep char crust, served with black Périgord truffle shavings, smoked bone marrow potato puree and rich Bordelaise reduction, luxurious editorial tabletop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6Hbe8Y2Sxn2yWPaRQGXWj5lf0SEpdr17On1zbpodS9zU6ubjEpDd3NO6-fX0qbIu68COxJL01klb5fVIsoKy_uwYzmwVSv_2_pPV9-PtGnPUZogxlD8RVhGIsSzpxG7fY-hwQjrpI_PSwt21M2OcRZg2iU3olTP0FipsJl8cBPH82yqOpL7gCBxJUoHz59ehrFG6AUEG1qwYMZuIB38Sej3jH0dRDNdc72Qgwj_MF">
+<span class="absolute top-2.5 left-2.5 px-2.5 py-1 bg-surface/90 backdrop-blur-md rounded font-label-sm text-label-sm uppercase tracking-wider text-primary">Món Chính</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Thăn Nội Bò Wagyu A5 Ủ Khô</h3>
+<p class="font-label-sm text-label-sm text-secondary italic">Filet de Bœuf Wagyu A5 Matûré</p>
+</div>
+<span class="font-title-lg text-title-lg text-primary whitespace-nowrap">1.850.000₫</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+          Bò Wagyu Miyazaki A5 ủ khô 45 ngày, nướng than Binchotan thơm nức, sốt nấm Truffle đen Périgord và khoai tây Robuchon.
+        </p>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface-variant">45 Days Aged</span>
+<span class="px-2 py-0.5 bg-secondary-container rounded font-label-sm text-label-sm text-on-secondary-container">Chef's Choice</span>
+</div>
+<button aria-label="Thêm vào danh sách" class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Dish 4: Souffle Marou -->
+<article class="bg-surface-container-low rounded-xl overflow-hidden p-3.5 flex flex-col gap-3 shadow-sm" data-category="dessert">
+<div class="relative w-full h-44 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Fluffy chocolate souffle baked in a ramekin, dusted with organic cocoa powder, gently steaming, paired with Madagascar vanilla bean ice cream quenelle and cacao nib tuile, dim atmospheric restaurant scene" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS_NH0U2YSvg_0AmTO9DVWkn7Q3KpooLpYiWYa-ipF3V5a4jKoFwSNn7CJMIj4op34tj-gnz1CECs7CsCnXDSscutAIjv5BkMrhfGxH7WCayt6MVZFyodtWQXpSoqKaKN02LPTZ7FaWWvW-X-MUvZd-emyUKCcQY2HdBS3HpTaFqFCwEU2fsgZS29xxvPIhnPnCrn_wz8EO7MoxirNeQypoTR20t9QdtbgqMkAlBz1">
+<span class="absolute top-2.5 left-2.5 px-2.5 py-1 bg-surface/90 backdrop-blur-md rounded font-label-sm text-label-sm uppercase tracking-wider text-primary">Tráng Miệng</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Bánh Soufflé Sô-cô-la Marou 70%</h3>
+<p class="font-label-sm text-label-sm text-secondary italic">Soufflé Chaud au Chocolat Marou Tiền Giang</p>
+</div>
+<span class="font-title-lg text-title-lg text-primary whitespace-nowrap">340.000₫</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+          Nướng nóng theo yêu cầu trong 18 phút, ca cao nguyên bản ĐBSCL, kem gelato vani Tahiti và sốt caramel muối hạt dừa.
+        </p>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface-variant">Cacao 70%</span>
+<span class="px-2 py-0.5 bg-surface-container rounded font-label-sm text-label-sm text-on-surface-variant">Phục vụ nóng</span>
+</div>
+<button aria-label="Thêm vào danh sách" class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center active:scale-95 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+<!-- Sommelier Wine Selection List -->
+<section class="menu-section px-gutter pt-8 flex flex-col gap-4" data-category="wine">
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Hầm Rượu L'Atelier</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Sommelier Selection</h2>
+</div>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-label-sm text-label-sm">300+ Nhãn chai</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-3.5 shadow-sm">
+<!-- Wine 1 -->
+<div class="flex items-start justify-between gap-3 pb-3 bg-surface p-3 rounded-lg">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">wine_bar</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary leading-tight">Château Margaux 1er Grand Cru Classé</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Bordeaux, Pháp · Niên vụ 2015</span>
+<span class="font-label-sm text-label-sm text-secondary mt-1">Hương quả mọng sẫm, gỗ sồi tuyết tùng &amp; tannin mượt mà</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-title-md text-title-md text-primary block">24.500.000₫</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Chai 750ml</span>
+</div>
+</div>
+<!-- Wine 2 -->
+<div class="flex items-start justify-between gap-3 pb-3 bg-surface p-3 rounded-lg">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">wine_bar</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary leading-tight">Louis Jadot Puligny-Montrachet</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Bourgogne, Pháp · Niên vụ 2020</span>
+<span class="font-label-sm text-label-sm text-secondary mt-1">Chardonnay thượng hạng, khoáng chất tinh khiết, bơ hạnh nhân</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-title-md text-title-md text-primary block">5.200.000₫</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Chai 750ml</span>
+</div>
+</div>
+<!-- Wine 3 (By glass) -->
+<div class="flex items-start justify-between gap-3 bg-surface p-3 rounded-lg">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">local_bar</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary leading-tight">Champagne Billecart-Salmon Brut Rosé</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Champagne, Pháp · NV</span>
+<span class="font-label-sm text-label-sm text-secondary mt-1">Phục vụ theo ly với món Khai vị hoặc Tráng miệng</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-title-md text-title-md text-primary block">680.000₫</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Ly 150ml</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Dietary & Service Note -->
+<section class="px-gutter pt-6 pb-2">
+<div class="bg-surface-container p-4 rounded-xl flex items-start gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px] text-secondary mt-0.5">info</span>
+<p class="font-label-sm text-label-sm leading-relaxed">
+        Giá trên chưa bao gồm 5% phí phục vụ và 8% thuế GTGT. Quý khách vui lòng thông báo cho Sommelier hoặc Bếp trưởng về các yêu cầu kiêng khem hoặc dị ứng hải sản/hạt trước khi dùng bữa.
+      </p>
+</div>
+</section>
+<!-- Sticky Quick Reservation / Floating Action Module -->
+<div class="fixed bottom-20 left-0 right-0 z-40 px-gutter pointer-events-none">
+<div class="max-w-md mx-auto pointer-events-auto bg-primary text-on-primary p-3 rounded-xl shadow-xl flex items-center justify-between gap-3">
+<div class="flex items-center gap-2.5 pl-1">
+<div class="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-on-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">table_bar</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md leading-none text-on-primary">Sẵn sàng trải nghiệm?</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed mt-1">Bàn tối nay còn 3 lượt</span>
+</div>
+</div>
+<a class="px-4 py-2 bg-secondary-fixed text-on-secondary-fixed rounded-lg font-label-md text-label-md uppercase tracking-wider font-medium active:scale-95 transition-transform shrink-0" data-path="dat-ban" href="#">
+        Giữ Bàn Ngay
+      </a>
+</div>
+</div>
+</div>
+<script>
+  function filterMenu(category, clickedBtn) {
+    const buttons = document.querySelectorAll('.category-btn');
+    buttons.forEach(btn => {
+      btn.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+      btn.classList.add('bg-surface-container', 'text-on-surface-variant');
+    });
+    clickedBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+    clickedBtn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+
+    const sections = document.querySelectorAll('.menu-section');
+    const articles = document.querySelectorAll('article[data-category]');
+
+    if (category === 'all') {
+      sections.forEach(sec => sec.classList.remove('hidden'));
+      articles.forEach(art => art.classList.remove('hidden'));
+      return;
+    }
+
+    if (category === 'tasting') {
+      sections.forEach(sec => {
+        if (sec.getAttribute('data-category') === 'tasting') {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
+      return;
+    }
+
+    if (category === 'wine') {
+      sections.forEach(sec => {
+        if (sec.getAttribute('data-category') === 'wine') {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
+      return;
+    }
+
+    // Individual carte categories: starter, main, dessert
+    sections.forEach(sec => {
+      if (sec.getAttribute('data-category') === 'carte') {
+        sec.classList.remove('hidden');
+      } else {
+        sec.classList.add('hidden');
+      }
+    });
+
+    articles.forEach(art => {
+      if (art.getAttribute('data-category') === category) {
+        art.classList.remove('hidden');
+      } else {
+        art.classList.add('hidden');
+      }
+    });
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_16px_rgba(44,30,22,0.06)]" data-active-classes="text-primary font-title-md font-medium"><div class="flex justify-around items-center h-20 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="trang-chu" href="#"><span class="material-symbols-outlined text-[22px]">home</span><span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Trang chủ</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 transition-colors text-primary font-title-md font-medium" data-path="thuc-don" href="#"><span class="material-symbols-outlined text-[22px]">restaurant_menu</span><span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Thực đơn</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="dat-ban" href="#"><span class="material-symbols-outlined text-[22px]">table_restaurant</span><span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Đặt bàn</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="cau-chuyen" href="#"><span class="material-symbols-outlined text-[22px]">auto_stories</span><span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Câu chuyện</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="lien-he" href="#"><span class="material-symbols-outlined text-[22px]">support_agent</span><span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Liên hệ</span></a></div></nav>
+
+</body></html>

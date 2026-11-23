@@ -1,0 +1,351 @@
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var session = HttpContextAccessor.HttpContext?.Session;
+    var userName = session?.GetString("UserName");
+    var userRole = session?.GetString("UserRole");
+    var userCardCode = session?.GetString("UserCardCode");
+    var cartCount = session?.GetInt32("CartCount") ?? 0;
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - L'Atelier</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&amp;family=Playfair+Display:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <style>
+        @Html.Raw("@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}")
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#130803",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#d2c4bd",
+                        "secondary-fixed": "#ffdcc6",
+                        "on-tertiary-fixed-variant": "#504539",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1c1c19",
+                        "on-secondary-fixed-variant": "#5c412e",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#fdd5bc",
+                        "tertiary-fixed": "#f1e0cf",
+                        "tertiary": "#100903",
+                        "on-primary-fixed": "#261911",
+                        "inverse-surface": "#31302d",
+                        "surface-container-high": "#ebe8e3",
+                        "secondary": "#765844",
+                        "tertiary-container": "#282016",
+                        "on-tertiary-container": "#948678",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#2b1707",
+                        "surface-tint": "#6d5a50",
+                        "surface-variant": "#e5e2dd",
+                        "primary-container": "#2c1e16",
+                        "inverse-on-surface": "#f3f0eb",
+                        "primary-fixed": "#f7ddd0",
+                        "inverse-primary": "#dac2b5",
+                        "surface-dim": "#dcdad5",
+                        "surface-container": "#f0ede9",
+                        "on-surface-variant": "#4e4540",
+                        "primary-fixed-dim": "#dac2b5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#54433a",
+                        "surface-bright": "#fcf9f4",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#d4c4b4",
+                        "error-container": "#ffdad6",
+                        "outline": "#80756f",
+                        "on-secondary-container": "#785b47",
+                        "background": "#fcf9f4",
+                        "surface": "#fcf9f4",
+                        "on-primary-container": "#9a8479",
+                        "on-background": "#1c1c19",
+                        "secondary-fixed-dim": "#e5bfa6",
+                        "surface-container-low": "#f6f3ee",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e5e2dd",
+                        "on-tertiary-fixed": "#221a10"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "space-md": "1rem",
+                        "space-sm": "0.5rem",
+                        "margin": "2rem",
+                        "gutter": "1.5rem",
+                        "space-xs": "0.25rem",
+                        "space-lg": "2rem",
+                        "space-xl": "4rem"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "title-md": ["DM Sans"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["DM Sans"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-sm": ["DM Sans"],
+                        "headline-sm": ["Playfair Display"],
+                        "title-lg": ["DM Sans"],
+                        "body-lg": ["DM Sans"],
+                        "label-md": ["DM Sans"],
+                        "headline-md": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["40px", { "lineHeight": "46px", "letterSpacing": "-0.015em", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.14em", "fontWeight": "500" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.005em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface">
+    <!-- Header chuẩn nguyên bản Stitch L'Atelier -->
+    <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(44,30,22,0.04)]">
+        <div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter">
+            <a asp-controller="Home" asp-action="Index" class="flex items-center gap-space-sm shrink-0">
+                <img alt="Restaurant Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaXmjWWOtVdTu8vZm62G5xUTomug7k3dTzBzk0FPm48uBxxeQjsYIbsQ1mvkwvTVMaEyJd8DgT3QPK5PBrwa7xMOCPpXc5-lKhcjo8PWBdizyFarLUrX0L0xG7T6XtZHV585l7Ig4d6FN9SeKXfQvWcUO5xfTP_VN24IVXy8hoDwKpCuZDbQ7sMmzh6lkmYxFD1WrckJDeSa2ZcmQ2bvCFWpEd6tas23YsJjbiJNYZ" />
+                <span class="font-headline-sm text-headline-sm tracking-tight text-primary">L'Atelier</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-space-lg">
+                <a asp-controller="Home" asp-action="Index" class="transition-colors @(currentController == "Home" && currentAction == "Index" ? "text-on-surface font-medium" : "font-body-md text-body-md text-on-surface-variant hover:text-on-surface")">Trang chủ</a>
+                <a asp-controller="Home" asp-action="Menu" class="transition-colors @(currentController == "Home" && currentAction == "Menu" ? "text-on-surface font-medium" : "font-body-md text-body-md text-on-surface-variant hover:text-on-surface")">Thực đơn</a>
+                <a asp-controller="Home" asp-action="Story" class="transition-colors @(currentController == "Home" && currentAction == "Story" ? "text-on-surface font-medium" : "font-body-md text-body-md text-on-surface-variant hover:text-on-surface")">Câu chuyện</a>
+                <a asp-controller="Reservation" asp-action="Index" class="transition-colors @(currentController == "Reservation" && currentAction == "Index" ? "text-on-surface font-medium" : "font-body-md text-body-md text-on-surface-variant hover:text-on-surface")">Đặt bàn</a>
+                <a asp-controller="Home" asp-action="Contact" class="transition-colors @(currentController == "Home" && currentAction == "Contact" ? "text-on-surface font-medium" : "font-body-md text-body-md text-on-surface-variant hover:text-on-surface")">Liên hệ</a>
+                @if (userRole == "Admin" || userRole == "Staff")
+                {
+                    <a asp-controller="Admin" asp-action="Index" class="font-label-md text-label-md uppercase text-secondary hover:text-primary transition-colors">Quản trị</a>
+                }
+            </nav>
+
+            <div class="flex items-center gap-space-md shrink-0">
+                @if (cartCount > 0)
+                {
+                    <a asp-controller="Cart" asp-action="Index" class="relative flex items-center text-primary hover:text-secondary transition-colors" title="Danh sách món đã chọn">
+                        <span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+                        <span class="ml-1 font-label-sm text-label-sm text-secondary">@cartCount</span>
+                    </a>
+                }
+                <a asp-controller="Reservation" asp-action="Index" class="px-space-md py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase rounded hover:bg-secondary hover:text-on-secondary transition-colors">
+                    Đặt bàn ngay
+                </a>
+
+                @if (!string.IsNullOrEmpty(userName))
+                {
+                    <div class="relative" id="userMenuWrapper">
+                        <button type="button" onclick="document.getElementById('userDropdown').classList.toggle('hidden')" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary hover:bg-secondary transition-colors" title="@userName">
+                            <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+                        </button>
+                        <div id="userDropdown" class="hidden absolute right-0 mt-2 w-60 bg-surface-container-lowest rounded-xl shadow-xl border border-outline-variant/40 py-2 z-50">
+                            <div class="px-4 py-2 border-b border-outline-variant/30">
+                                <div class="font-label-sm text-[10px] uppercase text-secondary">@userRole · @(userCardCode ?? "Privilège")</div>
+                                <div class="font-title-md text-sm text-primary truncate">@userName</div>
+                            </div>
+                            @if (userRole == "Admin" || userRole == "Staff")
+                            {
+                                <a asp-controller="Admin" asp-action="Index" class="block px-4 py-2 text-sm text-primary hover:bg-surface-container-low">Bảng điều khiển Admin</a>
+                                <a asp-controller="Admin" asp-action="Reservations" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low">Quản lý Đặt bàn</a>
+                                <a asp-controller="Admin" asp-action="MenuItems" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low">Quản lý Thực đơn</a>
+                                <a asp-controller="Admin" asp-action="Tables" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low">Sơ đồ Bàn tiệc</a>
+                                <div class="my-1 border-t border-outline-variant/30"></div>
+                            }
+                            <a asp-controller="Reservation" asp-action="Lookup" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low">Tra cứu đặt tiệc</a>
+                            <a asp-controller="Account" asp-action="Register" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low">Thẻ Hội viên Privilège</a>
+                            <a asp-controller="Account" asp-action="Logout" class="block px-4 py-2 text-sm text-error hover:bg-surface-container-low">Đăng xuất</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-secondary transition-colors" title="Đăng nhập Hội viên">
+                        <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+                    </a>
+                }
+            </div>
+        </div>
+    </header>
+
+    <main class="w-full pt-20 bg-surface">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="max-w-7xl mx-auto px-margin pt-4">
+                <div class="p-4 rounded-xl bg-secondary-fixed/60 text-primary flex items-center justify-between shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary">verified</span>
+                        <span class="font-body-md text-sm">@TempData["SuccessMessage"]</span>
+                    </div>
+                    <button type="button" onclick="this.parentElement.remove()" class="text-on-surface-variant hover:text-primary text-sm px-2">✕</button>
+                </div>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="max-w-7xl mx-auto px-margin pt-4">
+                <div class="p-4 rounded-xl bg-error-container text-on-error-container flex items-center justify-between shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined">error</span>
+                        <span class="font-body-md text-sm">@TempData["ErrorMessage"]</span>
+                    </div>
+                    <button type="button" onclick="this.parentElement.remove()" class="text-sm px-2">✕</button>
+                </div>
+            </div>
+        }
+
+        @RenderBody()
+    </main>
+
+    <!-- Footer chuẩn nguyên bản Stitch L'Atelier -->
+    <footer class="w-full bg-[#18100c] text-[#d4c8bd] pt-24 pb-12 border-t border-[#31251e]">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl pb-16 border-b border-[#31251e]/80">
+                <div class="lg:col-span-4 flex flex-col">
+                    <div class="flex items-center gap-space-sm mb-space-md">
+                        <span class="font-headline-md text-headline-md tracking-tight text-[#fcf9f4]">L'Atelier</span>
+                    </div>
+                    <p class="font-headline-sm italic text-[#b8a99d] text-base mb-space-lg font-light">Ẩm thực đương đại nâng tầm giác quan</p>
+                    <p class="font-body-md text-sm text-[#a49588] leading-relaxed mb-space-md">
+                        Nơi từng trải nghiệm vị giác được chắt lọc từ những tinh hoa bản địa theo mùa, gửi gắm trong phong vị kiến trúc tĩnh tại và chuẩn mực ẩm thực đương đại.
+                    </p>
+                    <div class="flex flex-col gap-2 font-body-md text-sm text-[#c8bcaf]">
+                        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-[#e5bfa6]">location_on</span><span>128 Đồng Khởi, Quận 1, TP. Hồ Chí Minh</span></div>
+                        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-[#e5bfa6]">call</span><span>Hotline: +84 (0) 28 3829 9999</span></div>
+                        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-[#e5bfa6]">mail</span><span>concierge@latelier-restaurant.vn</span></div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 flex flex-col">
+                    <p class="font-label-sm text-label-sm uppercase tracking-widest text-[#fcf9f4] mb-space-md">Khám Phá</p>
+                    <ul class="flex flex-col gap-3 font-body-md text-sm text-[#b8a99d]">
+                        <li><a asp-controller="Home" asp-action="Index" class="hover:text-[#fcf9f4] transition-colors">Trang chủ</a></li>
+                        <li><a asp-controller="Home" asp-action="Menu" class="hover:text-[#fcf9f4] transition-colors">Thực đơn theo mùa</a></li>
+                        <li><a asp-controller="Home" asp-action="Story" class="hover:text-[#fcf9f4] transition-colors">Câu chuyện &amp; Bếp trưởng</a></li>
+                        <li><a asp-controller="Reservation" asp-action="Index" class="hover:text-[#fcf9f4] transition-colors">Đặt bàn trước</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact" class="hover:text-[#fcf9f4] transition-colors">Liên hệ &amp; Vị trí</a></li>
+                        <li><a asp-controller="Reservation" asp-action="Lookup" class="hover:text-[#fcf9f4] transition-colors">Tra cứu đặt tiệc</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3 flex flex-col">
+                    <p class="font-label-sm text-label-sm uppercase tracking-widest text-[#fcf9f4] mb-space-md">Giờ Phục Vụ &amp; Quy Chuẩn</p>
+                    <div class="flex flex-col gap-4 font-body-md text-sm">
+                        <div class="border-l-2 border-[#5c412e] pl-3">
+                            <p class="text-[#fcf9f4] font-medium text-xs uppercase tracking-wider mb-0.5">Bữa Trưa</p>
+                            <p class="text-[#b8a99d]">11:30 – 14:00 (Thứ 6 – Chủ Nhật)</p>
+                        </div>
+                        <div class="border-l-2 border-[#5c412e] pl-3">
+                            <p class="text-[#fcf9f4] font-medium text-xs uppercase tracking-wider mb-0.5">Bữa Tối</p>
+                            <p class="text-[#b8a99d]">17:30 – 22:30 (Thứ Ba – Chủ Nhật)</p>
+                        </div>
+                        <div class="pt-2 text-xs text-[#9a8479] leading-relaxed">
+                            <p class="mb-1">* Đóng cửa vào Thứ Hai hàng tuần.</p>
+                            <p class="mb-1">* Vui lòng đặt trước ít nhất 24 giờ để đảm bảo phục vụ trọn vẹn.</p>
+                            <p>* Quy định trang phục: <span class="text-[#e5bfa6]">Smart Casual</span>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-3 flex flex-col">
+                    <p class="font-label-sm text-label-sm uppercase tracking-widest text-[#fcf9f4] mb-space-md">Bản Tin Đặc Quyền</p>
+                    <p class="font-body-md text-xs text-[#a49588] leading-relaxed mb-space-md">Đăng ký để nhận lời mời trải nghiệm thực đơn mùa mới cùng những câu chuyện ẩm thực độc quyền từ bếp trưởng.</p>
+                    <form class="flex items-center mb-space-lg" onsubmit="return false;">
+                        <input type="email" placeholder="Địa chỉ email của quý khách..." class="w-full bg-[#241a14] border border-[#3e2f26] text-xs text-[#fcf9f4] px-4 py-3 rounded-l focus:outline-none focus:border-[#e5bfa6] transition-colors placeholder:text-[#6f6055]" />
+                        <button type="button" class="bg-[#35251c] hover:bg-[#5c412e] text-[#fcf9f4] px-4 py-3 border border-l-0 border-[#3e2f26] rounded-r transition-colors flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                        </button>
+                    </form>
+                    <div>
+                        <p class="font-label-sm text-[10px] uppercase tracking-wider text-[#8b7d72] mb-3">Kết Nối Cùng L'Atelier</p>
+                        <div class="flex items-center gap-3">
+                            <a asp-controller="Account" asp-action="Login" class="px-3 h-9 rounded-full bg-[#241a14] hover:bg-[#35251c] text-[#d4c8bd] hover:text-[#fcf9f4] flex items-center justify-center border border-[#3e2f26] transition-colors text-xs font-medium">Hội viên</a>
+                            <a asp-controller="Admin" asp-action="Index" class="px-3 h-9 rounded-full bg-[#241a14] hover:bg-[#35251c] text-[#e5bfa6] hover:text-[#fcf9f4] flex items-center justify-center border border-[#3e2f26] transition-colors text-xs font-medium">Quản trị</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-body-md text-[#8b7d72]">
+                <p>© @DateTime.Now.Year L'Atelier Fine Dining. All rights reserved.</p>
+                <div class="flex flex-wrap items-center gap-6">
+                    <a href="#" class="hover:text-[#d4c8bd] transition-colors">Chính sách bảo mật</a>
+                    <span class="text-[#3e2f26]">·</span>
+                    <a href="#" class="hover:text-[#d4c8bd] transition-colors">Điều khoản dịch vụ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/gsap/gsap.min.js"></script>
+    <script src="~/lib/gsap/ScrollTrigger.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("click", function (e) {
+                const wrapper = document.getElementById("userMenuWrapper");
+                const dropdown = document.getElementById("userDropdown");
+                if (wrapper && dropdown && !wrapper.contains(e.target)) {
+                    dropdown.classList.add("hidden");
+                }
+            });
+
+            if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+                gsap.registerPlugin(ScrollTrigger);
+                const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                if (!prefersReduced) {
+                    gsap.utils.toArray("main section").forEach((sec, idx) => {
+                        if (idx === 0) {
+                            gsap.from(sec.querySelectorAll("h1, p, a, button"), {
+                                opacity: 0,
+                                y: 18,
+                                duration: 0.7,
+                                stagger: 0.07,
+                                ease: "power2.out"
+                            });
+                        } else {
+                            gsap.from(sec, {
+                                opacity: 0,
+                                y: 24,
+                                duration: 0.65,
+                                ease: "power2.out",
+                                scrollTrigger: {
+                                    trigger: sec,
+                                    start: "top 88%",
+                                    toggleActions: "play none none none"
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

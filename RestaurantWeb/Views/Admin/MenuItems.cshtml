@@ -1,0 +1,63 @@
+@model List<MenuItem>
+@{
+    ViewData["Title"] = "Quản Lý Thực Đơn L'Atelier";
+}
+
+<section class="w-full py-12 px-margin bg-surface">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-wrap justify-between items-center mb-space-lg gap-4">
+            <div>
+                <a asp-action="Index" class="font-label-sm text-label-sm uppercase text-secondary hover:text-primary">&larr; Quay lại Bảng điều khiển</a>
+                <h1 class="font-headline-md text-headline-md text-primary mt-1">Quản Lý Thực Đơn (@Model.Count tuyệt tác)</h1>
+            </div>
+            <div class="flex gap-3">
+                <a asp-action="Categories" class="px-space-md py-space-sm bg-surface-container text-primary font-label-sm text-label-sm uppercase rounded hover:bg-surface-container-high">Danh Mục</a>
+                <a asp-action="CreateMenuItem" class="px-space-md py-space-sm bg-primary text-on-primary font-label-sm text-label-sm uppercase rounded hover:bg-secondary">+ Thêm Món Mới</a>
+            </div>
+        </div>
+
+        <div class="bg-surface-container-low rounded-xl p-space-md shadow-sm overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="border-b border-outline-variant/40 font-label-sm text-label-sm uppercase text-secondary">
+                        <th class="py-3 px-3">Hình</th>
+                        <th class="py-3 px-3">Tên món &amp; Phụ đề Pháp</th>
+                        <th class="py-3 px-3">Danh mục</th>
+                        <th class="py-3 px-3">Giá phục vụ</th>
+                        <th class="py-3 px-3">Nhãn</th>
+                        <th class="py-3 px-3 text-right">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-outline-variant/25">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="py-3 px-3">
+                                <img src="@item.ImageUrl" alt="@item.Name" class="w-14 h-14 rounded object-cover" />
+                            </td>
+                            <td class="py-3 px-3">
+                                <div class="font-title-md text-title-md text-primary">@item.Name</div>
+                                <div class="font-label-sm text-[11px] text-secondary uppercase">@item.FrenchSubtitle</div>
+                            </td>
+                            <td class="py-3 px-3">
+                                <span class="px-2.5 py-1 rounded bg-surface-container text-primary font-label-sm text-[10px] uppercase">@item.Category?.Name</span>
+                            </td>
+                            <td class="py-3 px-3 font-title-md text-primary">@item.EffectivePrice.ToString("N0") ₫</td>
+                            <td class="py-3 px-3">
+                                <span class="px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-[10px] uppercase">@item.DietaryTags</span>
+                            </td>
+                            <td class="py-3 px-3 text-right">
+                                <div class="inline-flex gap-2">
+                                    <a asp-action="EditMenuItem" asp-route-id="@item.Id" class="px-3 py-1.5 rounded bg-surface text-primary border border-outline-variant font-label-sm text-[10px] uppercase hover:bg-surface-container">Sửa</a>
+                                    <form asp-action="DeleteMenuItem" asp-route-id="@item.Id" method="post">
+                                        <button type="submit" class="px-3 py-1.5 rounded bg-error-container text-on-error-container font-label-sm text-[10px] uppercase hover:opacity-80">Xóa</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

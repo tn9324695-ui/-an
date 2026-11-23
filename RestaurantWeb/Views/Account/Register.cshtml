@@ -1,0 +1,250 @@
+@model AppUser
+@{
+    ViewData["Title"] = "Kích Hoạt & Đăng Ký Hội Viên L'Atelier Privilège";
+}
+
+<div class="relative w-full overflow-hidden">
+    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-gradient-to-b from-secondary-container/40 via-surface-container-low/60 to-transparent blur-3xl pointer-events-none -z-10"></div>
+
+    <!-- Editorial Intro Section -->
+    <section class="w-full px-margin pt-space-lg pb-space-lg max-w-7xl mx-auto">
+        <div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-space-xs px-space-md py-1 bg-surface-container-high rounded-full shadow-sm mb-space-md">
+                <span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">stars</span>
+                <span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.25em]">L'Atelier Privilège • Gia Nhập Hội Viên Danh Dự</span>
+            </div>
+            <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-space-sm">
+                Khởi Đầu Hành Trình Đặc Quyền Ẩm Thực
+            </h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant font-normal leading-relaxed">
+                Nơi gìn giữ những trải nghiệm ẩm thực đương đại thuần khiết nhất. Chúng tôi trân trọng đón chào Quý khách vào vòng tròn thượng khách riêng biệt — với sự chăm sóc chuẩn may đo từ Concierge.
+            </p>
+            <div class="mt-space-lg p-1.5 bg-surface-container-high rounded-full inline-flex items-center shadow-sm">
+                <button type="button" class="px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 bg-primary text-on-primary shadow-sm flex items-center gap-2" id="tab-btn-activate" onclick="switchMode('activate')">
+                    <span class="material-symbols-outlined text-[18px]">key</span>
+                    Kích Hoạt Thẻ Được Trao Tặng
+                </button>
+                <button type="button" class="px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 text-on-surface-variant hover:text-primary flex items-center gap-2" id="tab-btn-register" onclick="switchMode('register')">
+                    <span class="material-symbols-outlined text-[18px]">edit_note</span>
+                    Đăng Ký Hội Viên Mới
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Dual-Column Section -->
+    <section class="w-full px-margin pb-space-xl max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+            <!-- LEFT COLUMN: Registration & Activation Form (7 Cols) -->
+            <div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-md sm:p-space-lg shadow-xl relative">
+                @if (ViewBag.Error != null)
+                {
+                    <div class="p-3 mb-4 rounded-lg bg-error-container text-on-error-container text-sm">
+                        @ViewBag.Error
+                    </div>
+                }
+
+                <form asp-controller="Account" asp-action="Register" method="post" class="space-y-space-lg">
+                    <!-- SECTION 1: Invitation / Card Code -->
+                    <div class="space-y-space-xs" id="invitation-code-container">
+                        <div class="flex items-center justify-between">
+                            <label class="font-label-md text-label-md uppercase text-primary tracking-wider flex items-center gap-1.5">
+                                <span>Mã Thẻ Vật Lý / Mã Thư Mời Đặc Quyền</span>
+                                <span class="text-error">*</span>
+                            </label>
+                            <span class="font-label-sm text-label-sm uppercase text-secondary flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                Hợp lệ: L'Atelier Envoyé
+                            </span>
+                        </div>
+                        <div class="relative">
+                            <input asp-for="MemberCardCode" class="w-full h-12 px-space-md bg-surface-container-low rounded font-title-md text-title-md text-primary focus:outline-none focus:bg-surface-container transition-all uppercase tracking-widest pl-11" id="invitation-input" oninput="updateCardNumber(this.value)" placeholder="LA-VIP-2025-XXXX" />
+                            <span class="material-symbols-outlined absolute left-3 top-3 text-secondary text-[20px]">credit_card</span>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2: Noble Identity -->
+                    <div class="space-y-space-md pt-space-xs">
+                        <div class="flex items-center gap-space-xs pb-space-xs">
+                            <span class="font-label-md text-label-md uppercase text-secondary tracking-[0.2em]">01. Thông Tin Danh Xưng Thượng Khách</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+                            <div class="space-y-space-xs">
+                                <label class="font-label-md text-label-md uppercase text-on-surface-variant">Danh Xưng</label>
+                                <select asp-for="Title" class="w-full h-12 px-space-sm bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none" id="title-select" onchange="updateCardHolder()">
+                                    <option value="Ông">Ông (Monsieur)</option>
+                                    <option value="Bà">Bà (Madame)</option>
+                                    <option value="Cô">Cô (Mademoiselle)</option>
+                                    <option value="Ngài">Ngài (Excellency / Sir)</option>
+                                </select>
+                            </div>
+                            <div class="sm:col-span-2 space-y-space-xs">
+                                <label class="font-label-md text-label-md uppercase text-on-surface-variant">Họ &amp; Tên Đầy Đủ <span class="text-error">*</span></label>
+                                <input asp-for="FullName" class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none" id="fullname-input" oninput="updateCardHolder()" placeholder="VD: Nguyễn Hoàng Bảo Long" required />
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                            <div class="space-y-space-xs">
+                                <label class="font-label-md text-label-md uppercase text-on-surface-variant">Ngày Sinh Nhật</label>
+                                <input asp-for="DateOfBirth" type="date" class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none" />
+                            </div>
+                            <div class="space-y-space-xs">
+                                <label class="font-label-md text-label-sm uppercase text-on-surface-variant">Điện Thoại (WhatsApp / Zalo) <span class="text-error">*</span></label>
+                                <input asp-for="Phone" class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none" placeholder="0908 123 456" required />
+                            </div>
+                        </div>
+
+                        <div class="space-y-space-xs">
+                            <label class="font-label-md text-label-md uppercase text-on-surface-variant">Thư Điện Tử Nhận Thư Mời Tiệc Kín <span class="text-error">*</span></label>
+                            <input asp-for="Email" type="email" class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none" placeholder="name@luxury-domain.vn" required />
+                        </div>
+                    </div>
+
+                    <!-- SECTION 3: PIN / Password Setup -->
+                    <div class="space-y-space-md pt-space-xs">
+                        <div class="flex items-center gap-space-xs pb-space-xs">
+                            <span class="font-label-md text-label-md uppercase text-secondary tracking-[0.2em]">02. Bảo Mật Đặt Bàn &amp; Tích Lũy</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                            <div class="space-y-space-xs">
+                                <label class="font-label-md text-label-md uppercase text-on-surface-variant">Mã PIN Thẻ 6 Số (Concierge PIN)</label>
+                                <input asp-for="ConciergePin" maxlength="6" class="w-full h-12 px-space-md bg-surface-container-low rounded font-title-md text-title-md tracking-widest text-primary focus:outline-none text-center" placeholder="886999" />
+                            </div>
+                            <div class="space-y-space-xs">
+                                <label class="font-label-md text-label-md uppercase text-on-surface-variant">Mật Khẩu Cổng Hội Viên *</label>
+                                <input asp-for="PasswordHash" type="password" class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none" placeholder="Mật khẩu trực tuyến" required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 4: Tailored Culinary Preferences -->
+                    <div class="space-y-space-md pt-space-xs">
+                        <div class="flex items-center gap-space-xs pb-space-xs">
+                            <span class="font-label-md text-label-md uppercase text-secondary tracking-[0.2em]">03. Tùy Chọn Sở Thích Ẩm Thực</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                            <div class="space-y-space-xs">
+                                <label class="font-label-md text-label-md uppercase text-on-surface-variant">Gu Rượu Vang Ưu Tiên</label>
+                                <select asp-for="WinePreference" class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none">
+                                    <option value="Bordeaux Grand Cru Classé">Bordeaux Grand Cru Classé</option>
+                                    <option value="Burgundy Pinot Noir & Chardonnay">Burgundy Pinot Noir &amp; Chardonnay</option>
+                                    <option value="Champagne Vintage & Prestige Cuvée">Champagne Vintage &amp; Prestige Cuvée</option>
+                                    <option value="Không Dùng Đồ Uống Có Cồn (Mocktail)">Không Dùng Đồ Uống Có Cồn (Mocktail)</option>
+                                </select>
+                            </div>
+                            <div class="space-y-space-xs">
+                                <label class="font-label-md text-label-md uppercase text-on-surface-variant">Vị Trí Bàn Thường Trực</label>
+                                <select asp-for="PreferredSeating" class="w-full h-12 px-space-md bg-surface-container-low rounded font-body-md text-body-md text-primary focus:outline-none">
+                                    <option value="Phòng Riêng VIP Atelier Salon">Phòng VIP Kín Đáo (Salon Privé)</option>
+                                    <option value="Chef's Counter (Quầy Bếp Trưởng)">Chef's Counter (Trực diện Bếp mở)</option>
+                                    <option value="Bàn Cạnh Cửa Sổ Hướng Vườn">Bàn Cạnh Cửa Sổ Hướng Vườn</option>
+                                    <option value="Bàn Trung Tâm Ấm Cúng">Góc Tĩnh Lặng Salon Trung Tâm</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-space-sm">
+                        <button class="w-full h-14 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-[0.2em] rounded flex items-center justify-center gap-space-sm hover:bg-secondary transition-all duration-300 shadow-md group" type="submit">
+                            <span class="material-symbols-outlined text-[20px] text-primary-fixed">workspace_premium</span>
+                            <span id="btn-label-text">Hoàn Tất Kích Hoạt Thẻ Hội Viên</span>
+                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- RIGHT COLUMN: Interactive VIP Card Preview & Prestige Benefits (5 Cols) -->
+            <div class="lg:col-span-5 space-y-space-lg">
+                <div class="relative w-full rounded-2xl p-7 text-white overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-[1.01]" style="background: radial-gradient(120% 120% at 85% 15%, #3d2b20 0%, #170d08 65%, #0d0704 100%);">
+                    <div class="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#dac2b5_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                    <div class="relative z-10 flex flex-col justify-between h-56 sm:h-64">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <div class="font-headline-sm text-headline-sm uppercase tracking-wider text-[#f7ddd0]">L'Atelier</div>
+                                <div class="font-label-sm text-label-sm uppercase tracking-[0.3em] text-[#e5bfa6]">Privilège Noir</div>
+                            </div>
+                            <div class="w-12 h-9 rounded bg-gradient-to-tr from-[#c89d6d] via-[#f5deb3] to-[#9e7240] p-1 shadow-inner"></div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-display-lg text-[20px] tracking-[0.22em] text-[#f7ddd0] font-light" id="preview-card-number">
+                                @Model.MemberCardCode.Replace("-", " • ")
+                            </span>
+                            <span class="material-symbols-outlined text-[#dac2b5] text-[24px]">contactless</span>
+                        </div>
+                        <div class="flex items-end justify-between border-t border-white/10 pt-3">
+                            <div>
+                                <div class="font-label-sm text-[10px] uppercase tracking-[0.15em] text-[#e5bfa6]/70">Chủ Sở Hữu Thẻ</div>
+                                <div class="font-title-md text-title-md text-[#fcf9f4] tracking-wider uppercase font-medium" id="preview-card-holder">
+                                    Ông Nguyễn Hoàng Bảo Long
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-label-sm text-[10px] uppercase tracking-[0.15em] text-[#e5bfa6]/70">Hiệu Lực</div>
+                                <div class="font-label-md text-label-md text-[#fcf9f4] font-mono tracking-widest">
+                                    PERPETUEL
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface-container-low rounded-xl p-space-lg shadow-sm space-y-space-md">
+                    <h2 class="font-title-lg text-title-lg text-primary tracking-tight mb-2">Đặc Quyền Thành Viên Privilège Noir</h2>
+                    <ul class="space-y-2 p-0 list-none text-sm text-on-surface-variant">
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">check</span>
+                            <span>Ưu tiên giữ bàn bảo lưu trước 12 giờ cho các đêm cuối tuần kín chỗ.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">check</span>
+                            <span>Tặng 01 ly Champagne Grand Cru khai vị cho chủ thẻ và 01 vị khách đồng hành.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">check</span>
+                            <span>Quyền đặt trước bàn danh dự Chef's Table ngắm trọn gian bếp sáng tạo.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <script>
+        function switchMode(mode) {
+            const tabActivate = document.getElementById('tab-btn-activate');
+            const tabRegister = document.getElementById('tab-btn-register');
+            const invitationContainer = document.getElementById('invitation-code-container');
+            const btnLabel = document.getElementById('btn-label-text');
+
+            if (mode === 'activate') {
+                tabActivate.className = 'px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 bg-primary text-on-primary shadow-sm flex items-center gap-2';
+                tabRegister.className = 'px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 text-on-surface-variant hover:text-primary flex items-center gap-2';
+                invitationContainer.classList.remove('hidden');
+                btnLabel.innerText = 'HOÀN TẤT KÍCH HOẠT THẺ HỘI VIÊN';
+            } else {
+                tabRegister.className = 'px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 bg-primary text-on-primary shadow-sm flex items-center gap-2';
+                tabActivate.className = 'px-space-lg py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider transition-all duration-300 text-on-surface-variant hover:text-primary flex items-center gap-2';
+                invitationContainer.classList.add('hidden');
+                btnLabel.innerText = 'ĐĂNG KÝ HỒ SƠ HỘI VIÊN MỚI';
+            }
+        }
+
+        function updateCardHolder() {
+            const title = document.getElementById('title-select').value;
+            const name = document.getElementById('fullname-input').value.trim();
+            const displayHolder = document.getElementById('preview-card-holder');
+            displayHolder.innerText = name.length > 0 ? `${title} ${name}` : `${title} [TÊN THƯỢNG KHÁCH]`;
+        }
+
+        function updateCardNumber(val) {
+            const displayNum = document.getElementById('preview-card-number');
+            const cleanVal = val.trim().toUpperCase();
+            displayNum.innerText = cleanVal.length > 0 ? cleanVal.replace(/[^A-Z0-9]/g, ' • ') : 'LA • 2025 • VIP • MEMBER';
+        }
+    </script>
+}
+

@@ -1,0 +1,773 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&amp;family=Playfair+Display:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"primary":"#130803","error":"#ba1a1a","outline-variant":"#d2c4bd","secondary-fixed":"#ffdcc6","on-tertiary-fixed-variant":"#504539","on-error-container":"#93000a","on-surface":"#1c1c19","on-secondary-fixed-variant":"#5c412e","on-secondary":"#ffffff","secondary-container":"#fdd5bc","tertiary-fixed":"#f1e0cf","tertiary":"#100903","on-primary-fixed":"#261911","inverse-surface":"#31302d","surface-container-high":"#ebe8e3","secondary":"#765844","tertiary-container":"#282016","on-tertiary-container":"#948678","surface-container-lowest":"#ffffff","on-secondary-fixed":"#2b1707","surface-tint":"#6d5a50","surface-variant":"#e5e2dd","primary-container":"#2c1e16","inverse-on-surface":"#f3f0eb","primary-fixed":"#f7ddd0","inverse-primary":"#dac2b5","surface-dim":"#dcdad5","surface-container":"#f0ede9","on-surface-variant":"#4e4540","primary-fixed-dim":"#dac2b5","on-tertiary":"#ffffff","on-primary-fixed-variant":"#54433a","surface-bright":"#fcf9f4","on-error":"#ffffff","tertiary-fixed-dim":"#d4c4b4","error-container":"#ffdad6","outline":"#80756f","on-secondary-container":"#785b47","background":"#fcf9f4","surface":"#fcf9f4","on-primary-container":"#9a8479","on-background":"#1c1c19","secondary-fixed-dim":"#e5bfa6","surface-container-low":"#f6f3ee","on-primary":"#ffffff","surface-container-highest":"#e5e2dd","on-tertiary-fixed":"#221a10"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-md":"1rem","space-sm":"0.5rem","margin":"2rem","gutter":"1.5rem","space-xs":"0.25rem","space-lg":"2rem","space-xl":"4rem"},"fontFamily":{"display-lg-mobile":["Playfair Display"],"headline-lg-mobile":["Playfair Display"],"title-md":["DM Sans"],"display-lg":["Playfair Display"],"body-md":["DM Sans"],"headline-lg":["Playfair Display"],"label-sm":["DM Sans"],"headline-sm":["Playfair Display"],"title-lg":["DM Sans"],"body-lg":["DM Sans"],"label-md":["DM Sans"],"headline-md":["Playfair Display"]},"fontSize":{"display-lg-mobile":["40px",{"lineHeight":"46px","letterSpacing":"-0.015em","fontWeight":"400"}],"headline-lg-mobile":["30px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"400"}],"title-md":["16px",{"lineHeight":"24px","fontWeight":"500"}],"display-lg":["64px",{"lineHeight":"72px","letterSpacing":"-0.02em","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"headline-lg":["44px",{"lineHeight":"52px","letterSpacing":"-0.01em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.14em","fontWeight":"500"}],"headline-sm":["24px",{"lineHeight":"32px","fontWeight":"500"}],"title-lg":["20px",{"lineHeight":"28px","fontWeight":"500"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.12em","fontWeight":"500"}],"headline-md":["32px",{"lineHeight":"40px","letterSpacing":"-0.005em","fontWeight":"400"}]}}}};</script>
+<style>
+  @keyframes radar-ripple {
+    0% { transform: scale(0.85); opacity: 0.85; }
+    50% { transform: scale(2.2); opacity: 0.35; }
+    100% { transform: scale(3.2); opacity: 0; }
+  }
+  @keyframes radar-ripple-delay {
+    0% { transform: scale(0.6); opacity: 0.95; }
+    60% { transform: scale(2.6); opacity: 0.25; }
+    100% { transform: scale(3.8); opacity: 0; }
+  }
+  .radar-ring-1 {
+    animation: radar-ripple 2.8s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+  }
+  .radar-ring-2 {
+    animation: radar-ripple-delay 2.8s cubic-bezier(0.2, 0.6, 0.4, 1) 1.2s infinite;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"><style>h1, h2, h3, h4, .font-serif, [class*="font-headline-"], [class*="font-display-"] { font-family: 'Cormorant Garamond', Georgia, serif !important; }</style></head><body class="bg-surface font-body-md text-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(44,30,22,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-sm shrink-0"><img alt="Restaurant Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaXmjWWOtVdTu8vZm62G5xUTomug7k3dTzBzk0FPm48uBxxeQjsYIbsQ1mvkwvTVMaEyJd8DgT3QPK5PBrwa7xMOCPpXc5-lKhcjo8PWBdizyFarLUrX0L0xG7T6XtZHV585l7Ig4d6FN9SeKXfQvWcUO5xfTP_VN24IVXy8hoDwKpCuZDbQ7sMmzh6lkmYxFD1WrckJDeSa2ZcmQ2bvCFWpEd6tas23YsJjbiJNYZ"><span class="font-headline-sm text-headline-sm tracking-tight text-primary">L'Atelier</span></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-on-surface font-medium border-b-2 border-primary pb-0.5"><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="trang-chủ" href="#">Trang chủ</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="thực-đơn" href="#">Thực đơn</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="câu-chuyện" href="#">Câu chuyện</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="đặt-bàn" href="#">Đặt bàn</a><a aria-current="page" class="transition-colors text-on-surface font-medium border-b-2 border-primary pb-0.5" data-path="liên-hệ" href="#">Liên hệ</a></nav><div class="flex items-center gap-space-md shrink-0"><a class="px-space-md py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase rounded hover:bg-secondary hover:text-on-secondary transition-colors" data-path="đặt-bàn" href="#">Đặt bàn ngay</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Intro Section -->
+<section class="relative w-full overflow-hidden bg-surface-container-low py-space-xl">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+<span class="font-label-md text-label-md uppercase tracking-[0.25em] text-secondary mb-space-sm">
+          Concierge &amp; Location
+        </span>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-space-md tracking-tight">
+          LIÊN HỆ &amp; VỊ TRÍ
+        </h1>
+<div class="w-12 h-0.5 bg-secondary-fixed-dim mx-auto mb-space-md"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-lg">
+          Mỗi cuộc hội ngộ đều bắt đầu từ một lời ngỏ. Đội ngũ Concierge của L'Atelier luôn sẵn sàng đón tiếp, 
+          lắng nghe và chuẩn bị trọn vẹn cho từng trải nghiệm ẩm thực, tiệc riêng tư hay sự kiện độc bản của quý khách.
+        </p>
+<!-- Feature Highlights -->
+<div class="flex flex-wrap items-center justify-center gap-space-sm text-center">
+<span class="inline-flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">domain</span>
+            Biệt thự Di sản 128 Đồng Khởi, Q.1
+          </span>
+<span class="inline-flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">local_parking</span>
+            Dịch vụ Valet Parking miễn phí
+          </span>
+<span class="inline-flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">support_agent</span>
+            Hỗ trợ Concierge 24/7
+          </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Grid: Contact Details & Inquiry Form -->
+<section class="w-full py-space-xl bg-surface">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Left Column: Detailed Information (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Location Details Card -->
+<div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center gap-space-sm mb-space-md">
+<div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">pin_drop</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Vị Trí &amp; Đón Tiếp</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-2 font-medium">
+              128 Đồng Khởi, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh
+            </p>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Góc giao Đồng Khởi &amp; Lê Thánh Tôn, ngay sau Nhà Hát Thành Phố. Biệt thự cổ thời Pháp thuộc với lối đi lát đá tự nhiên và sảnh tiếp đón riêng biệt.
+            </p>
+<a class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-wider text-secondary hover:text-primary transition-colors group" href="https://maps.google.com" rel="noopener noreferrer" target="_blank">
+<span>Mở bản đồ Google Maps</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Hours of Operation -->
+<div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center gap-space-sm mb-space-md">
+<div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Thời Gian Phục Vụ</h2>
+</div>
+<div class="space-y-4 mb-space-md">
+<div class="p-space-sm bg-surface rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="font-title-md text-title-md text-primary">Bữa Trưa (Lunch)</span>
+<span class="font-label-sm text-label-sm uppercase px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed">Thứ 6 – CN</span>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant">11:30 – 14:00 (Nhận gọi món lần cuối: 13:15)</p>
+</div>
+<div class="p-space-sm bg-surface rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="font-title-md text-title-md text-primary">Bữa Tối (Dinner)</span>
+<span class="font-label-sm text-label-sm uppercase px-2 py-0.5 rounded bg-primary text-on-primary">Thứ 3 – CN</span>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant">17:30 – 22:30 (Nhận gọi món lần cuối: 21:00)</p>
+</div>
+</div>
+<p class="font-body-md text-xs text-on-surface-variant italic">
+              * Nhà hàng đóng cửa vào Thứ Hai hàng tuần để Đội ngũ Bếp nghiên cứu nông sản và hoàn thiện thực đơn thử nghiệm theo mùa.
+            </p>
+</div>
+<!-- Direct Communication Channels -->
+<div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center gap-space-sm mb-space-md">
+<div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">call</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Đường Dây Trực Tiếp</h2>
+</div>
+<div class="flex flex-col gap-4 font-body-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary block mb-1">Hotline &amp; WhatsApp Concierge</span>
+<a class="font-title-lg text-title-lg text-primary hover:text-secondary transition-colors font-medium" href="tel:+842838299999">
+                  +84 (0) 28 3829 9999
+                </a>
+</div>
+<div class="pt-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary block mb-1">Đặt Bàn &amp; Tư Vấn Thực Đơn</span>
+<a class="text-on-surface hover:text-secondary transition-colors underline underline-offset-4 decoration-outline-variant" href="mailto:concierge@latelier-restaurant.vn">
+                  concierge@latelier-restaurant.vn
+                </a>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary block mb-1">Tư Vấn Tiệc Riêng &amp; Sự Kiện</span>
+<a class="text-on-surface hover:text-secondary transition-colors underline underline-offset-4 decoration-outline-variant" href="mailto:events@latelier-restaurant.vn">
+                  events@latelier-restaurant.vn
+                </a>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary block mb-1">Báo Chí &amp; Hợp Tác Nghệ Thuật</span>
+<a class="text-on-surface hover:text-secondary transition-colors underline underline-offset-4 decoration-outline-variant" href="mailto:press@latelier-restaurant.vn">
+                  press@latelier-restaurant.vn
+                </a>
+</div>
+</div>
+<!-- Etiquette / Service notes -->
+<div class="mt-space-md pt-space-md bg-surface-container p-space-sm rounded-lg flex flex-col gap-2">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">checkroom</span>
+<span class="font-body-md text-xs text-on-surface-variant">
+<strong>Trang phục (Dress code):</strong> Smart Casual. Tránh mặc quần ngắn thể thao hoặc dép lê để giữ không gian trang nhã chung.
+                </span>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">car_repair</span>
+<span class="font-body-md text-xs text-on-surface-variant">
+<strong>Valet Parking:</strong> Đội ngũ đón xe và bàn giao thẻ đỗ an toàn ngay tại cổng chính đường Đồng Khởi.
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Inquiry Form (7 cols) -->
+<div class="lg:col-span-7">
+<div class="bg-surface-container p-space-lg md:p-space-xl rounded-xl shadow-md">
+<div class="mb-space-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-1">Đồng Hành Cùng Bạn</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Gửi Lời Ngỏ Đến Đội Ngũ Concierge</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Quý khách vui lòng cung cấp thông tin dự kiến. Quản lý sảnh tiệc của L'Atelier sẽ liên lạc phản hồi trong vòng tối đa 04 giờ làm việc.
+              </p>
+</div>
+<form class="flex flex-col gap-6" id="contactForm" onsubmit="event.preventDefault(); document.getElementById('formSuccess').classList.remove('hidden'); this.reset();">
+<!-- Personal Info Group -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2" for="fullName">
+                    Họ và Tên *
+                  </label>
+<input class="w-full px-4 py-3 bg-surface text-on-surface rounded placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md" id="fullName" placeholder="Quý danh của quý khách" required="" type="text">
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2" for="phone">
+                    Số Điện Thoại / WhatsApp *
+                  </label>
+<input class="w-full px-4 py-3 bg-surface text-on-surface rounded placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md" id="phone" placeholder="+84 900 000 000" required="" type="tel">
+</div>
+</div>
+<!-- Email Field -->
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2" for="email">
+                  Địa Chỉ Email *
+                </label>
+<input class="w-full px-4 py-3 bg-surface text-on-surface rounded placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md" id="email" placeholder="name@domain.com" required="" type="email">
+</div>
+<!-- Purpose Selection (Chips/Pills) -->
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-3">
+                  Mục Đích Liên Hệ Của Quý Khách
+                </label>
+<div class="flex flex-wrap gap-2" id="inquiryCategoryPills">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="purpose" type="radio" value="private_dining">
+<span class="inline-block px-4 py-2 rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
+                      Tiệc riêng tư (Private Dining)
+                    </span>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="purpose" type="radio" value="corporate">
+<span class="inline-block px-4 py-2 rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
+                      Sự kiện doanh nghiệp cao cấp
+                    </span>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="purpose" type="radio" value="press">
+<span class="inline-block px-4 py-2 rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
+                      Hợp tác truyền thông / Báo chí
+                    </span>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="purpose" type="radio" value="feedback">
+<span class="inline-block px-4 py-2 rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
+                      Phản hồi trải nghiệm vị giác
+                    </span>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="purpose" type="radio" value="other">
+<span class="inline-block px-4 py-2 rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
+                      Yêu cầu đặc biệt khác
+                    </span>
+</label>
+</div>
+</div>
+<!-- Estimated Guests & Date -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2" for="guests">
+                    Số Lượng Khách Dự Kiến (Nếu có)
+                  </label>
+<select class="w-full px-4 py-3 bg-surface text-on-surface rounded focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md" id="guests">
+<option value="under_6">Bàn nhỏ (1 - 4 khách)</option>
+<option value="salon">Phòng Salon L'Amour (6 - 12 khách)</option>
+<option value="suite">Grand Atelier Suite (12 - 24 khách)</option>
+<option value="exclusive">Bao trọn không gian nhà hàng (&gt; 30 khách)</option>
+<option value="none">Chưa xác định / Trao đổi chung</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2" for="eventDate">
+                    Thời Gian Dự Kiến
+                  </label>
+<input class="w-full px-4 py-3 bg-surface text-on-surface rounded text-on-surface-variant focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md" id="eventDate" type="date">
+</div>
+</div>
+<!-- Message / Special Requests -->
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2" for="message">
+                  Lời Nhắn / Chi Tiết Thực Đơn &amp; Lưu Ý Dị Ứng
+                </label>
+<textarea class="w-full px-4 py-3 bg-surface text-on-surface rounded placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md" id="message" placeholder="Quý khách có yêu cầu gì về rượu vang, phong cách bài trí hoa, hoặc dị ứng thực phẩm cần lưu ý..." rows="4"></textarea>
+</div>
+<!-- Privacy Checkbox -->
+<div class="flex items-start gap-3">
+<input class="mt-1 accent-primary w-4 h-4 rounded cursor-pointer" id="privacy" required="" type="checkbox">
+<label class="font-body-md text-xs text-on-surface-variant cursor-pointer leading-relaxed" for="privacy">
+                  Tôi đồng ý để L'Atelier lưu trữ thông tin này nhằm mục đích liên lạc và nâng cao chất lượng trải nghiệm riêng biệt theo tiêu chuẩn bảo mật dữ liệu khách hàng.
+                </label>
+</div>
+<!-- Submit Button -->
+<div class="pt-2">
+<button class="w-full py-4 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-[0.15em] rounded hover:bg-secondary transition-colors duration-300 shadow-md flex items-center justify-center gap-2" type="submit">
+<span>GỬI YÊU CẦU ĐẾN CONCIERGE</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+<!-- Success Alert Message -->
+<div class="hidden p-4 bg-secondary-container text-on-secondary-container rounded-lg flex items-center gap-3" id="formSuccess">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+<p class="font-body-md text-sm">
+                  Cảm ơn quý khách. Yêu cầu đã được chuyển tới Đội ngũ Concierge L'Atelier. Chúng tôi sẽ phản hồi sớm nhất qua điện thoại hoặc email.
+                </p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Map & Arrival Guide -->
+<section class="w-full py-space-xl bg-surface-container-low" id="map-section">
+<div class="max-w-7xl mx-auto px-margin">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-4">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-1">Chỉ Dẫn Hành Trình</span>
+<h2 class="font-headline-md text-headline-md text-primary">Bản Đồ Vị Trí &amp; Hướng Dẫn Di Chuyển</h2>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant max-w-md">
+          Nằm ngay tại trung tâm văn hóa và tài chính của Sài Gòn, L'Atelier sở hữu mặt tiền thanh bình rợp bóng cây cổ thụ giữa nhịp sống sôi động.
+        </p>
+</div>
+<!-- Map Display Container -->
+<div class="relative w-full h-[450px] lg:h-[500px] rounded-xl overflow-hidden shadow-xl mb-space-lg bg-surface-variant border border-outline-variant/30 select-none group" id="mapWrapper">
+<!-- Pan & Zoom Layer Container -->
+<div class="w-full h-full cursor-grab active:cursor-grabbing overflow-hidden relative" id="mapViewport">
+<!-- Map Image Background with Dynamic Scale & Filter -->
+<div class="w-full h-full bg-cover bg-center transition-all duration-500 ease-out origin-center" id="mapBackground" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD--hehfI7c1Rx8zz-2mKYB9-Qznk9DjNn_JYFHfevMV4sezSGcXfl3FI3nrdPNDOabNr_vdA4AJcSak5QV7jEPVYw7Ny7QLnBG6qqyVfTJvSoltDu85sVx2VUTMn0Yk65q6fnsCJfvpRa_6_Lcb8uMdYvZ8OU2uuW74tffStSMSnOMb503ba-HTWD0BrBUkgbRCP4jOBjTArc7MmDVuYuFFnRlb2AQhtgsAW8kdoKw'); transform: scale(1) translate(0px, 0px);">
+<div class="absolute inset-0 bg-[#2c1e16]/10 mix-blend-multiply transition-opacity duration-300 pointer-events-none" id="mapToneOverlay"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent pointer-events-none"></div>
+</div>
+<!-- Route Highlight Layer (Dynamic SVG Polyline overlay) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none z-10 transition-opacity duration-500 opacity-0" id="routeOverlaySvg" preserveAspectRatio="none" viewBox="0 0 1000 600">
+<defs>
+<linearGradient id="routeGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#ffdcc6" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#765844" stop-opacity="0.9"></stop>
+</linearGradient>
+</defs>
+<!-- Dynamic Path rendered via JS -->
+<path class="animate-pulse" d="" fill="none" id="routePath" stroke="url(#routeGrad)" stroke-dasharray="8 6" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<!-- Surrounding Landmark Markers (Clickable/Hoverable) -->
+<!-- Landmark 1: Nhà Hát Thành Phố -->
+<div class="landmark-pin absolute z-20 transition-transform duration-300 hover:scale-125 cursor-pointer -translate-x-1/2 -translate-y-1/2" data-landmark="nhahat" style="top: 46%; left: 45%;" title="Nhà Hát Thành Phố (150m)">
+<div class="relative flex items-center justify-center">
+<span class="absolute w-7 h-7 rounded-full bg-secondary-fixed/50 animate-ping"></span>
+<span class="w-8 h-8 rounded-full bg-surface shadow-md border-2 border-secondary flex items-center justify-center text-secondary hover:bg-secondary hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-[16px]">theater_comedy</span>
+</span>
+</div>
+<div class="landmark-tooltip absolute left-1/2 -top-8 -translate-x-1/2 bg-primary/95 text-surface text-[11px] font-label-sm uppercase tracking-wider py-1 px-2.5 rounded shadow-lg whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity pointer-events-none">
+      Nhà Hát Thành Phố (150m)
+    </div>
+</div>
+<!-- Landmark 2: Khách Sạn Continental -->
+<div class="landmark-pin absolute z-20 transition-transform duration-300 hover:scale-125 cursor-pointer -translate-x-1/2 -translate-y-1/2" data-landmark="continental" style="top: 38%; left: 41%;" title="Khách Sạn Continental Saigon (Đối diện)">
+<div class="relative flex items-center justify-center">
+<span class="w-7 h-7 rounded-full bg-surface shadow-md border-2 border-secondary flex items-center justify-center text-secondary hover:bg-secondary hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-[15px]">hotel</span>
+</span>
+</div>
+<div class="landmark-tooltip absolute left-1/2 -top-8 -translate-x-1/2 bg-primary/95 text-surface text-[11px] font-label-sm uppercase tracking-wider py-1 px-2.5 rounded shadow-lg whitespace-nowrap opacity-0 transition-opacity pointer-events-none">
+      Continental Saigon (Đối diện)
+    </div>
+</div>
+<!-- Landmark 3: Ga Metro Nhà Hát -->
+<div class="landmark-pin absolute z-20 transition-transform duration-300 hover:scale-125 cursor-pointer -translate-x-1/2 -translate-y-1/2" data-landmark="metro" style="top: 52%; left: 38%;" title="Ga Metro Nhà Hát L1 (200m)">
+<div class="relative flex items-center justify-center">
+<span class="w-7 h-7 rounded-full bg-surface shadow-md border-2 border-secondary flex items-center justify-center text-secondary hover:bg-secondary hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-[15px]">subway</span>
+</span>
+</div>
+<div class="landmark-tooltip absolute left-1/2 -top-8 -translate-x-1/2 bg-primary/95 text-surface text-[11px] font-label-sm uppercase tracking-wider py-1 px-2.5 rounded shadow-lg whitespace-nowrap opacity-0 transition-opacity pointer-events-none">
+      Ga Metro Tuyến 1 (200m)
+    </div>
+</div>
+<!-- Landmark 4: Bến Bạch Đằng & Sông Sài Gòn -->
+<div class="landmark-pin absolute z-20 transition-transform duration-300 hover:scale-125 cursor-pointer -translate-x-1/2 -translate-y-1/2" data-landmark="river" style="top: 68%; left: 62%;" title="Bến Bạch Đằng &amp; Sông Sài Gòn">
+<div class="relative flex items-center justify-center">
+<span class="w-7 h-7 rounded-full bg-surface shadow-md border-2 border-secondary flex items-center justify-center text-secondary hover:bg-secondary hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-[15px]">sailing</span>
+</span>
+</div>
+<div class="landmark-tooltip absolute left-1/2 -top-8 -translate-x-1/2 bg-primary/95 text-surface text-[11px] font-label-sm uppercase tracking-wider py-1 px-2.5 rounded shadow-lg whitespace-nowrap opacity-0 transition-opacity pointer-events-none">
+      Bến Bạch Đằng (500m)
+    </div>
+</div>
+<!-- L'ATELIER MAIN PIN (Center Focal Point) -->
+<div class="absolute z-30 -translate-x-1/2 -translate-y-full cursor-pointer transition-transform duration-300 hover:scale-110" id="mainPinMarker" style="top: 54%; left: 47%;">
+<div class="relative flex items-center justify-center">
+<!-- Animated Pulsing Radar Rings (Warm Amber/Gold glow) -->
+<span class="radar-ring-1 absolute w-14 h-14 rounded-full border-2 border-[#e5bfa6] bg-[#ffdcc6]/30 pointer-events-none"></span>
+<span class="radar-ring-2 absolute w-20 h-20 rounded-full border border-[#d4c4b4] pointer-events-none"></span>
+<!-- Premium Pin Marker SVG/Element -->
+<div class="relative flex flex-col items-center drop-shadow-xl">
+<div class="w-11 h-11 rounded-full bg-[#130803] border-2 border-[#e5bfa6] flex items-center justify-center text-[#f7ddd0] shadow-2xl">
+<span class="material-symbols-outlined text-[20px] text-[#f7ddd0]">restaurant</span>
+</div>
+<!-- Pin Stem Point -->
+<div class="w-0 h-0 border-l-[7px] border-l-transparent border-r-[7px] border-r-transparent border-t-[9px] border-t-[#130803] -mt-[1px]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Luxury Map Controls (Top-Right) -->
+<div class="absolute top-4 right-4 z-40 flex flex-col items-end gap-2">
+<!-- Map Mode Switcher Pill -->
+<div class="flex items-center p-1 bg-surface/90 backdrop-blur-md rounded-lg shadow-md border border-outline-variant/30 text-xs font-label-sm">
+<button class="px-2.5 py-1.5 rounded text-xs font-medium transition-all bg-primary text-on-primary shadow-sm" id="btnModeStreet" type="button">
+      Giao Thông
+    </button>
+<button class="px-2.5 py-1.5 rounded text-xs font-medium transition-all text-on-surface-variant hover:text-primary" id="btnModeHeritage" type="button">
+      Vùng Di Sản
+    </button>
+</div>
+<!-- Zoom & Navigation Control Group -->
+<div class="flex flex-col bg-surface/90 backdrop-blur-md rounded-lg shadow-md border border-outline-variant/30 overflow-hidden divide-y divide-outline-variant/30">
+<button class="w-9 h-9 flex items-center justify-center text-primary hover:bg-secondary-fixed/50 transition-colors" id="btnZoomIn" title="Phóng to" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center text-primary hover:bg-secondary-fixed/50 transition-colors" id="btnZoomOut" title="Thu nhỏ" type="button">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center text-primary hover:bg-secondary-fixed/50 transition-colors" id="btnResetView" title="Định vị tâm điểm (L'Atelier)" type="button">
+<span class="material-symbols-outlined text-[19px]">my_location</span>
+</button>
+</div>
+</div>
+<!-- Elegant Interactive Location Badge Card Overlay (Bottom-Left) -->
+<div class="absolute bottom-6 left-6 max-w-sm w-[calc(100%-3rem)] sm:w-auto bg-surface/95 backdrop-blur-md p-space-md rounded-xl shadow-2xl border border-outline-variant/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_35px_-10px_rgba(44,30,22,0.25)] z-40 group/card" id="heritageCard">
+<div class="flex items-center justify-between gap-4 mb-2">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-medium">Tọa Độ Di Sản</span>
+</div>
+<span class="text-[10px] font-label-sm uppercase px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed">
+      Michelin Guide
+    </span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary font-medium group-hover/card:text-secondary transition-colors flex items-center gap-1.5">
+    L'Atelier Fine Dining
+  </h3>
+<p class="font-body-md text-xs text-on-surface-variant mt-1 leading-relaxed">
+    128 Đồng Khởi, Phường Bến Nghé, Quận 1 (Cạnh Caravelle &amp; Khách sạn Continental)
+  </p>
+<!-- Direct Navigation Interactive Button -->
+<div class="mt-3 pt-3 border-t border-outline-variant/30 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-3 text-[11px] text-secondary font-label-sm uppercase tracking-wider">
+<span>10.7769° N</span>
+<span>•</span>
+<span>106.7032° E</span>
+</div>
+<a class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-primary text-on-primary rounded text-xs font-label-sm uppercase tracking-wider hover:bg-secondary transition-colors shadow-sm" href="https://maps.google.com/?q=128+Dong+Khoi+District+1+Ho+Chi+Minh" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">directions</span>
+<span>Dẫn Đường</span>
+</a>
+</div>
+</div>
+<!-- Scale Bar & Compass (Bottom Left / Bottom Right) -->
+<div class="absolute bottom-3 right-4 z-30 hidden sm:flex items-center gap-2 text-[10px] font-label-sm uppercase text-primary/70 bg-surface/80 backdrop-blur-sm px-2.5 py-1 rounded border border-outline-variant/30">
+<span class="w-12 h-1 bg-primary/60 inline-block relative after:content-[''] after:absolute after:right-0 after:top-0 after:h-full after:w-1 after:bg-primary"></span>
+<span id="scaleText">200 m</span>
+</div>
+</div>
+<!-- Dynamic Route Banner (Appears when route is active) -->
+<div class="hidden mb-space-md p-3.5 bg-secondary-container text-on-secondary-container rounded-lg border border-secondary/30 flex items-center justify-between gap-3 text-xs font-body-md transition-all" id="routeBanner">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">explore</span>
+<span id="routeBannerText">Đang hiển thị lộ trình đề xuất đến L'Atelier</span>
+</div>
+<button class="font-label-sm uppercase text-secondary hover:text-primary transition-colors underline text-[11px]" id="clearRouteBtn" type="button">
+    Thu nhỏ lộ trình
+  </button>
+</div>
+<!-- 3 Practical Arrival Cards (Interactive Hover & Route Highlighting) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Card 1: Airport Transfer -->
+<div class="arrival-card group cursor-pointer bg-surface p-space-md rounded-xl shadow-sm border border-transparent hover:border-secondary hover:shadow-lg hover:-translate-y-1 transition-all duration-300" data-route="airport">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">flight_takeoff</span>
+</div>
+<span class="text-xs font-label-sm text-secondary uppercase opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+<span>Xem lộ trình</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+<h4 class="font-title-md text-title-md text-primary mb-2 group-hover:text-secondary transition-colors">Từ Sân Bay Quốc Tế</h4>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+            Khoảng 25 - 35 phút di chuyển bằng ô tô từ Sân bay Tân Sơn Nhất theo trục đường Nam Kỳ Khởi Nghĩa. Dịch vụ đưa đón bằng xe riêng có thể được sắp xếp theo yêu cầu.
+          </p>
+</div>
+<!-- Card 2: Valet & Parking -->
+<div class="arrival-card group cursor-pointer bg-surface p-space-md rounded-xl shadow-sm border border-transparent hover:border-secondary hover:shadow-lg hover:-translate-y-1 transition-all duration-300" data-route="valet">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">directions_car</span>
+</div>
+<span class="text-xs font-label-sm text-secondary uppercase opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+<span>Làn đỗ xe</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+<h4 class="font-title-md text-title-md text-primary mb-2 group-hover:text-secondary transition-colors">Làn Dừng Đón &amp; Đỗ Xe</h4>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+            Làn dừng đón riêng trước cổng nhà hàng thuận tiện cho việc bước xuống xe. Đội ngũ Valet phụ trách đỗ xe hơi tại hầm an ninh 24/7 liền kề, hoàn toàn miễn phí.
+          </p>
+</div>
+<!-- Card 3: Iconic Landmarks -->
+<div class="arrival-card group cursor-pointer bg-surface p-space-md rounded-xl shadow-sm border border-transparent hover:border-secondary hover:shadow-lg hover:-translate-y-1 transition-all duration-300" data-route="landmarks">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">theater_comedy</span>
+</div>
+<span class="text-xs font-label-sm text-secondary uppercase opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+<span>Điểm di sản</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+<h4 class="font-title-md text-title-md text-primary mb-2 group-hover:text-secondary transition-colors">Điểm Mốc Lân Cận</h4>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+            Cách Nhà Hát Thành Phố chỉ 150 mét đi bộ, đối diện Khách sạn Continental Saigon và dễ dàng kết nối với bến Bạch Đằng hay phố đi bộ Nguyễn Huệ trong vòng 3 phút.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Private Dining & Event Exclusive Section -->
+<section class="w-full bg-primary text-on-primary py-space-xl">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Left Narrative Column -->
+<div class="lg:col-span-6 flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-[0.2em] text-secondary-fixed-dim mb-space-sm">
+            Exclusive Hospitality
+          </span>
+<h2 class="font-headline-lg text-headline-lg text-surface-bright mb-space-md tracking-tight leading-tight">
+            Không Gian Tiệc Riêng Biệt &amp; Sự Kiện Thưởng Ngoạn Độc Bản
+          </h2>
+<p class="font-body-lg text-body-lg text-on-primary-container leading-relaxed mb-space-lg">
+            Dành riêng cho những dịp hội ngộ trọng thể, ký kết hợp tác quan trọng hay tiệc kỷ niệm ấm cúng bên người thân. 
+            Mỗi phòng tiệc VIP đều sở hữu lối đi riêng, quầy pha chế độc lập và dịch vụ Sommelier phục vụ tại bàn.
+          </p>
+<!-- 2 VIP Room Details -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md mb-space-lg">
+<div class="bg-primary-container p-space-md rounded-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-fixed-dim block mb-1">Sức chứa 6 - 12 khách</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-bright mb-2">Salon L'Amour</h3>
+<p class="font-body-md text-xs text-on-primary-container leading-relaxed">
+                Ánh sáng trầm ấm, nội thất da thuộc cao cấp và tranh nghệ thuật nguyên bản. Thích hợp cho bữa tối gia đình hoặc cuộc gặp mặt ngoại giao thân mật.
+              </p>
+</div>
+<div class="bg-primary-container p-space-md rounded-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-fixed-dim block mb-1">Sức chứa tối đa 24 khách</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-bright mb-2">Grand Atelier Suite</h3>
+<p class="font-body-md text-xs text-on-primary-container leading-relaxed">
+                Tầm nhìn bao quát vườn hoa nội viện và ban công di sản thời Pháp. Trang bị hệ thống âm thanh vòm acoustic và thực đơn cá nhân hóa riêng.
+              </p>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-wrap items-center gap-space-md">
+<a class="px-6 py-3.5 bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md uppercase tracking-wider rounded hover:bg-surface-bright hover:text-primary transition-colors flex items-center gap-2" href="tel:+842838299999">
+<span class="material-symbols-outlined text-[18px]">phone_in_talk</span>
+<span>GỌI TRỰC TIẾP (+84 28 3829 9999)</span>
+</a>
+<a class="px-6 py-3.5 bg-transparent text-surface-bright font-label-md text-label-md uppercase tracking-wider rounded hover:bg-primary-container transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>TẢI BROCHURE TIỆC RIÊNG (PDF)</span>
+</a>
+</div>
+</div>
+<!-- Right Visual Mosaic -->
+<div class="lg:col-span-6 grid grid-cols-2 gap-space-md">
+<div class="space-y-space-md">
+<div class="h-64 rounded-xl overflow-hidden shadow-lg bg-tertiary-container">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="Intimate candlelit luxury private dining room at L'Atelier, elegant wood craftsmanship, crystal wine glasses on a dark polished timber table, soft warm lighting, fine dining atmosphere with earthy brown tones and cream accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCya3JBgsWYT5ds0OZ-OwI4GvueewV8q9D5Uu5Yci1Ku2praEtTuOCIfhvVkaG4_uUXlnb_4FehSfJ3YMzNuYAfRBkhyNTjqE4QUCR0ES53SZmukH4yocv5HMcQ1VnFeKS4lT2sXVtp6KNJp2BFwCag-XNOlr_yOUdTvCJNwBfmEjv84uKr1N37Xse1tv_U9noTQFEdqxzjIgOBYKHN8RJgCOh2wYITuBibd7fikOls">
+</div>
+<div class="p-space-md bg-primary-container rounded-xl">
+<div class="flex items-center gap-2 text-secondary-fixed-dim mb-1">
+<span class="material-symbols-outlined text-[18px]">wine_bar</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Hầm Vang Độc Bản</span>
+</div>
+<p class="font-body-md text-xs text-on-primary-container">
+                Hơn 450 nhãn rượu vang Grand Cru danh tiếng được tuyển chọn bởi Head Sommelier.
+              </p>
+</div>
+</div>
+<div class="space-y-space-md pt-8">
+<div class="p-space-md bg-primary-container rounded-xl">
+<div class="flex items-center gap-2 text-secondary-fixed-dim mb-1">
+<span class="material-symbols-outlined text-[18px]">restaurant_menu</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Thực Đơn Thiết Kế Riêng</span>
+</div>
+<p class="font-body-md text-xs text-on-primary-container">
+                Bếp trưởng trao đổi trực tiếp để phác thảo menu riêng biệt theo sở thích vị giác của gia chủ.
+              </p>
+</div>
+<div class="h-64 rounded-xl overflow-hidden shadow-lg bg-tertiary-container">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="Exquisite contemporary gourmet plate presentation, artistic fine dining plating with delicate edible herbs, microgreens, warm earthy espresso tableware, soft natural side lighting in an exclusive culinary suite" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN3qUON1OnkuWh_44aPxAemC5lkMdf5qVPT_RXBJ-9CGJpRasXnWKRRYV40aVe4Q8xsHmA-d3tnYnzk8CCtufQ2-eRa3GkB_VDIx4_7Y-YKqPwts1K8f3y3I2_z8sFGuJawoIdD0FCDr9Pz51CoXP0g2sSub7oUtjErTkHOwk8Sscvnl-mFMcf6fcYUFE76jxQz9Ywq_b8QupKYUmLbt6PiFK-w4Q_IylcDvSj0l8f">
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Simple micro-interaction for category radio chips styling
+  document.querySelectorAll('#inquiryCategoryPills input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      // Styling handled through Tailwind peer classes
+    });
+  });
+
+  // Interactive Map Controls & State Management
+  (function initMapControls() {
+    let currentZoom = 1;
+    let panX = 0;
+    let panY = 0;
+    let isDragging = false;
+    let startX = 0, startY = 0;
+
+    const mapBg = document.getElementById('mapBackground');
+    const mapViewport = document.getElementById('mapViewport');
+    const scaleText = document.getElementById('scaleText');
+    const routeOverlaySvg = document.getElementById('routeOverlaySvg');
+    const routePath = document.getElementById('routePath');
+    const routeBanner = document.getElementById('routeBanner');
+    const routeBannerText = document.getElementById('routeBannerText');
+    const clearRouteBtn = document.getElementById('clearRouteBtn');
+    const btnZoomIn = document.getElementById('btnZoomIn');
+    const btnZoomOut = document.getElementById('btnZoomOut');
+    const btnResetView = document.getElementById('btnResetView');
+    const btnModeStreet = document.getElementById('btnModeStreet');
+    const btnModeHeritage = document.getElementById('btnModeHeritage');
+    const mapToneOverlay = document.getElementById('mapToneOverlay');
+    const mainPinMarker = document.getElementById('mainPinMarker');
+    const heritageCard = document.getElementById('heritageCard');
+
+    function updateMapTransform() {
+      mapBg.style.transform = `scale(${currentZoom}) translate(${panX}px, ${panY}px)`;
+      if (scaleText) {
+        const meters = Math.round(200 / currentZoom);
+        scaleText.textContent = `${meters} m`;
+      }
+    }
+
+    if (btnZoomIn) {
+      btnZoomIn.addEventListener('click', () => {
+        if (currentZoom < 1.7) {
+          currentZoom += 0.2;
+          updateMapTransform();
+        }
+      });
+    }
+
+    if (btnZoomOut) {
+      btnZoomOut.addEventListener('click', () => {
+        if (currentZoom > 0.85) {
+          currentZoom -= 0.2;
+          updateMapTransform();
+        }
+      });
+    }
+
+    if (btnResetView) {
+      btnResetView.addEventListener('click', () => {
+        currentZoom = 1;
+        panX = 0;
+        panY = 0;
+        updateMapTransform();
+        // Pulse main pin
+        mainPinMarker.classList.add('scale-125');
+        setTimeout(() => mainPinMarker.classList.remove('scale-125'), 400);
+      });
+    }
+
+    // Map Mode Toggles
+    if (btnModeStreet && btnModeHeritage) {
+      btnModeStreet.addEventListener('click', () => {
+        btnModeStreet.className = "px-2.5 py-1.5 rounded text-xs font-medium transition-all bg-primary text-on-primary shadow-sm";
+        btnModeHeritage.className = "px-2.5 py-1.5 rounded text-xs font-medium transition-all text-on-surface-variant hover:text-primary";
+        mapToneOverlay.classList.remove('bg-[#504539]/30', 'sepia-[0.35]');
+        mapToneOverlay.classList.add('bg-[#2c1e16]/10');
+      });
+
+      btnModeHeritage.addEventListener('click', () => {
+        btnModeHeritage.className = "px-2.5 py-1.5 rounded text-xs font-medium transition-all bg-primary text-on-primary shadow-sm";
+        btnModeStreet.className = "px-2.5 py-1.5 rounded text-xs font-medium transition-all text-on-surface-variant hover:text-primary";
+        mapToneOverlay.classList.remove('bg-[#2c1e16]/10');
+        mapToneOverlay.classList.add('bg-[#504539]/30', 'sepia-[0.35]');
+      });
+    }
+
+    // Pan & Drag Interactions
+    if (mapViewport) {
+      mapViewport.addEventListener('mousedown', (e) => {
+        if (e.target.closest('.landmark-pin') || e.target.closest('#mainPinMarker') || e.target.closest('button')) return;
+        isDragging = true;
+        startX = e.clientX - panX;
+        startY = e.clientY - panY;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        panX = (e.clientX - startX) * 0.4;
+        panY = (e.clientY - startY) * 0.4;
+        // constrain
+        panX = Math.max(-100, Math.min(100, panX));
+        panY = Math.max(-60, Math.min(60, panY));
+        updateMapTransform();
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+    }
+
+    // Click on Main Pin triggers subtle highlight on Card
+    if (mainPinMarker && heritageCard) {
+      mainPinMarker.addEventListener('click', () => {
+        heritageCard.classList.add('ring-2', 'ring-secondary', 'scale-105');
+        setTimeout(() => {
+          heritageCard.classList.remove('ring-2', 'ring-secondary', 'scale-105');
+        }, 1200);
+      });
+    }
+
+    // Landmark pin tooltips
+    document.querySelectorAll('.landmark-pin').forEach(pin => {
+      const tooltip = pin.querySelector('.landmark-tooltip');
+      pin.addEventListener('mouseenter', () => {
+        if (tooltip) tooltip.style.opacity = '1';
+      });
+      pin.addEventListener('mouseleave', () => {
+        if (tooltip) tooltip.style.opacity = '0';
+      });
+      pin.addEventListener('click', () => {
+        const landmarkKey = pin.getAttribute('data-landmark');
+        highlightLandmarkOnMap(landmarkKey);
+      });
+    });
+
+    // Route Paths mapping
+    const routeCoordinates = {
+      airport: "M 150 100 Q 320 220 470 324",
+      valet: "M 420 370 L 470 324",
+      landmarks: "M 450 276 L 470 324 M 410 228 L 450 276"
+    };
+
+    const routeDescriptions = {
+      airport: "Lộ trình đề xuất: Sân bay Tân Sơn Nhất → Trục Nam Kỳ Khởi Nghĩa → Đồng Khởi (25-35 phút)",
+      valet: "Làn Valet Parking: Đỗ xe tiếp đón trực diện tại cổng chính 128 Đồng Khởi",
+      landmarks: "Cụm Di sản liên kết: Nhà Hát Thành Phố & Continental Saigon → L'Atelier (3 phút đi bộ)"
+    };
+
+    function highlightLandmarkOnMap(type) {
+      if (routeCoordinates[type]) {
+        routePath.setAttribute('d', routeCoordinates[type]);
+        routeOverlaySvg.classList.remove('opacity-0');
+        routeOverlaySvg.classList.add('opacity-100');
+        if (routeBanner && routeBannerText) {
+          routeBannerText.textContent = routeDescriptions[type] || "Đang hiển thị vị trí";
+          routeBanner.classList.remove('hidden');
+        }
+      }
+    }
+
+    // Interactive Arrival Cards Hover & Click
+    document.querySelectorAll('.arrival-card').forEach(card => {
+      const routeType = card.getAttribute('data-route');
+      card.addEventListener('mouseenter', () => {
+        highlightLandmarkOnMap(routeType);
+      });
+
+      card.addEventListener('click', () => {
+        highlightLandmarkOnMap(routeType);
+        // Scroll slightly toward map if needed
+        const mapSection = document.getElementById('mapWrapper');
+        if (mapSection) {
+          mapSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    });
+
+    if (clearRouteBtn) {
+      clearRouteBtn.addEventListener('click', () => {
+        routeOverlaySvg.classList.remove('opacity-100');
+        routeOverlaySvg.classList.add('opacity-0');
+        routeBanner.classList.add('hidden');
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-[#18100c] text-[#d4c8bd] pt-24 pb-12 border-t border-[#31251e]"><div class="max-w-7xl mx-auto px-margin"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl pb-16 border-b border-[#31251e]/80"><div class="lg:col-span-4 flex flex-col"><div class="flex items-center gap-space-sm mb-space-md"><span class="font-headline-md text-headline-md tracking-tight text-[#fcf9f4]">L'Atelier</span></div><p class="font-headline-sm italic text-[#b8a99d] text-base mb-space-lg font-light">Ẩm thực đương đại nâng tầm giác quan</p><p class="font-body-md text-sm text-[#a49588] leading-relaxed mb-space-md">Nơi từng trải nghiệm vị giác được chắt lọc từ những tinh hoa bản địa theo mùa, gửi gắm trong phong vị kiến trúc tĩnh tại và chuẩn mực ẩm thực đương đại.</p><div class="flex flex-col gap-2 font-body-md text-sm text-[#c8bcaf]"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-[#e5bfa6]">location_on</span><span>128 Đồng Khởi, Quận 1, TP. Hồ Chí Minh</span></div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-[#e5bfa6]">call</span><span>Hotline: +84 (0) 28 3829 9999</span></div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-[#e5bfa6]">mail</span><span>concierge@latelier-restaurant.vn</span></div></div></div><div class="lg:col-span-2 flex flex-col"><p class="font-label-sm text-label-sm uppercase tracking-widest text-[#fcf9f4] mb-space-md">Khám Phá</p><ul class="flex flex-col gap-3 font-body-md text-sm text-[#b8a99d]"><li><a class="hover:text-[#fcf9f4] transition-colors" data-path="trang-chủ" href="#">Trang chủ</a></li><li><a class="hover:text-[#fcf9f4] transition-colors" data-path="thực-đơn" href="#">Thực đơn theo mùa</a></li><li><a class="hover:text-[#fcf9f4] transition-colors" href="#">Trải nghiệm nếm thử</a></li><li><a class="hover:text-[#fcf9f4] transition-colors" data-path="câu-chuyện" href="#">Câu chuyện &amp; Bếp trưởng</a></li><li><a class="hover:text-[#fcf9f4] transition-colors" data-path="đặt-bàn" href="#">Đặt bàn trước</a></li><li><a class="hover:text-[#fcf9f4] transition-colors" data-path="liên-hệ" href="#">Liên hệ &amp; Vị trí</a></li><li><a class="hover:text-[#fcf9f4] transition-colors" href="#">Sự kiện riêng tư</a></li></ul></div><div class="lg:col-span-3 flex flex-col"><p class="font-label-sm text-label-sm uppercase tracking-widest text-[#fcf9f4] mb-space-md">Giờ Phục Vụ &amp; Quy Chuẩn</p><div class="flex flex-col gap-4 font-body-md text-sm"><div class="border-l-2 border-[#5c412e] pl-3"><p class="text-[#fcf9f4] font-medium text-xs uppercase tracking-wider mb-0.5">Bữa Trưa</p><p class="text-[#b8a99d]">11:30 – 14:00 (Thứ 6 – Chủ Nhật)</p></div><div class="border-l-2 border-[#5c412e] pl-3"><p class="text-[#fcf9f4] font-medium text-xs uppercase tracking-wider mb-0.5">Bữa Tối</p><p class="text-[#b8a99d]">17:30 – 22:30 (Thứ Ba – Chủ Nhật)</p></div><div class="pt-2 text-xs text-[#9a8479] leading-relaxed"><p class="mb-1">* Đóng cửa vào Thứ Hai hàng tuần.</p><p class="mb-1">* Vui lòng đặt trước ít nhất 24 giờ để đảm bảo phục vụ trọn vẹn.</p><p>* Quy định trang phục: <span class="text-[#e5bfa6]">Smart Casual</span>.</p></div></div></div><div class="lg:col-span-3 flex flex-col"><p class="font-label-sm text-label-sm uppercase tracking-widest text-[#fcf9f4] mb-space-md">Bản Tin Đặc Quyền</p><p class="font-body-md text-xs text-[#a49588] leading-relaxed mb-space-md">Đăng ký để nhận lời mời trải nghiệm thực đơn mùa mới cùng những câu chuyện ẩm thực độc quyền từ bếp trưởng.</p><form class="flex items-center mb-space-lg" onsubmit="return false;"><input class="w-full bg-[#241a14] border border-[#3e2f26] text-xs text-[#fcf9f4] px-4 py-3 rounded-l focus:outline-none focus:border-[#e5bfa6] transition-colors placeholder:text-[#6f6055]" placeholder="Địa chỉ email của quý khách..." type="email"><button class="bg-[#35251c] hover:bg-[#5c412e] text-[#fcf9f4] px-4 py-3 border border-l-0 border-[#3e2f26] rounded-r transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></form><div><p class="font-label-sm text-[10px] uppercase tracking-wider text-[#8b7d72] mb-3">Kết Nối Cùng L'Atelier</p><div class="flex items-center gap-3"><a class="w-9 h-9 rounded-full bg-[#241a14] hover:bg-[#35251c] text-[#d4c8bd] hover:text-[#fcf9f4] flex items-center justify-center border border-[#3e2f26] transition-colors text-xs font-medium" href="#" title="Instagram">IG</a><a class="w-9 h-9 rounded-full bg-[#241a14] hover:bg-[#35251c] text-[#d4c8bd] hover:text-[#fcf9f4] flex items-center justify-center border border-[#3e2f26] transition-colors text-xs font-medium" href="#" title="Facebook">FB</a><a class="w-9 h-9 rounded-full bg-[#241a14] hover:bg-[#35251c] text-[#d4c8bd] hover:text-[#fcf9f4] flex items-center justify-center border border-[#3e2f26] transition-colors text-xs font-medium" href="#" title="Michelin Guide Selection"><span class="material-symbols-outlined text-[16px]">hotel_class</span></a><a class="w-9 h-9 rounded-full bg-[#241a14] hover:bg-[#35251c] text-[#d4c8bd] hover:text-[#fcf9f4] flex items-center justify-center border border-[#3e2f26] transition-colors text-xs font-medium" href="#" title="Tripadvisor"><span class="material-symbols-outlined text-[16px]">reviews</span></a></div></div></div></div><div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-body-md text-[#8b7d72]"><p>© 2025 L'Atelier Fine Dining. All rights reserved.</p><div class="flex flex-wrap items-center gap-6"><a class="hover:text-[#d4c8bd] transition-colors" href="#">Chính sách bảo mật</a><span class="text-[#3e2f26]">·</span><a class="hover:text-[#d4c8bd] transition-colors" href="#">Điều khoản dịch vụ</a><span class="text-[#3e2f26]">·</span><a class="hover:text-[#d4c8bd] transition-colors" href="#">Sơ đồ trang web</a></div></div></div></footer>
+
+</body></html>

@@ -1,0 +1,83 @@
+@{
+    ViewData["Title"] = "Tra Cứu Phiếu Đặt Tiệc & Đơn Gọi Món";
+    string? phone = ViewBag.Phone;
+    var reservations = ViewBag.Reservations as List<Reservation> ?? new List<Reservation>();
+    var orders = ViewBag.Orders as List<Order> ?? new List<Order>();
+}
+
+<section class="w-full py-12 px-margin bg-surface">
+    <div class="max-w-7xl mx-auto">
+        <div class="bg-surface-container-low p-8 rounded-2xl shadow-sm mb-8">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">L'Atelier Concierge Lookup</span>
+            <h1 class="font-headline-md text-headline-md text-primary mt-1 mb-2">Tra Cứu Lịch Đặt Bàn &amp; Đơn Gọi Món</h1>
+            <p class="font-body-md text-sm text-on-surface-variant mb-4">
+                Nhập số điện thoại đặt tiệc của quý khách để kiểm tra trạng thái xác nhận từ Concierge (VD mẫu: <strong>0908123456</strong> hoặc <strong>0987654321</strong>).
+            </p>
+            <form asp-action="Lookup" method="get" class="flex flex-col sm:flex-row gap-3 max-w-2xl">
+                <input type="tel" name="phone" value="@phone" class="flex-1 px-4 py-3 rounded bg-surface border border-outline-variant/50 text-on-surface" placeholder="Nhập số điện thoại tra cứu..." required />
+                <button type="submit" class="px-8 py-3 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded hover:bg-secondary transition-colors">
+                    Tra Cứu Ngay
+                </button>
+            </form>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(phone))
+        {
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-surface-container-low p-6 rounded-xl">
+                    <h2 class="font-headline-sm text-headline-sm text-primary mb-4">Phiếu Đặt Bàn (@reservations.Count)</h2>
+                    @if (!reservations.Any())
+                    {
+                        <p class="text-sm text-on-surface-variant">Không tìm thấy phiếu đặt bàn nào với SĐT @phone.</p>
+                    }
+                    @foreach (var r in reservations)
+                    {
+                        <div class="bg-surface p-4 rounded-lg mb-3 border border-outline-variant/30">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-title-md text-primary">#LA-@r.Id.ToString("D4") — @r.CustomerName</span>
+                                <span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-[10px] uppercase">@r.Status</span>
+                            </div>
+                            <div class="text-xs text-on-surface-variant space-y-1">
+                                <div>Thời gian: <strong>@r.ReservationDate.ToString("dd/MM/yyyy") · @r.ReservationTime</strong> (@r.GuestGroupLabel)</div>
+                                <div>Không gian: @r.SeatingArea @(r.DiningTable != null ? $"({r.DiningTable.TableNumber})" : "")</div>
+                                <div>Thực đơn: <span class="text-secondary font-medium">@r.SelectedMenuPackage</span> @(r.HasWinePairing ? "+ Grand Cru Wine Pairing" : "")</div>
+                                <div>Tạm tính: <strong>@r.EstimatedTotal.ToString("N0") ₫</strong></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="bg-surface-container-low p-6 rounded-xl">
+                    <h2 class="font-headline-sm text-headline-sm text-primary mb-4">Đơn Chọn Món Trước (@orders.Count)</h2>
+                    @if (!orders.Any())
+                    {
+                        <p class="text-sm text-on-surface-variant">Không tìm thấy đơn chọn món nào với SĐT @phone.</p>
+                    }
+                    @foreach (var o in orders)
+                    {
+                        <div class="bg-surface p-4 rounded-lg mb-3 border border-outline-variant/30">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-title-md text-primary">@o.OrderCode</span>
+                                <span class="px-2.5 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-[10px] uppercase">@o.Status</span>
+                            </div>
+                            <ul class="text-xs text-on-surface-variant space-y-1 pl-0 list-none border-t border-b border-outline-variant/25 py-2 my-2">
+                                @foreach (var item in o.OrderItems)
+                                {
+                                    <li class="flex justify-between">
+                                        <span>@item.Quantity x @item.MenuItem?.Name</span>
+                                        <span>@item.SubTotal.ToString("N0") ₫</span>
+                                    </li>
+                                }
+                            </ul>
+                            <div class="flex justify-between font-title-md text-sm text-primary">
+                                <span>Tổng cộng:</span>
+                                <span>@o.TotalAmount.ToString("N0") ₫</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</section>
+

@@ -1,0 +1,85 @@
+@model List<CartItem>
+@{
+    ViewData["Title"] = "Danh Sách Món Đã Chọn";
+    var total = Model.Sum(x => x.SubTotal);
+}
+
+<section class="w-full py-12 px-margin bg-surface">
+    <div class="max-w-7xl mx-auto">
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">L'Atelier À La Carte Selection</span>
+        <h1 class="font-headline-md text-headline-md text-primary mt-1 mb-6">Danh Sách Tuyệt Tác Đã Chọn</h1>
+
+        @if (!Model.Any())
+        {
+            <div class="bg-surface-container-low rounded-2xl p-12 text-center">
+                <span class="material-symbols-outlined text-5xl text-secondary mb-3">restaurant_menu</span>
+                <h3 class="font-headline-sm text-primary mb-2">Danh sách chọn món đang trống</h3>
+                <p class="font-body-md text-on-surface-variant mb-6">Quý khách hãy khám phá thực đơn đương đại hoặc đặt bàn Tasting Menu.</p>
+                <a asp-controller="Home" asp-action="Menu" class="px-8 py-3.5 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded text-decoration-none">
+                    Khám Phá Thực Đơn
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-8 bg-surface-container-low p-6 rounded-xl">
+                    <div class="space-y-4">
+                        @foreach (var item in Model)
+                        {
+                            <div class="bg-surface p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-outline-variant/30">
+                                <div class="flex items-center gap-4 w-full sm:w-auto">
+                                    <img src="@item.ImageUrl" alt="@item.Name" class="w-20 h-20 rounded-lg object-cover shrink-0" />
+                                    <div>
+                                        <span class="font-label-sm text-[10px] uppercase text-secondary">@item.CategoryName</span>
+                                        <h4 class="font-headline-sm text-lg text-primary mb-0">@item.Name</h4>
+                                        <div class="text-sm text-secondary">@item.UnitPrice.ToString("N0") ₫ / phần</div>
+                                        @if (!string.IsNullOrEmpty(item.Note))
+                                        {
+                                            <div class="text-xs text-on-surface-variant italic">Ghi chú: @item.Note</div>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4">
+                                    <form asp-action="UpdateQuantity" method="post" class="flex items-center gap-1">
+                                        <input type="hidden" name="menuItemId" value="@item.MenuItemId" />
+                                        <button type="submit" name="quantity" value="@(item.Quantity - 1)" class="w-8 h-8 rounded bg-surface-container text-primary">-</button>
+                                        <span class="px-3 font-medium">@item.Quantity</span>
+                                        <button type="submit" name="quantity" value="@(item.Quantity + 1)" class="w-8 h-8 rounded bg-surface-container text-primary">+</button>
+                                    </form>
+                                    <div class="font-title-md text-primary min-w-[110px] text-right">@item.SubTotal.ToString("N0") ₫</div>
+                                    <form asp-action="Remove" method="post">
+                                        <input type="hidden" name="menuItemId" value="@item.MenuItemId" />
+                                        <button type="submit" class="text-error hover:opacity-75 bg-transparent border-0">
+                                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4">
+                    <div class="bg-primary text-on-primary p-6 rounded-xl shadow-xl">
+                        <span class="font-label-sm text-[10px] uppercase tracking-widest text-secondary-fixed">Tóm Tắt Thực Đơn</span>
+                        <h3 class="font-headline-sm text-surface-bright mt-1 mb-4">Chi Phí Tạm Tính</h3>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-on-primary-container">Số lượng món:</span>
+                            <span>@Model.Sum(x => x.Quantity) phần</span>
+                        </div>
+                        <div class="flex justify-between text-lg font-medium border-t border-white/10 pt-3 mb-6">
+                            <span>Tổng cộng:</span>
+                            <span class="text-secondary-fixed">@total.ToString("N0") ₫</span>
+                        </div>
+                        <a asp-action="Checkout" class="block w-full py-3.5 bg-secondary text-on-secondary font-label-md text-label-md uppercase tracking-wider rounded text-center text-decoration-none hover:opacity-90">
+                            Xác Nhận Gọi Món Trước
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+

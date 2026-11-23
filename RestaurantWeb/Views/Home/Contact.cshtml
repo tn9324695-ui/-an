@@ -1,0 +1,184 @@
+@model ContactInquiry
+@{
+    ViewData["Title"] = "Liên Hệ & Vị Trí";
+}
+
+<div class="flex flex-col w-full">
+    <!-- Top Intro Section -->
+    <section class="relative w-full overflow-hidden bg-surface-container-low py-space-xl">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+                <span class="font-label-md text-label-md uppercase tracking-[0.25em] text-secondary mb-space-sm">
+                    Concierge &amp; Location
+                </span>
+                <h1 class="font-headline-lg text-headline-lg text-primary mb-space-md tracking-tight">
+                    LIÊN HỆ &amp; VỊ TRÍ
+                </h1>
+                <div class="w-12 h-0.5 bg-secondary-fixed-dim mx-auto mb-space-md"></div>
+                <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-lg">
+                    Mỗi cuộc hội ngộ đều bắt đầu từ một lời ngỏ. Đội ngũ Concierge của L'Atelier luôn sẵn sàng đón tiếp, lắng nghe và chuẩn bị trọn vẹn cho từng trải nghiệm ẩm thực, tiệc riêng tư hay sự kiện độc bản của quý khách.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-space-sm text-center">
+                    <span class="inline-flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider shadow-sm">
+                        <span class="material-symbols-outlined text-secondary text-[16px]">domain</span>
+                        Biệt thự Di sản 128 Đồng Khởi, Q.1
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider shadow-sm">
+                        <span class="material-symbols-outlined text-secondary text-[16px]">local_parking</span>
+                        Dịch vụ Valet Parking miễn phí
+                    </span>
+                    <span class="inline-flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider shadow-sm">
+                        <span class="material-symbols-outlined text-secondary text-[16px]">support_agent</span>
+                        Hỗ trợ Concierge 24/7
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Grid: Contact Details & Inquiry Form -->
+    <section class="w-full py-space-xl bg-surface">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+                <!-- Left Column: Detailed Information (5 cols) -->
+                <div class="lg:col-span-5 flex flex-col gap-space-lg">
+                    <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+                        <div class="flex items-center gap-space-sm mb-space-md">
+                            <div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+                                <span class="material-symbols-outlined text-[20px]">pin_drop</span>
+                            </div>
+                            <h2 class="font-headline-sm text-headline-sm text-primary mb-0">Vị Trí &amp; Đón Tiếp</h2>
+                        </div>
+                        <p class="font-body-md text-body-md text-on-surface mb-2 font-medium">
+                            128 Đồng Khởi, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh
+                        </p>
+                        <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-0">
+                            Góc giao Đồng Khởi &amp; Lê Thánh Tôn, ngay sau Nhà Hát Thành Phố. Biệt thự cổ thời Pháp thuộc với lối đi lát đá tự nhiên và sảnh tiếp đón riêng biệt.
+                        </p>
+                    </div>
+
+                    <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+                        <div class="flex items-center gap-space-sm mb-space-md">
+                            <div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+                                <span class="material-symbols-outlined text-[20px]">schedule</span>
+                            </div>
+                            <h2 class="font-headline-sm text-headline-sm text-primary mb-0">Thời Gian Phục Vụ</h2>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-space-sm bg-surface rounded-lg">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="font-title-md text-title-md text-primary">Bữa Trưa (Lunch)</span>
+                                    <span class="font-label-sm text-label-sm uppercase px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed">Thứ 6 – CN</span>
+                                </div>
+                                <p class="font-body-md text-sm text-on-surface-variant mb-0">11:30 – 14:00 (Nhận gọi món lần cuối: 13:15)</p>
+                            </div>
+                            <div class="p-space-sm bg-surface rounded-lg">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="font-title-md text-title-md text-primary">Bữa Tối (Dinner)</span>
+                                    <span class="font-label-sm text-label-sm uppercase px-2 py-0.5 rounded bg-primary text-on-primary">Thứ 3 – CN</span>
+                                </div>
+                                <p class="font-body-md text-sm text-on-surface-variant mb-0">17:30 – 22:30 (Nhận gọi món lần cuối: 21:00)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+                        <div class="flex items-center gap-space-sm mb-space-md">
+                            <div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+                                <span class="material-symbols-outlined text-[20px]">call</span>
+                            </div>
+                            <h2 class="font-headline-sm text-headline-sm text-primary mb-0">Đường Dây Trực Tiếp</h2>
+                        </div>
+                        <div class="flex flex-col gap-3 font-body-md">
+                            <div>
+                                <span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary block mb-1">Hotline &amp; WhatsApp Concierge</span>
+                                <a class="font-title-lg text-title-lg text-primary hover:text-secondary transition-colors font-medium text-decoration-none" href="tel:+842838299999">
+                                    +84 (0) 28 3829 9999
+                                </a>
+                            </div>
+                            <div>
+                                <span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary block mb-1">Đặt Bàn &amp; Tư Vấn Tiệc Riêng</span>
+                                <span class="text-on-surface">concierge@latelier-restaurant.vn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Inquiry Form Saving to SQL Server (7 cols) -->
+                <div class="lg:col-span-7">
+                    <div class="bg-surface-container p-space-lg md:p-space-xl rounded-xl shadow-md">
+                        <div class="mb-space-lg">
+                            <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-1">Đồng Hành Cùng Bạn</span>
+                            <h2 class="font-headline-md text-headline-md text-primary mb-2">Gửi Lời Ngỏ Đến Đội Ngũ Concierge</h2>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-0">
+                                Quý khách vui lòng cung cấp thông tin dự kiến. Quản lý sảnh tiệc của L'Atelier sẽ liên lạc phản hồi trong vòng tối đa 04 giờ làm việc.
+                            </p>
+                        </div>
+
+                        <form asp-controller="Home" asp-action="SubmitContact" method="post" class="flex flex-col gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+                                <div>
+                                    <label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2">Họ và Tên *</label>
+                                    <input asp-for="FullName" class="w-full px-4 py-3 bg-surface text-on-surface rounded placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md" placeholder="Quý danh của quý khách" required />
+                                </div>
+                                <div>
+                                    <label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2">Số Điện Thoại / WhatsApp *</label>
+                                    <input asp-for="Phone" class="w-full px-4 py-3 bg-surface text-on-surface rounded placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md" placeholder="+84 900 000 000" required />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2">Địa Chỉ Email *</label>
+                                <input asp-for="Email" type="email" class="w-full px-4 py-3 bg-surface text-on-surface rounded placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md" placeholder="name@domain.com" required />
+                            </div>
+
+                            <div>
+                                <label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-3">Mục Đích Liên Hệ Của Quý Khách</label>
+                                <div class="flex flex-wrap gap-2">
+                                    @foreach (var p in new[] { "Tiệc riêng tư (Private Dining)", "Sự kiện doanh nghiệp cao cấp", "Hợp tác truyền thông / Báo chí", "Phản hồi trải nghiệm vị giác" })
+                                    {
+                                        <label class="cursor-pointer">
+                                            <input type="radio" name="Purpose" value="@p" class="peer sr-only" checked="@(p == "Tiệc riêng tư (Private Dining)")" />
+                                            <span class="inline-block px-4 py-2 rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
+                                                @p
+                                            </span>
+                                        </label>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+                                <div>
+                                    <label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2">Số Lượng Khách Dự Kiến</label>
+                                    <select asp-for="EstimatedGuests" class="w-full px-4 py-3 bg-surface text-on-surface rounded focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md">
+                                        <option value="Bàn nhỏ (1 - 4 khách)">Bàn nhỏ (1 - 4 khách)</option>
+                                        <option value="Phòng Salon L'Amour (6 - 12 khách)">Phòng Salon L'Amour (6 - 12 khách)</option>
+                                        <option value="Grand Atelier Suite (12 - 24 khách)">Grand Atelier Suite (12 - 24 khách)</option>
+                                        <option value="Bao trọn không gian nhà hàng (> 30 khách)">Bao trọn không gian nhà hàng (&gt; 30 khách)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2">Thời Gian Dự Kiến</label>
+                                    <input asp-for="EventDate" type="date" class="w-full px-4 py-3 bg-surface text-on-surface rounded focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2">Lời Nhắn / Chi Tiết Thực Đơn &amp; Lưu Ý Dị Ứng</label>
+                                <textarea asp-for="Message" rows="4" class="w-full px-4 py-3 bg-surface text-on-surface rounded placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-secondary font-body-md text-body-md" placeholder="Quý khách có yêu cầu gì về rượu vang, phong cách bài trí hoa, hoặc dị ứng thực phẩm cần lưu ý..."></textarea>
+                            </div>
+
+                            <div class="pt-2">
+                                <button type="submit" class="w-full py-4 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-[0.15em] rounded hover:bg-secondary transition-colors duration-300 shadow-md flex items-center justify-center gap-2">
+                                    <span>GỬI YÊU CẦU ĐẾN CONCIERGE</span>
+                                    <span class="material-symbols-outlined text-[18px]">send</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

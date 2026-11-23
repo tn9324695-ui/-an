@@ -1,0 +1,115 @@
+@model AdminDashboardViewModel
+@{
+    ViewData["Title"] = "Cổng Điều Hành L'Atelier";
+}
+
+<section class="w-full py-10 px-margin bg-surface">
+    <div class="max-w-7xl mx-auto">
+        <!-- Thanh điều hướng Admin Atelier Espresso -->
+        <div class="bg-primary text-on-primary p-6 rounded-xl shadow-lg mb-8 flex flex-wrap items-center justify-between gap-4">
+            <div>
+                <span class="font-label-sm text-[10px] uppercase tracking-[0.25em] text-secondary-fixed">L'Atelier Executive Management</span>
+                <h1 class="font-headline-sm text-headline-sm text-surface-bright mb-0">BẢNG ĐIỀU KHIỂN QUẢN TRỊ &amp; CONCIERGE</h1>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <a asp-action="Index" class="px-3.5 py-2 rounded bg-secondary text-on-secondary font-label-sm text-label-sm uppercase text-decoration-none">Tổng quan</a>
+                <a asp-action="Reservations" class="px-3.5 py-2 rounded bg-primary-container hover:bg-secondary text-surface-bright font-label-sm text-label-sm uppercase text-decoration-none">Phiếu Đặt Bàn (@Model.TotalReservationsCount)</a>
+                <a asp-action="MenuItems" class="px-3.5 py-2 rounded bg-primary-container hover:bg-secondary text-surface-bright font-label-sm text-label-sm uppercase text-decoration-none">Thực Đơn (@Model.TotalMenuItemsCount)</a>
+                <a asp-action="Categories" class="px-3.5 py-2 rounded bg-primary-container hover:bg-secondary text-surface-bright font-label-sm text-label-sm uppercase text-decoration-none">Danh Mục</a>
+                <a asp-action="Tables" class="px-3.5 py-2 rounded bg-primary-container hover:bg-secondary text-surface-bright font-label-sm text-label-sm uppercase text-decoration-none">Sơ Đồ Bàn (@Model.AvailableTablesCount/@Model.TotalTablesCount)</a>
+                <a asp-action="Orders" class="px-3.5 py-2 rounded bg-primary-container hover:bg-secondary text-surface-bright font-label-sm text-label-sm uppercase text-decoration-none">Đơn Gọi Món (@Model.TotalOrdersCount)</a>
+            </div>
+        </div>
+
+        <!-- 4 Thẻ thống kê KPI -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-secondary shadow-sm">
+                <span class="font-label-sm text-label-sm uppercase text-secondary">Doanh thu dự kiến (Tiệc &amp; Đơn)</span>
+                <div class="font-headline-sm text-headline-sm text-primary mt-2">@Model.TotalRevenue.ToString("N0") ₫</div>
+                <span class="text-xs text-on-surface-variant">Tasting Menu &amp; À La Carte</span>
+            </div>
+            <div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary shadow-sm">
+                <span class="font-label-sm text-label-sm uppercase text-secondary">Phiếu đặt bàn 6 bước chờ duyệt</span>
+                <div class="font-headline-sm text-headline-sm text-primary mt-2">@Model.PendingReservationsCount / @Model.TotalReservationsCount phiếu</div>
+                <a asp-action="Reservations" class="text-xs text-secondary underline">Xếp bàn &amp; Xác nhận &rarr;</a>
+            </div>
+            <div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-secondary shadow-sm">
+                <span class="font-label-sm text-label-sm uppercase text-secondary">Không gian bàn trống tối nay</span>
+                <div class="font-headline-sm text-headline-sm text-primary mt-2">@Model.AvailableTablesCount / @Model.TotalTablesCount bàn</div>
+                <a asp-action="Tables" class="text-xs text-secondary underline">Điều phối sơ đồ bàn &rarr;</a>
+            </div>
+            <div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary shadow-sm">
+                <span class="font-label-sm text-label-sm uppercase text-secondary">Hội viên Privilège &amp; Yêu cầu</span>
+                <div class="font-headline-sm text-headline-sm text-primary mt-2">@Model.TotalMembersCount Hội viên</div>
+                <span class="text-xs text-on-surface-variant">@Model.PendingInquiriesCount lời ngỏ Concierge mới</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Danh sách Phiếu đặt bàn 6 bước mới nhất -->
+            <div class="lg:col-span-7 bg-surface-container-low p-6 rounded-xl shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="font-headline-sm text-headline-sm text-primary mb-0">Phiếu Đặt Bàn Trực Tuyến (6 Bước)</h2>
+                    <a asp-action="Reservations" class="font-label-sm text-label-sm uppercase text-secondary text-decoration-none">Xem tất cả &rarr;</a>
+                </div>
+                <div class="space-y-3">
+                    @foreach (var r in Model.RecentReservations)
+                    {
+                        <div class="bg-surface p-4 rounded-lg border border-outline-variant/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-label-sm text-secondary font-bold">#LA-@r.Id.ToString("D4")</span>
+                                    <span class="font-title-md text-primary">@r.CustomerName</span>
+                                    <span class="text-xs text-on-surface-variant">(@r.CustomerPhone)</span>
+                                </div>
+                                <div class="text-xs text-on-surface-variant mt-1">
+                                    <strong>@r.ReservationDate.ToString("dd/MM/yyyy") · @r.ReservationTime</strong> | @r.GuestGroupLabel | @r.SeatingArea
+                                </div>
+                                <div class="text-xs text-secondary mt-0.5">
+                                    @r.SelectedMenuPackage @(r.HasWinePairing ? "+ Grand Cru Wine Pairing" : "") (@r.EstimatedTotal.ToString("N0") ₫)
+                                </div>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <span class="px-2.5 py-1 rounded-full font-label-sm text-[10px] uppercase @(r.Status == "Đã xác nhận" ? "bg-emerald-700 text-white" : "bg-secondary-fixed text-on-secondary-fixed")">
+                                    @r.Status
+                                </span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Danh sách Lời ngỏ Concierge từ trang Liên Hệ -->
+            <div class="lg:col-span-5 bg-surface-container-low p-6 rounded-xl shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="font-headline-sm text-headline-sm text-primary mb-0">Lời Ngỏ Sự Kiện &amp; Tiệc Riêng</h2>
+                    <span class="font-label-sm text-label-sm uppercase text-secondary">Concierge Desk</span>
+                </div>
+                <div class="space-y-3">
+                    @foreach (var inq in Model.RecentInquiries)
+                    {
+                        <div class="bg-surface p-4 rounded-lg border border-outline-variant/30">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-title-md text-sm text-primary">@inq.FullName (@inq.Phone)</span>
+                                <span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-[10px] uppercase">@inq.Status</span>
+                            </div>
+                            <div class="text-xs text-secondary font-medium mb-1">@inq.Purpose · @inq.EstimatedGuests</div>
+                            <p class="text-xs text-on-surface-variant mb-2">@inq.Message</p>
+                            @if (inq.Status == "Mới tiếp nhận")
+                            {
+                                <form asp-action="UpdateInquiryStatus" method="post">
+                                    <input type="hidden" name="id" value="@inq.Id" />
+                                    <input type="hidden" name="status" value="Đã phản hồi" />
+                                    <button type="submit" class="px-3 py-1 rounded bg-primary text-on-primary font-label-sm text-[10px] uppercase hover:bg-secondary">
+                                        Đánh dấu Đã liên hệ phản hồi
+                                    </button>
+                                </form>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

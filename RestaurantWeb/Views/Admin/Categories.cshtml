@@ -1,0 +1,63 @@
+@model List<Category>
+@{
+    ViewData["Title"] = "Quản Lý Danh Mục";
+}
+
+<section class="w-full py-12 px-margin bg-surface">
+    <div class="max-w-7xl mx-auto">
+        <a asp-action="Index" class="font-label-sm text-label-sm uppercase text-secondary">&larr; Quay lại Bảng điều khiển</a>
+        <h1 class="font-headline-md text-headline-md text-primary mt-1 mb-6">Quản Lý Danh Mục Thực Đơn</h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-4 bg-surface-container-low p-6 rounded-xl shadow-sm">
+                <h3 class="font-headline-sm text-headline-sm text-primary mb-4">Thêm Danh Mục</h3>
+                <form asp-action="CreateCategory" method="post" class="space-y-4">
+                    <div>
+                        <label class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Tên danh mục *</label>
+                        <input type="text" name="name" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none" required />
+                    </div>
+                    <div>
+                        <label class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Mô tả</label>
+                        <textarea name="description" rows="2" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none"></textarea>
+                    </div>
+                    <div>
+                        <label class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Thứ tự</label>
+                        <input type="number" name="displayOrder" value="5" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none" />
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-primary text-on-primary font-label-md text-label-md uppercase rounded hover:bg-secondary">Thêm Danh Mục</button>
+                </form>
+            </div>
+
+            <div class="lg:col-span-8 bg-surface-container-low p-6 rounded-xl shadow-sm overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-outline-variant/40 font-label-sm text-label-sm uppercase text-secondary">
+                            <th class="py-3 px-3">Thứ tự</th>
+                            <th class="py-3 px-3">Tên danh mục</th>
+                            <th class="py-3 px-3">Số món</th>
+                            <th class="py-3 px-3 text-right">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant/25">
+                        @foreach (var c in Model)
+                        {
+                            <tr>
+                                <td class="py-3 px-3 text-primary">@c.DisplayOrder</td>
+                                <td class="py-3 px-3">
+                                    <div class="font-title-md text-primary">@c.Name</div>
+                                    <div class="text-xs text-on-surface-variant">@c.Description</div>
+                                </td>
+                                <td class="py-3 px-3 text-sm text-secondary">@c.MenuItems.Count món</td>
+                                <td class="py-3 px-3 text-right">
+                                    <form asp-action="DeleteCategory" asp-route-id="@c.Id" method="post">
+                                        <button type="submit" class="px-3 py-1 rounded bg-error-container text-on-error-container font-label-sm text-[10px] uppercase" @(c.MenuItems.Any() ? "disabled" : "")>Xóa</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

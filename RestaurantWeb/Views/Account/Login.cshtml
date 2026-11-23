@@ -1,0 +1,231 @@
+@{
+    ViewData["Title"] = "Đăng Nhập Hội Viên L'Atelier Privilège";
+}
+
+<section class="relative w-full px-margin py-space-lg md:py-space-xl">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter items-stretch">
+        <!-- Cột bên trái: Trải nghiệm thị giác & Thẻ Đặc Quyền Hội Viên -->
+        <div class="lg:col-span-6 flex flex-col justify-between p-space-lg md:p-space-xl bg-surface-container rounded-xl shadow-sm relative overflow-hidden">
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
+            <div class="relative z-10">
+                <div class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-bright shadow-sm mb-space-md">
+                    <span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+                    <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-medium">Hội Viên Thượng Khách</span>
+                </div>
+                <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-space-xs">
+                    L'Atelier Privilège
+                </h1>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-lg">
+                    Cánh cửa dẫn lối vào thế giới phong vị độc bản, sự tĩnh lặng riêng tư cùng lòng hiếu khách chuẩn mực dành riêng cho quý vị.
+                </p>
+
+                <!-- Thẻ thành viên Black & Warm Bronze mô phỏng -->
+                <div class="relative w-full aspect-[1.58/1] rounded-xl bg-gradient-to-br from-primary via-primary-container to-tertiary p-space-md md:p-space-lg text-on-primary shadow-xl flex flex-col justify-between overflow-hidden group">
+                    <div class="absolute -top-24 -left-24 w-60 h-60 bg-secondary/20 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-700 pointer-events-none"></div>
+                    <div class="flex items-center justify-between relative z-10">
+                        <div class="flex flex-col">
+                            <span class="font-headline-sm text-headline-sm tracking-[0.15em] text-primary-fixed uppercase">L'Atelier</span>
+                            <span class="font-label-sm text-label-sm text-secondary-fixed tracking-[0.25em] uppercase">Privilège Elite</span>
+                        </div>
+                        <div class="flex items-center gap-space-xs">
+                            <span class="material-symbols-outlined text-secondary-fixed text-[26px]">contactless</span>
+                            <span class="material-symbols-outlined text-secondary-fixed text-[22px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                        </div>
+                    </div>
+                    <div class="relative z-10 my-auto">
+                        <div class="w-11 h-8 rounded bg-gradient-to-tr from-secondary-container via-secondary-fixed to-primary-fixed-dim mb-space-sm opacity-90 shadow-sm flex items-center justify-center">
+                            <div class="w-7 h-5 rounded-xs border-0 bg-primary/20 flex flex-col justify-around py-0.5 px-1">
+                                <div class="h-0.5 bg-primary/40 rounded-full w-full"></div>
+                                <div class="h-0.5 bg-primary/40 rounded-full w-full"></div>
+                            </div>
+                        </div>
+                        <p class="font-headline-sm text-headline-sm tracking-[0.22em] text-primary-fixed font-light select-none mb-0">
+                            LA • 8899 • VIP • 01
+                        </p>
+                    </div>
+                    <div class="flex items-end justify-between relative z-10 pt-space-xs">
+                        <div>
+                            <p class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-fixed-dim mb-0">Thành Viên Danh Dự</p>
+                            <p class="font-title-md text-title-md text-primary-fixed uppercase tracking-wide mb-0">M. Philippe Le Tran</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-fixed-dim mb-0">Hiệu Lực</p>
+                            <p class="font-label-md text-label-md text-primary-fixed mb-0">12 / 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 Đặc quyền then chốt -->
+            <div class="relative z-10 mt-space-lg pt-space-md">
+                <p class="font-label-md text-label-md uppercase tracking-[0.2em] text-secondary font-medium mb-space-sm">
+                    Đặc Quyền Dành Riêng Cho Quý Vị
+                </p>
+                <div class="grid grid-cols-2 gap-space-md">
+                    <div class="flex items-start gap-space-xs">
+                        <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center shrink-0 shadow-sm text-secondary">
+                            <span class="material-symbols-outlined text-[15px]">table_restaurant</span>
+                        </div>
+                        <span class="font-body-md text-body-md text-on-surface">Đặt bàn ưu tiên &amp; giữ chỗ đỉnh giờ</span>
+                    </div>
+                    <div class="flex items-start gap-space-xs">
+                        <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center shrink-0 shadow-sm text-secondary">
+                            <span class="material-symbols-outlined text-[15px]">door_open</span>
+                        </div>
+                        <span class="font-body-md text-body-md text-on-surface">Phòng tiệc Salon Privé riêng tư</span>
+                    </div>
+                    <div class="flex items-start gap-space-xs">
+                        <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center shrink-0 shadow-sm text-secondary">
+                            <span class="material-symbols-outlined text-[15px]">wine_bar</span>
+                        </div>
+                        <span class="font-body-md text-body-md text-on-surface">Sommelier tuyển chọn niên vụ hiếm</span>
+                    </div>
+                    <div class="flex items-start gap-space-xs">
+                        <div class="w-6 h-6 rounded-full bg-surface-bright flex items-center justify-center shrink-0 shadow-sm text-secondary">
+                            <span class="material-symbols-outlined text-[15px]">card_giftcard</span>
+                        </div>
+                        <span class="font-body-md text-body-md text-on-surface">Món quà Thượng Hạng ngày sinh nhật</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cột bên phải: Khung Đăng nhập tinh tế -->
+        <div class="lg:col-span-6 flex flex-col justify-center px-space-md py-space-lg md:px-space-xl bg-surface-container-lowest rounded-xl shadow-md">
+            <div class="mb-space-lg text-center md:text-left">
+                <span class="font-label-sm text-label-sm uppercase tracking-[0.25em] text-secondary">Cổng Thông Tin Bảo Mật</span>
+                <h2 class="font-headline-md text-headline-md text-primary tracking-tight mt-space-xs">Chào Mừng Quý Khách Trở Lại</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-space-xs mb-0">Vui lòng xác thực tài khoản để truy cập lịch sử đặt tiệc và ưu đãi cá nhân.</p>
+            </div>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="p-3 mb-4 rounded-lg bg-error-container text-on-error-container text-sm flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">error</span>
+                    <span>@ViewBag.Error</span>
+                </div>
+            }
+
+            <!-- Bộ chuyển đổi Tab Phương thức Đăng Nhập -->
+            <div class="relative w-full p-1 bg-surface-container-low rounded-lg mb-space-lg flex items-center">
+                <button class="flex-1 py-space-xs px-space-sm rounded font-label-md text-label-md uppercase tracking-wider text-primary bg-surface-container-lowest shadow-sm transition-all duration-200 text-center font-medium" id="tab-id-btn" type="button">
+                    Số Điện Thoại / Thẻ Hội Viên
+                </button>
+                <button class="flex-1 py-space-xs px-space-sm rounded font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all duration-200 text-center" id="tab-email-btn" type="button">
+                    Email Danh Dự
+                </button>
+            </div>
+
+            <form asp-controller="Account" asp-action="Login" method="post" class="space-y-space-md">
+                <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+                <div class="space-y-1">
+                    <div class="flex items-center justify-between">
+                        <label class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-medium" for="identity-input" id="identity-label">
+                            Số Thẻ Thành Viên Hoặc Điện Thoại
+                        </label>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant" id="identity-hint">Ví dụ: LA-8899-VIP-01</span>
+                    </div>
+                    <div class="relative flex items-center">
+                        <span class="material-symbols-outlined absolute left-space-md text-on-surface-variant text-[20px]">badge</span>
+                        <input class="w-full pl-11 pr-space-md py-space-sm bg-surface-container-low text-on-surface font-body-md text-body-md rounded placeholder:text-outline/60 focus:outline-none focus:bg-surface-bright focus:shadow-[0_0_0_2px_#765844] transition-all duration-200" id="identity-input" name="email" placeholder="LA-8899-VIP-01 hoặc admin@latelier.vn" required type="text" />
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <div class="flex items-center justify-between">
+                        <label class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-medium" for="password-input">
+                            Mật Khẩu / Mã PIN Bảo Mật
+                        </label>
+                    </div>
+                    <div class="relative flex items-center">
+                        <span class="material-symbols-outlined absolute left-space-md text-on-surface-variant text-[20px]">lock</span>
+                        <input class="w-full pl-11 pr-11 py-space-sm bg-surface-container-low text-on-surface font-body-md text-body-md rounded placeholder:text-outline/60 focus:outline-none focus:bg-surface-bright focus:shadow-[0_0_0_2px_#765844] transition-all duration-200" id="password-input" name="password" placeholder="••••••" required type="password" />
+                        <button aria-label="Hiển thị mật khẩu" class="absolute right-space-md text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-1" id="toggle-pw-btn" type="button">
+                            <span class="material-symbols-outlined text-[20px]" id="pw-visibility-icon">visibility</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="pt-space-xs">
+                    <button class="w-full py-3 px-space-md bg-primary hover:bg-secondary text-on-primary font-label-md text-label-md uppercase tracking-[0.2em] rounded shadow-md transition-all duration-200 flex items-center justify-center gap-space-xs group" type="submit">
+                        <span>Đăng Nhập Hội Viên</span>
+                        <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Hộp tài khoản mẫu phục vụ bảo vệ đồ án -->
+            <div class="mt-6 p-4 rounded-xl bg-surface-container-low border border-outline-variant/40">
+                <div class="font-label-sm text-label-sm uppercase tracking-wider text-secondary mb-2 flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px]">verified_user</span>
+                    <span>Điền nhanh tài khoản Demo (Bảo vệ đồ án):</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <button type="button" onclick="fillDemo('admin@latelier.vn', '123456')" class="px-3 py-2 rounded bg-primary text-on-primary font-label-sm text-[10px] uppercase tracking-wider hover:bg-secondary transition-colors text-center">
+                        Admin (Alain Vũ)
+                    </button>
+                    <button type="button" onclick="fillDemo('concierge@latelier.vn', '123456')" class="px-3 py-2 rounded bg-surface-container-high text-primary font-label-sm text-[10px] uppercase tracking-wider hover:bg-secondary-fixed transition-colors text-center">
+                        Staff (Sommelier)
+                    </button>
+                    <button type="button" onclick="fillDemo('LA-8899-VIP-01', '123456')" class="px-3 py-2 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-[10px] uppercase tracking-wider hover:bg-secondary hover:text-on-secondary transition-colors text-center">
+                        Hội Viên VIP
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-space-lg pt-space-md bg-surface-container-low rounded-lg p-space-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+                <div>
+                    <p class="font-title-md text-title-md text-primary font-medium mb-0">Chưa kích hoạt Thẻ Hội Viên?</p>
+                    <p class="font-body-md text-xs text-on-surface-variant mb-0">Kích hoạt mã thư mời hoặc đăng ký hồ sơ Hội viên mới.</p>
+                </div>
+                <a asp-controller="Account" asp-action="Register" class="shrink-0 px-space-md py-2 bg-primary hover:bg-secondary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded shadow-sm transition-colors text-center text-decoration-none">
+                    Kích Hoạt / Đăng Ký
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        function fillDemo(id, pw) {
+            document.getElementById('identity-input').value = id;
+            document.getElementById('password-input').value = pw;
+        }
+
+        (function initLoginInteractions() {
+            const tabIdBtn = document.getElementById('tab-id-btn');
+            const tabEmailBtn = document.getElementById('tab-email-btn');
+            const identityLabel = document.getElementById('identity-label');
+            const identityInput = document.getElementById('identity-input');
+            const togglePwBtn = document.getElementById('toggle-pw-btn');
+            const passwordInput = document.getElementById('password-input');
+            const pwIcon = document.getElementById('pw-visibility-icon');
+
+            if (tabIdBtn && tabEmailBtn) {
+                tabIdBtn.addEventListener('click', () => {
+                    tabIdBtn.className = "flex-1 py-space-xs px-space-sm rounded font-label-md text-label-md uppercase tracking-wider text-primary bg-surface-container-lowest shadow-sm transition-all duration-200 text-center font-medium";
+                    tabEmailBtn.className = "flex-1 py-space-xs px-space-sm rounded font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all duration-200 text-center";
+                    identityLabel.textContent = "Số Thẻ Thành Viên Hoặc Điện Thoại";
+                    identityInput.placeholder = "LA-8899-VIP-01 hoặc 0987654321";
+                });
+
+                tabEmailBtn.addEventListener('click', () => {
+                    tabEmailBtn.className = "flex-1 py-space-xs px-space-sm rounded font-label-md text-label-md uppercase tracking-wider text-primary bg-surface-container-lowest shadow-sm transition-all duration-200 text-center font-medium";
+                    tabIdBtn.className = "flex-1 py-space-xs px-space-sm rounded font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all duration-200 text-center";
+                    identityLabel.textContent = "Địa Chỉ Email Danh Dự";
+                    identityInput.placeholder = "admin@latelier.vn hoặc khachhang@latelier.vn";
+                });
+            }
+
+            if (togglePwBtn && passwordInput && pwIcon) {
+                togglePwBtn.addEventListener('click', () => {
+                    const isPassword = passwordInput.getAttribute('type') === 'password';
+                    passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+                    pwIcon.textContent = isPassword ? 'visibility_off' : 'visibility';
+                });
+            }
+        })();
+    </script>
+}
+

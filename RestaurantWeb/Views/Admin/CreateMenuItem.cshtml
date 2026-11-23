@@ -1,0 +1,76 @@
+@model MenuItem
+@{
+    ViewData["Title"] = "Thêm Món Ăn Mới";
+    var categories = ViewBag.Categories as List<Category> ?? new List<Category>();
+}
+
+<section class="w-full py-12 px-margin bg-surface">
+    <div class="max-w-3xl mx-auto bg-surface-container-low p-space-lg rounded-xl shadow-sm">
+        <a asp-action="MenuItems" class="font-label-sm text-label-sm uppercase text-secondary">&larr; Quay lại Thực đơn</a>
+        <h1 class="font-headline-md text-headline-md text-primary mt-1 mb-6">Thêm Món Ăn Mới Vào Thực Đơn L'Atelier</h1>
+        <form asp-action="CreateMenuItem" method="post" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label asp-for="Name" class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1"></label>
+                    <input asp-for="Name" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" required />
+                </div>
+                <div>
+                    <label asp-for="FrenchSubtitle" class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1"></label>
+                    <input asp-for="FrenchSubtitle" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label asp-for="CategoryId" class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1"></label>
+                    <select asp-for="CategoryId" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none" required>
+                        @foreach (var c in categories)
+                        {
+                            <option value="@c.Id">@c.Name</option>
+                        }
+                    </select>
+                </div>
+                <div>
+                    <label asp-for="Price" class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1"></label>
+                    <input asp-for="Price" type="number" step="1000" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none" required />
+                </div>
+                <div>
+                    <label asp-for="DietaryTags" class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1"></label>
+                    <input asp-for="DietaryTags" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none" placeholder="GF, Nuts, Signature..." />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label asp-for="ImageUrl" class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1"></label>
+                    <input asp-for="ImageUrl" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none" />
+                </div>
+                <div>
+                    <label asp-for="WinePairingNote" class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1"></label>
+                    <input asp-for="WinePairingNote" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none" />
+                </div>
+            </div>
+
+            <div>
+                <label asp-for="Description" class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1"></label>
+                <textarea asp-for="Description" rows="3" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none"></textarea>
+            </div>
+
+            <div class="flex gap-6 pt-2">
+                <label class="flex items-center gap-2 text-sm text-on-surface cursor-pointer">
+                    <input asp-for="IsFeatured" class="accent-primary w-4 h-4" />
+                    <span>Tuyệt tác theo mùa (Hiển thị Trang chủ)</span>
+                </label>
+                <label class="flex items-center gap-2 text-sm text-on-surface cursor-pointer">
+                    <input asp-for="IsAvailable" class="accent-primary w-4 h-4" />
+                    <span>Đang phục vụ</span>
+                </label>
+            </div>
+
+            <div class="flex gap-3 pt-4">
+                <button type="submit" class="px-6 py-3 bg-primary text-on-primary font-label-md text-label-md uppercase rounded hover:bg-secondary">Lưu Món Ăn</button>
+                <a asp-action="MenuItems" class="px-6 py-3 bg-surface text-primary font-label-md text-label-md uppercase rounded border border-outline-variant">Hủy</a>
+            </div>
+        </form>
+    </div>
+</section>

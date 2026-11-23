@@ -1,0 +1,73 @@
+@model Reservation
+@{
+    ViewData["Title"] = "Xác Nhận Phiếu Đặt Bàn";
+}
+
+<section class="w-full py-16 px-margin bg-surface">
+    <div class="max-w-3xl mx-auto">
+        <div class="bg-surface-container-low rounded-2xl p-8 md:p-12 shadow-xl border border-outline-variant/40">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 rounded-full bg-secondary-fixed text-secondary mx-auto flex items-center justify-center mb-4">
+                    <span class="material-symbols-outlined text-[36px]">verified</span>
+                </div>
+                <span class="font-label-sm text-label-sm uppercase tracking-[0.25em] text-secondary">L'Atelier Concierge Desk</span>
+                <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-md text-primary mt-1 mb-2">Đã Tiếp Nhận Yêu Cầu Đặt Tiệc</h1>
+                <p class="font-body-md text-on-surface-variant mb-0">
+                    Kính chào <strong>@Model.CustomerName</strong>, bộ phận Lễ tân Thượng khách đã lưu phiếu đặt bàn của quý vị.
+                </p>
+            </div>
+
+            <div class="bg-primary text-on-primary rounded-xl p-6 md:p-8 mb-8 space-y-3">
+                <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                    <span class="font-label-sm uppercase tracking-widest text-primary-fixed-dim">Mã Phiếu Đặt Tiệc</span>
+                    <span class="font-headline-sm text-secondary-fixed">#LA-@Model.Id.ToString("D4")</span>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-on-primary-container">Thực khách:</span>
+                    <span class="font-medium text-surface-bright">@Model.CustomerName (@Model.CustomerPhone)</span>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-on-primary-container">Ngày &amp; Khung giờ:</span>
+                    <span class="font-medium text-surface-bright">@Model.ReservationDate.ToString("dd/MM/yyyy") · @Model.ReservationTime</span>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-on-primary-container">Số lượng khách:</span>
+                    <span class="font-medium text-surface-bright">@Model.GuestGroupLabel (@Model.NumberOfGuests người)</span>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-on-primary-container">Không gian ngồi:</span>
+                    <span class="font-medium text-surface-bright">@Model.SeatingArea @(Model.DiningTable != null ? $"({Model.DiningTable.TableNumber})" : "")</span>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-on-primary-container">Trải nghiệm ẩm thực:</span>
+                    <span class="font-medium text-secondary-fixed">@Model.SelectedMenuPackage</span>
+                </div>
+                @if (Model.HasWinePairing)
+                {
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-on-primary-container">Sommelier Wine Pairing:</span>
+                        <span class="font-medium text-secondary-fixed">Có (+1.250.000₫ / khách)</span>
+                    </div>
+                }
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-on-primary-container">Dịp đặc biệt:</span>
+                    <span class="font-medium text-surface-bright">@Model.Occasion</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-white/10 pt-3">
+                    <span class="font-label-sm uppercase tracking-wider text-primary-fixed-dim">Tạm tính bàn tiệc:</span>
+                    <span class="font-headline-sm text-secondary-fixed">@(Model.EstimatedTotal > 0 ? Model.EstimatedTotal.ToString("N0") + " ₫" : "Theo thực đơn À La Carte")</span>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a asp-controller="Home" asp-action="Menu" class="px-6 py-3 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded hover:bg-secondary transition-colors text-decoration-none">
+                    Khám Phá Thực Đơn
+                </a>
+                <a asp-action="Lookup" asp-route-phone="@Model.CustomerPhone" class="px-6 py-3 bg-surface border border-outline-variant text-primary font-label-md text-label-md uppercase tracking-wider rounded hover:bg-surface-container transition-colors text-decoration-none">
+                    Tra Cứu Phiếu Đặt Tiệc
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,65 @@
+@model List<DiningTable>
+@{
+    ViewData["Title"] = "Sơ Đồ Không Gian Bàn Tiệc";
+}
+
+<section class="w-full py-12 px-margin bg-surface">
+    <div class="max-w-7xl mx-auto">
+        <a asp-action="Index" class="font-label-sm text-label-sm uppercase text-secondary">&larr; Quay lại Bảng điều khiển</a>
+        <h1 class="font-headline-md text-headline-md text-primary mt-1 mb-6">Điều Phối Sơ Đồ Bàn &amp; Salon Privé</h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-4 bg-surface-container-low p-6 rounded-xl shadow-sm">
+                <h3 class="font-headline-sm text-headline-sm text-primary mb-4">Thêm Bàn Tiệc Mới</h3>
+                <form asp-action="CreateTable" method="post" class="space-y-4">
+                    <div>
+                        <label class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Mã / Tên bàn *</label>
+                        <input type="text" name="tableNumber" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none" placeholder="VD: Bàn Cửa Sổ W-04" required />
+                    </div>
+                    <div>
+                        <label class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Không gian</label>
+                        <select name="area" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none">
+                            <option value="Bàn Cạnh Cửa Sổ Hướng Vườn">Bàn Cạnh Cửa Sổ Hướng Vườn</option>
+                            <option value="Bàn Trung Tâm Ấm Cúng">Bàn Trung Tâm Ấm Cúng</option>
+                            <option value="Chef's Counter (Quầy Bếp Trưởng)">Chef's Counter (Quầy Bếp Trưởng)</option>
+                            <option value="Phòng Riêng VIP Atelier Salon">Phòng Riêng VIP Atelier Salon</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Sức chứa (Khách)</label>
+                        <input type="number" name="capacity" value="4" min="1" max="30" class="w-full px-4 py-2.5 bg-surface rounded text-on-surface focus:outline-none" required />
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-primary text-on-primary font-label-md text-label-md uppercase rounded hover:bg-secondary">Thêm Bàn</button>
+                </form>
+            </div>
+
+            <div class="lg:col-span-8 bg-surface-container-low p-6 rounded-xl shadow-sm">
+                @foreach (var group in Model.GroupBy(t => t.Area))
+                {
+                    <h4 class="font-headline-sm text-lg text-primary border-b border-outline-variant/40 pb-2 mb-3">@group.Key</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                        @foreach (var t in group)
+                        {
+                            var statusClass = t.Status == "Trống" ? "status-empty" : (t.Status == "Đã đặt" ? "status-reserved" : "status-occupied");
+                            <div class="table-node @statusClass">
+                                <div class="flex justify-between items-center mb-3">
+                                    <div>
+                                        <div class="font-title-md text-primary">@t.TableNumber</div>
+                                        <div class="text-xs text-on-surface-variant">Sức chứa: @t.Capacity khách</div>
+                                    </div>
+                                    <span class="px-2.5 py-0.5 rounded font-label-sm text-[10px] uppercase bg-surface-container text-primary">@t.Status</span>
+                                </div>
+                                <form asp-action="UpdateTableStatus" method="post" class="grid grid-cols-3 gap-1.5">
+                                    <input type="hidden" name="id" value="@t.Id" />
+                                    <button type="submit" name="status" value="Trống" class="py-1.5 rounded font-label-sm text-[10px] uppercase bg-surface text-primary border border-outline-variant/60 hover:bg-secondary-fixed disabled:opacity-40" @(t.Status == "Trống" ? "disabled" : "")>Trống</button>
+                                    <button type="submit" name="status" value="Đã đặt" class="py-1.5 rounded font-label-sm text-[10px] uppercase bg-surface text-secondary border border-outline-variant/60 hover:bg-secondary-fixed disabled:opacity-40" @(t.Status == "Đã đặt" ? "disabled" : "")>Đã đặt</button>
+                                    <button type="submit" name="status" value="Đang phục vụ" class="py-1.5 rounded font-label-sm text-[10px] uppercase bg-surface text-error border border-outline-variant/60 hover:bg-error-container disabled:opacity-40" @(t.Status == "Đang phục vụ" ? "disabled" : "")>Phục vụ</button>
+                                </form>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,75 @@
+@model CheckoutViewModel
+@{
+    ViewData["Title"] = "Xác Nhận Gọi Món Trước";
+}
+
+<section class="w-full py-12 px-margin bg-surface">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="font-headline-md text-headline-md text-primary mb-6">Xác Nhận Thông Tin Phục Vụ Thực Đơn</h1>
+        <form asp-action="Checkout" method="post" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-7 bg-surface-container-low p-6 rounded-xl space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="font-label-sm text-label-sm uppercase text-on-surface-variant block mb-1">Danh xưng &amp; Họ tên *</label>
+                        <input asp-for="OrderInfo.CustomerName" class="w-full px-4 py-3 rounded bg-surface" required />
+                    </div>
+                    <div>
+                        <label class="font-label-sm text-label-sm uppercase text-on-surface-variant block mb-1">Số điện thoại *</label>
+                        <input asp-for="OrderInfo.CustomerPhone" class="w-full px-4 py-3 rounded bg-surface" required />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="font-label-sm text-label-sm uppercase text-on-surface-variant block mb-1">Hình thức phục vụ</label>
+                        <select asp-for="OrderInfo.OrderType" class="w-full px-4 py-3 rounded bg-surface">
+                            <option value="Dùng tại bàn L'Atelier">Chuẩn bị trước cho bàn đặt tại L'Atelier</option>
+                            <option value="Giao tận nơi (Private Delivery)">Giao tận nơi (Private Concierge Delivery)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="font-label-sm text-label-sm uppercase text-on-surface-variant block mb-1">Phương thức thanh toán</label>
+                        <select asp-for="OrderInfo.PaymentMethod" class="w-full px-4 py-3 rounded bg-surface">
+                            <option value="Thanh toán tại bàn">Thanh toán tại bàn tiệc</option>
+                            <option value="Chuyển khoản QR">Chuyển khoản Ngân hàng</option>
+                            <option value="Thẻ Hội viên Privilège">Khấu trừ hạn mức Hội viên Privilège</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="font-label-sm text-label-sm uppercase text-on-surface-variant block mb-1">Mã phiếu đặt bàn / Địa chỉ nhận *</label>
+                    <input asp-for="OrderInfo.CustomerAddress" class="w-full px-4 py-3 rounded bg-surface" required />
+                </div>
+
+                <div>
+                    <label class="font-label-sm text-label-sm uppercase text-on-surface-variant block mb-1">Ghi chú cho Bếp trưởng &amp; Sommelier</label>
+                    <textarea asp-for="OrderInfo.Note" rows="3" class="w-full px-4 py-3 rounded bg-surface"></textarea>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 bg-primary text-on-primary p-6 rounded-xl shadow-xl flex flex-col justify-between">
+                <div>
+                    <h3 class="font-headline-sm text-surface-bright mb-4">Thực Đơn Đã Chọn</h3>
+                    <ul class="space-y-3 pl-0 list-none border-b border-white/10 pb-4 mb-4">
+                        @foreach (var item in Model.CartItems)
+                        {
+                            <li class="flex justify-between text-sm">
+                                <span>@item.Quantity x @item.Name</span>
+                                <span class="text-secondary-fixed">@item.SubTotal.ToString("N0") ₫</span>
+                            </li>
+                        }
+                    </ul>
+                    <div class="flex justify-between items-center text-lg font-medium mb-6">
+                        <span>Tổng thanh toán:</span>
+                        <span class="font-headline-sm text-secondary-fixed">@Model.TotalAmount.ToString("N0") ₫</span>
+                    </div>
+                </div>
+                <button type="submit" class="w-full py-4 bg-secondary text-on-secondary font-label-md text-label-md uppercase tracking-wider rounded hover:opacity-90">
+                    Hoàn Tất Đặt Món
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+

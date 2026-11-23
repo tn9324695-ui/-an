@@ -1,0 +1,587 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-container": "#785b47", "surface-container-low": "#f6f3ee", "on-primary-container": "#9a8479", "secondary": "#765844", "secondary-fixed-dim": "#e5bfa6", "surface-tint": "#6d5a50", "surface-container-high": "#ebe8e3", "surface-container-highest": "#e5e2dd", "surface": "#fcf9f4", "primary": "#130803", "on-primary-fixed-variant": "#54433a", "on-primary-fixed": "#261911", "on-error": "#ffffff", "surface-container-lowest": "#ffffff", "on-secondary-fixed-variant": "#5c412e", "tertiary-container": "#282016", "on-tertiary-container": "#948678", "surface-container": "#f0ede9", "on-surface": "#1c1c19", "inverse-surface": "#31302d", "background": "#fcf9f4", "primary-fixed": "#f7ddd0", "tertiary-fixed": "#f1e0cf", "secondary-fixed": "#ffdcc6", "outline": "#80756f", "on-surface-variant": "#4e4540", "inverse-on-surface": "#f3f0eb", "surface-bright": "#fcf9f4", "surface-variant": "#e5e2dd", "surface-dim": "#dcdad5", "on-tertiary-fixed-variant": "#504539", "error-container": "#ffdad6", "inverse-primary": "#dac2b5", "on-tertiary": "#ffffff", "primary-container": "#2c1e16", "on-secondary-fixed": "#2b1707", "tertiary-fixed-dim": "#d4c4b4", "error": "#ba1a1a", "on-secondary": "#ffffff", "outline-variant": "#d2c4bd", "primary-fixed-dim": "#dac2b5", "on-error-container": "#93000a", "tertiary": "#100903", "on-primary": "#ffffff", "on-tertiary-fixed": "#221a10", "on-background": "#1c1c19", "secondary-container": "#fdd5bc" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-lg": "2rem", "space-xs": "0.25rem", "space-xl": "4rem", "gutter": "1.5rem", "space-md": "1rem", "space-sm": "0.5rem", "margin": "2rem" }, "fontFamily": { "headline-lg": ["Playfair Display"], "headline-lg-mobile": ["Playfair Display"], "title-md": ["DM Sans"], "display-lg": ["Playfair Display"], "body-lg": ["DM Sans"], "headline-md": ["Playfair Display"], "display-lg-mobile": ["Playfair Display"], "label-md": ["DM Sans"], "title-lg": ["DM Sans"], "headline-sm": ["Playfair Display"], "body-md": ["DM Sans"], "label-sm": ["DM Sans"] }, "fontSize": { "headline-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "headline-md": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "display-lg-mobile": ["40px", { "lineHeight": "46px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "500" }], "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "500" }], "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.14em", "fontWeight": "500" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+  h1, h2, h3, h4, .font-headline-lg-mobile, .font-headline-sm, .font-headline-md, .font-headline-lg, .font-serif {
+    font-family: 'Cormorant Garamond', serif !important;
+  }
+</style></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(44,30,22,0.06)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Mở danh mục" class="w-11 h-11 flex items-center justify-center text-primary active:scale-95 transition-transform"><span class="material-symbols-outlined text-[24px]">menu</span></button><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">L'Atelier</span><span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mt-space-xs">Haute Cuisine</span></div></div><div class="flex items-center gap-space-sm"><a aria-label="Gọi điện đặt bàn" class="w-11 h-11 flex items-center justify-center text-secondary active:scale-95 transition-transform" href="tel:+842838228888"><span class="material-symbols-outlined text-[20px]">call</span></a><a class="h-9 px-space-md flex items-center justify-center bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded-lg active:bg-secondary transition-colors" data-path="dat-ban" href="#">Đặt bàn</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-20 bg-surface min-h-screen"><div class="flex flex-col w-full pb-32">
+<!-- Booking Header Banner -->
+<section class="px-gutter pt-space-md pb-space-lg flex flex-col gap-space-xs">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm tracking-widest uppercase">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+        Michelin Guide 2024
+      </span>
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Intimate Dining</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mt-1 tracking-tight">
+      Đặt Bàn Trực Tuyến
+    </h1>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">info</span>
+      Giới hạn 14 bàn mỗi ca tiệc để trọn vẹn từng khoảnh khắc.
+    </p>
+</section>
+<!-- Interactive Multi-Step Stepper & Form -->
+<form class="px-gutter flex flex-col gap-space-md" id="reservationForm" onsubmit="event.preventDefault();">
+<!-- STEP 1: Ngày & Khung giờ -->
+<div class="step-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-300">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleStep(1)">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md">1</div>
+<div>
+<h2 class="font-title-md text-title-md text-primary">Thời Gian Phục Vụ</h2>
+<p class="font-label-sm text-label-sm text-secondary" id="summaryDateLabel">Hôm nay, 24 Th10 • 19:00 Tối</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200" id="chevron-1">expand_less</span>
+</div>
+<div class="mt-space-md flex flex-col gap-space-md" id="step-content-1">
+<!-- Horizontal Scrollable Date Picker -->
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-2">Chọn ngày tháng</span>
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none -mx-1 px-1">
+<button class="date-btn flex-shrink-0 flex flex-col items-center justify-center w-14 py-2.5 rounded-lg bg-primary text-on-primary shadow-sm transition-all" onclick="selectDate(this, '24 Th10', 'Hôm nay')" type="button">
+<span class="font-label-sm text-label-sm opacity-80">Nay</span>
+<span class="font-title-lg text-title-lg font-bold leading-tight">24</span>
+<span class="font-label-sm text-label-sm opacity-80">T5</span>
+</button>
+<button class="date-btn flex-shrink-0 flex flex-col items-center justify-center w-14 py-2.5 rounded-lg bg-surface-container-low text-on-surface transition-all" onclick="selectDate(this, '25 Th10', 'Ngày mai')" type="button">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mai</span>
+<span class="font-title-lg text-title-lg font-bold leading-tight">25</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">T6</span>
+</button>
+<button class="date-btn flex-shrink-0 flex flex-col items-center justify-center w-14 py-2.5 rounded-lg bg-surface-container-low text-on-surface transition-all" onclick="selectDate(this, '26 Th10', 'Thứ Bảy')" type="button">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Th 7</span>
+<span class="font-title-lg text-title-lg font-bold leading-tight">26</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">T7</span>
+</button>
+<button class="date-btn flex-shrink-0 flex flex-col items-center justify-center w-14 py-2.5 rounded-lg bg-surface-container-low text-on-surface transition-all" onclick="selectDate(this, '27 Th10', 'Chủ Nhật')" type="button">
+<span class="font-label-sm text-label-sm text-on-surface-variant">CN</span>
+<span class="font-title-lg text-title-lg font-bold leading-tight">27</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">CN</span>
+</button>
+<button class="date-btn flex-shrink-0 flex flex-col items-center justify-center w-14 py-2.5 rounded-lg bg-surface-container-low text-on-surface transition-all" onclick="selectDate(this, '28 Th10', 'Thứ Hai')" type="button">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Th 2</span>
+<span class="font-title-lg text-title-lg font-bold leading-tight">28</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">T2</span>
+</button>
+<button class="date-btn flex-shrink-0 flex flex-col items-center justify-center w-14 py-2.5 rounded-lg bg-surface-container-low text-on-surface transition-all" onclick="selectDate(this, '29 Th10', 'Thứ Ba')" type="button">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Th 3</span>
+<span class="font-title-lg text-title-lg font-bold leading-tight">29</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">T3</span>
+</button>
+</div>
+</div>
+<!-- Meal Shifts: Trưa & Tối -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px]">wb_sunny</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Tiệc Trưa (11:30 - 14:00)</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="time-btn py-2 rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md transition-colors text-center" onclick="selectTime(this, '11:30')" type="button">11:30</button>
+<button class="time-btn py-2 rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md transition-colors text-center" onclick="selectTime(this, '12:15')" type="button">12:15</button>
+<button class="time-btn py-2 rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md transition-colors text-center" onclick="selectTime(this, '13:00')" type="button">13:00</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[16px]">dark_mode</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Tiệc Tối (18:00 - 22:30)</span>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="time-btn py-2 rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md transition-colors text-center" onclick="selectTime(this, '18:00')" type="button">18:00</button>
+<button class="time-btn py-2 rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md transition-colors text-center" onclick="selectTime(this, '18:45')" type="button">18:45</button>
+<button class="time-btn py-2 rounded-lg bg-primary text-on-primary font-title-md text-title-md transition-colors text-center shadow-sm" onclick="selectTime(this, '19:00')" type="button">19:00</button>
+<button class="time-btn py-2 rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md transition-colors text-center" onclick="selectTime(this, '20:15')" type="button">20:15</button>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 2: Số Lượng Thực Khách -->
+<div class="step-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-300">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleStep(2)">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md">2</div>
+<div>
+<h2 class="font-title-md text-title-md text-primary">Số Lượng Khách</h2>
+<p class="font-label-sm text-label-sm text-secondary" id="summaryGuestLabel">2 Khách (Bàn Đôi)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200" id="chevron-2">expand_less</span>
+</div>
+<div class="mt-space-md" id="step-content-2">
+<div class="grid grid-cols-3 gap-2">
+<button class="guest-btn py-3 px-2 rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md flex flex-col items-center justify-center gap-0.5 transition-all" onclick="selectGuests(this, '1 Khách')" type="button">
+<span class="material-symbols-outlined text-[18px]">person</span>
+<span>1 Khách</span>
+</button>
+<button class="guest-btn py-3 px-2 rounded-lg bg-primary text-on-primary font-title-md text-title-md flex flex-col items-center justify-center gap-0.5 shadow-sm transition-all" onclick="selectGuests(this, '2 Khách')" type="button">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span>2 Khách</span>
+</button>
+<button class="guest-btn py-3 px-2 rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md flex flex-col items-center justify-center gap-0.5 transition-all" onclick="selectGuests(this, '3-4 Khách')" type="button">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+<span>3 - 4 Khách</span>
+</button>
+<button class="guest-btn py-3 px-2 rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md flex flex-col items-center justify-center gap-0.5 transition-all" onclick="selectGuests(this, '5-8 Khách')" type="button">
+<span class="material-symbols-outlined text-[18px]">diversity_3</span>
+<span>5 - 8 Khách</span>
+</button>
+<button class="guest-btn col-span-2 py-3 px-2 rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md flex items-center justify-center gap-2 transition-all" onclick="selectGuests(this, '8+ VIP Salon')" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">hotel_class</span>
+<span>8+ Khách (Phòng VIP Riêng)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- STEP 3: Khu vực bàn -->
+<div class="step-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-300">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleStep(3)">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md">3</div>
+<div>
+<h2 class="font-title-md text-title-md text-primary">Khu Vực Bàn</h2>
+<p class="font-label-sm text-label-sm text-secondary" id="summaryAreaLabel">Bàn Cửa Sổ (Phố Đi Bộ)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200" id="chevron-3">expand_less</span>
+</div>
+<div class="mt-space-md grid grid-cols-2 gap-2.5" id="step-content-3">
+<!-- Option 1: Bàn Cửa Sổ -->
+<div class="area-card relative rounded-lg overflow-hidden bg-primary text-on-primary p-2.5 flex flex-col gap-2 cursor-pointer shadow-sm transition-transform active:scale-[0.98]" onclick="selectArea(this, 'Bàn Cửa Sổ')">
+<div class="h-20 w-full rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Intimate candlelit dining table by a floor-to-ceiling glass window overlooking soft city lights, warm wooden textures, linen tablecloth, fine wine glasses, dusk atmosphere, quiet luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd-5ViRdN4PjBzHg9w2zrHSt67F721RmxVxxntnZfUI9DVU3qmPAc-uQkoN6GAzFuNyMDnqdHE7KOXmrLWAM8o_mBsURsXlXN52Eis_ytdPv5M88rg77R9A8rSWAz6jXDZSNiW7UC5eUxYYBnHEb14CJy-cNPDy83Vv7H48AB2f3vedxjS3ZH2DW9R2wVyA8vVLyfNCWcY2avumRDbrJQsExXxYQjNlnBZNVt8Z4Vc">
+</div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md font-medium">Bàn Cửa Sổ</span>
+<span class="area-indicator material-symbols-outlined text-[18px] text-secondary-container">check_circle</span>
+</div>
+<span class="font-label-sm text-label-sm opacity-80 block">Lãng mạn &amp; góc nhìn mở</span>
+</div>
+</div>
+<!-- Option 2: Chef's Counter -->
+<div class="area-card relative rounded-lg overflow-hidden bg-surface-container text-on-surface p-2.5 flex flex-col gap-2 cursor-pointer transition-transform active:scale-[0.98]" onclick="selectArea(this, 'Chef\'s Counter')">
+<div class="h-20 w-full rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="High-end open kitchen counter with chef plating delicate haute cuisine dish, copper cookware, warm dramatic spotlighting, dark espresso wood counter, Michelin ambiance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2EBag3qg1qIHNNIS6tzf4gVQPUY-C96naNWoePVV-ZDBe9z6C01u5bikDegLajdAM6eUwCnrchnO7o4feFfF5DvlqdVYySeWGczyDUct4_Kvkd1ETFU_DmeZgWQVN1dAtVq0h8CDVnKpH6bb3LsT0nd4MIf-8KYNOsXpVWcnBKhhYrdwqVmCYVQ24mK8G0CGtQLhgNL9ButkjvosJGUfNis1YZ5vLWIfL7tTg-qru">
+</div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md font-medium">Chef's Counter</span>
+<span class="area-indicator hidden material-symbols-outlined text-[18px] text-secondary-container">check_circle</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Xem trực tiếp đầu bếp chế biến</span>
+</div>
+</div>
+<!-- Option 3: Bàn Trung Tâm -->
+<div class="area-card relative rounded-lg overflow-hidden bg-surface-container text-on-surface p-2.5 flex flex-col gap-2 cursor-pointer transition-transform active:scale-[0.98]" onclick="selectArea(this, 'Bàn Trung Tâm')">
+<div class="h-20 w-full rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Elegant restaurant central dining hall, dim ambient glowing lamps, taupe upholstered armchairs, cream walls, architectural floral arrangement, quiet dinner conversation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByBfxgYGvYscdiORLB3wX-_o_v10PBBuBkazrJ1vmZR9bw4aIZfmIGG4NGIHrfcMhFi4VQ_xNbwpvTOzu5T_NmiGzrhmnBEeSY9jKaxhStaSvPI9cUZMyAtfezHAY_tD4ob3NoA8gSFBH62KSXnkCeGLZx_5LkwiH40lNZN-4HcduGDmfjjC30PIm4kPuJxJ0rGbBFC8ZSge9yQgsHIOlnZYgF09niYCNHDLiU5wf1">
+</div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md font-medium">Bàn Trung Tâm</span>
+<span class="area-indicator hidden material-symbols-outlined text-[18px] text-secondary-container">check_circle</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Ấm cúng &amp; nhạc Jazz êm dịu</span>
+</div>
+</div>
+<!-- Option 4: Phòng VIP Salon -->
+<div class="area-card relative rounded-lg overflow-hidden bg-surface-container text-on-surface p-2.5 flex flex-col gap-2 cursor-pointer transition-transform active:scale-[0.98]" onclick="selectArea(this, 'Phòng VIP')">
+<div class="h-20 w-full rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Luxurious private dining salon room for high-profile guests, mahogany panels, crystal decanters, ambient amber lighting, art pieces, secluded atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRXrRv_ELZGwLK5MlwQN47fPxuoYNfhdhYdCriv3PQALhxHWLCzKRta5lXh5da3YOxNRWowbdWIBhJyVN61GJ59lYmxqyWEm4OhtAyAS6LS2sxn6aUoPljp_9sCR4GDdfA11rEeeVgHLO_lxgs5F6jS_kdsSzCnM-yA_8ucdtG_A9wV3g_5VtpUT2kTlkvew6jQau7URD4j12Q4nohTOvB_nBqc5uNRyq6ma68UChG">
+</div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md font-medium">Phòng VIP Salon</span>
+<span class="area-indicator hidden material-symbols-outlined text-[18px] text-secondary-container">check_circle</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Hoàn toàn riêng tư &amp; quản gia</span>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 4: Trải Nghiệm Ẩm Thực -->
+<div class="step-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-300">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleStep(4)">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md">4</div>
+<div>
+<h2 class="font-title-md text-title-md text-primary">Trải Nghiệm Ẩm Thực</h2>
+<p class="font-label-sm text-label-sm text-secondary" id="summaryMenuLabel">Menu Prestige 7 Món</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200" id="chevron-4">expand_less</span>
+</div>
+<div class="mt-space-md flex flex-col gap-3" id="step-content-4">
+<!-- Menu Prestige Option -->
+<div class="menu-choice p-3 rounded-lg bg-surface-container text-on-surface flex items-start justify-between cursor-pointer active:scale-[0.99] transition-all" onclick="selectMenu(this, 'Menu Prestige', 2450000)">
+<div class="flex flex-col gap-1 pr-2">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-[18px] font-semibold text-primary">Menu Prestige</span>
+<span class="px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-[10px] uppercase">Best Choice</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">7 món tinh hoa cùng Bò Wagyu A5 &amp; Gan Ngỗng Pháp.</span>
+<span class="font-title-md text-title-md text-primary font-bold mt-1">2.450.000 đ <span class="font-label-sm text-label-sm font-normal text-on-surface-variant">/ khách</span></span>
+</div>
+<div class="menu-radio w-5 h-5 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-1">
+<span class="w-2 h-2 rounded-full bg-surface-container-lowest"></span>
+</div>
+</div>
+<!-- Menu Découverte Option -->
+<div class="menu-choice p-3 rounded-lg bg-surface-container-low text-on-surface flex items-start justify-between cursor-pointer active:scale-[0.99] transition-all" onclick="selectMenu(this, 'Menu Découverte', 1850000)">
+<div class="flex flex-col gap-1 pr-2">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-[18px] font-semibold text-primary">Menu Découverte</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">5 món kinh điển khai phá mỹ vị Âu - Á đương đại.</span>
+<span class="font-title-md text-title-md text-primary font-bold mt-1">1.850.000 đ <span class="font-label-sm text-label-sm font-normal text-on-surface-variant">/ khách</span></span>
+</div>
+<div class="menu-radio w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 mt-1">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</div>
+</div>
+<!-- À la Carte Option -->
+<div class="menu-choice p-3 rounded-lg bg-surface-container-low text-on-surface flex items-start justify-between cursor-pointer active:scale-[0.99] transition-all" onclick="selectMenu(this, 'Gọi Món Tại Bàn (À la Carte)', 0)">
+<div class="flex flex-col gap-1 pr-2">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-[18px] font-semibold text-primary">À La Carte</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">Tự do lựa chọn theo khẩu vị trực tiếp tại bàn khi tới nơi.</span>
+<span class="font-title-md text-title-md text-secondary mt-1">Gọi món trực tiếp</span>
+</div>
+<div class="menu-radio w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 mt-1">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</div>
+</div>
+<!-- Wine Pairing Switch -->
+<div class="mt-2 p-3 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-secondary">wine_bar</span>
+<div>
+<span class="font-title-md text-title-md text-primary block leading-tight">Sommelier Wine Pairing</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+950.000 đ / người (Tuyển chọn vang cao cấp)</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="wineToggle" onchange="toggleWine(this)" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- STEP 5: Dịp Đặc Biệt & Dị Ứng -->
+<div class="step-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-300">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleStep(5)">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md">5</div>
+<div>
+<h2 class="font-title-md text-title-md text-primary">Dịp Tiệc &amp; Lưu Ý Dị Ứng</h2>
+<p class="font-label-sm text-label-sm text-secondary" id="summaryOccasionLabel">Kỷ niệm ngày cưới / Hẹn hò</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200" id="chevron-5">expand_less</span>
+</div>
+<div class="mt-space-md flex flex-col gap-3" id="step-content-5">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-2">Mục đích buổi tiệc</span>
+<div class="flex flex-wrap gap-2">
+<button class="occasion-pill px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md transition-all shadow-sm" onclick="toggleOccasion(this)" type="button">Kỷ niệm</button>
+<button class="occasion-pill px-3 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md transition-all" onclick="toggleOccasion(this)" type="button">Sinh nhật</button>
+<button class="occasion-pill px-3 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md transition-all" onclick="toggleOccasion(this)" type="button">Hẹn hò lãng mạn</button>
+<button class="occasion-pill px-3 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md transition-all" onclick="toggleOccasion(this)" type="button">Tiếp đãi đối tác</button>
+<button class="occasion-pill px-3 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md transition-all" onclick="toggleOccasion(this)" type="button">Thưởng thức gia đình</button>
+</div>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-2" for="allergyNotes">Ghi chú khẩu vị, ăn kiêng hoặc dị ứng</label>
+<textarea class="w-full bg-surface-container-low rounded-lg p-3 font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-highest transition-colors resize-none" id="allergyNotes" placeholder="Ví dụ: Dị ứng hải sản vỏ cứng, không dùng ngò rí, chuẩn bị nến sinh nhật nhẹ..." rows="2"></textarea>
+</div>
+</div>
+</div>
+<!-- STEP 6: Thông Tin Liên Hệ -->
+<div class="step-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all duration-300">
+<div class="flex items-center justify-between cursor-pointer" onclick="toggleStep(6)">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md">6</div>
+<div>
+<h2 class="font-title-md text-title-md text-primary">Thông Tin Liên Hệ</h2>
+<p class="font-label-sm text-label-sm text-secondary">Để xác thực mã bàn qua SMS &amp; Email</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200" id="chevron-6">expand_less</span>
+</div>
+<div class="mt-space-md flex flex-col gap-3" id="step-content-6">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Họ và tên *</label>
+<input class="w-full bg-surface-container-low rounded-lg px-3 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-highest transition-colors" placeholder="Nguyễn Hoàng Nam" required="" type="text">
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Số điện thoại (hoặc WhatsApp) *</label>
+<input class="w-full bg-surface-container-low rounded-lg px-3 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-highest transition-colors" placeholder="090 812 3456" required="" type="tel">
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Thư điện tử (Email)</label>
+<input class="w-full bg-surface-container-low rounded-lg px-3 py-2.5 font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-highest transition-colors" placeholder="hoangnam@example.com" type="email">
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<input class="w-4 h-4 rounded bg-surface-container accent-primary" id="vatCheck" type="checkbox">
+<label class="font-body-md text-body-md text-on-surface" for="vatCheck">Yêu cầu xuất hoá đơn GTGT (VAT)</label>
+</div>
+</div>
+</div>
+</div>
+</form>
+<!-- FAQ Section (Accordion) -->
+<section class="px-gutter mt-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary text-[20px]">help_outline</span>
+<h3 class="font-headline-sm text-[20px] text-primary">Thông Tin Cần Lưu Ý</h3>
+</div>
+<!-- FAQ Item 1 -->
+<div class="rounded-lg bg-surface-container-lowest overflow-hidden shadow-sm">
+<button class="w-full p-space-md flex items-center justify-between text-left" onclick="toggleFaq(1)" type="button">
+<span class="font-title-md text-title-md text-primary">Quy định trang phục (Dress Code)?</span>
+<span class="material-symbols-outlined text-secondary transition-transform" id="faq-chevron-1">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md font-body-md text-body-md text-on-surface-variant" id="faq-content-1">
+        L'Atelier áp dụng phong cách <em>Smart Casual</em> hoặc thanh lịch. Quý khách vui lòng tránh mặc trang phục thể thao, áo ba lỗ hoặc dép tông để đảm bảo không gian trải nghiệm trang nhã.
+      </div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="rounded-lg bg-surface-container-lowest overflow-hidden shadow-sm">
+<button class="w-full p-space-md flex items-center justify-between text-left" onclick="toggleFaq(2)" type="button">
+<span class="font-title-md text-title-md text-primary">Nhà hàng có phục vụ thực đơn chay không?</span>
+<span class="material-symbols-outlined text-secondary transition-transform" id="faq-chevron-2">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md font-body-md text-body-md text-on-surface-variant" id="faq-content-2">
+        Chúng tôi có Tasting Menu thuần chay cao cấp (Plant-based Haute Cuisine) được thiết kế riêng. Xin vui lòng thông báo trước ít nhất 24 giờ qua ghi chú đặt bàn để Bếp Trưởng chuẩn bị hoàn hảo nhất.
+      </div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="rounded-lg bg-surface-container-lowest overflow-hidden shadow-sm">
+<button class="w-full p-space-md flex items-center justify-between text-left" onclick="toggleFaq(3)" type="button">
+<span class="font-title-md text-title-md text-primary">Chỗ đỗ xe và dịch vụ Valet Parking?</span>
+<span class="material-symbols-outlined text-secondary transition-transform" id="faq-chevron-3">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md font-body-md text-body-md text-on-surface-variant" id="faq-content-3">
+        L'Atelier cung cấp dịch vụ giao nhận xe (Valet Parking) hoàn toàn miễn phí ngay tại sảnh chính của nhà hàng.
+      </div>
+</div>
+</section>
+<!-- Sticky Bottom Order Summary Card & Booking Action Bar -->
+<aside class="fixed bottom-20 left-0 right-0 z-40 px-gutter pointer-events-none">
+<div class="pointer-events-auto bg-primary text-on-primary rounded-xl shadow-xl p-space-md backdrop-blur-md transition-all duration-300">
+<div class="flex items-center justify-between mb-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-wider">Dự kiến chi phí</span>
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed-dim">verified</span>
+</div>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-sm text-headline-sm font-bold text-surface-container-lowest" id="totalEstimatePrice">4.900.000</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed-dim">VNĐ</span>
+</div>
+</div>
+<button class="h-12 px-6 bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed font-title-md text-title-md font-semibold rounded-lg shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform" onclick="submitBooking()" type="button">
+<span>Xác Nhận Đặt Bàn</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-white/10 font-label-sm text-label-sm text-on-primary-container">
+<div class="truncate max-w-[220px]">
+<span id="summaryDetailBar">2 Khách • Prestige • 19:00, 24 Th10</span>
+</div>
+<span class="text-secondary-fixed-dim">Không yêu cầu cọc</span>
+</div>
+</div>
+</aside>
+<!-- Interactive Client-side Scripting -->
+<script>
+    let currentConfig = {
+      date: '24 Th10',
+      time: '19:00',
+      guests: 2,
+      guestLabel: '2 Khách',
+      area: 'Bàn Cửa Sổ',
+      menuName: 'Menu Prestige',
+      menuPrice: 2450000,
+      winePairing: false,
+      winePrice: 950000
+    };
+
+    function updateSummaryView() {
+      let perPerson = currentConfig.menuPrice + (currentConfig.winePairing ? currentConfig.winePrice : 0);
+      let total = perPerson * currentConfig.guests;
+      
+      const priceElem = document.getElementById('totalEstimatePrice');
+      if (priceElem) {
+        priceElem.innerText = total > 0 ? total.toLocaleString('vi-VN') : 'Theo Menu';
+      }
+
+      const barElem = document.getElementById('summaryDetailBar');
+      if (barElem) {
+        barElem.innerText = `${currentConfig.guestLabel} • ${currentConfig.menuName.replace('Menu ', '')} • ${currentConfig.time}, ${currentConfig.date}`;
+      }
+    }
+
+    function toggleStep(stepNum) {
+      const content = document.getElementById(`step-content-${stepNum}`);
+      const chevron = document.getElementById(`chevron-${stepNum}`);
+      if (!content || !chevron) return;
+
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.innerText = 'expand_less';
+      } else {
+        content.classList.add('hidden');
+        chevron.innerText = 'expand_more';
+      }
+    }
+
+    function selectDate(btn, dateStr, displayDay) {
+      document.querySelectorAll('.date-btn').forEach(b => {
+        b.className = 'date-btn flex-shrink-0 flex flex-col items-center justify-center w-14 py-2.5 rounded-lg bg-surface-container-low text-on-surface transition-all';
+        const spans = b.querySelectorAll('span');
+        if (spans.length >= 3) {
+          spans[0].className = 'font-label-sm text-label-sm text-on-surface-variant';
+          spans[1].className = 'font-title-lg text-title-lg font-bold leading-tight';
+          spans[2].className = 'font-label-sm text-label-sm text-on-surface-variant';
+        }
+      });
+
+      btn.className = 'date-btn flex-shrink-0 flex flex-col items-center justify-center w-14 py-2.5 rounded-lg bg-primary text-on-primary shadow-sm transition-all';
+      const activeSpans = btn.querySelectorAll('span');
+      if (activeSpans.length >= 3) {
+        activeSpans[0].className = 'font-label-sm text-label-sm opacity-80';
+        activeSpans[1].className = 'font-title-lg text-title-lg font-bold leading-tight';
+        activeSpans[2].className = 'font-label-sm text-label-sm opacity-80';
+      }
+
+      currentConfig.date = dateStr;
+      document.getElementById('summaryDateLabel').innerText = `${displayDay}, ${dateStr} • ${currentConfig.time}`;
+      updateSummaryView();
+    }
+
+    function selectTime(btn, timeStr) {
+      document.querySelectorAll('.time-btn').forEach(b => {
+        b.className = 'time-btn py-2 rounded-lg bg-surface-container-low text-on-surface font-title-md text-title-md transition-colors text-center';
+      });
+      btn.className = 'time-btn py-2 rounded-lg bg-primary text-on-primary font-title-md text-title-md transition-colors text-center shadow-sm';
+      currentConfig.time = timeStr;
+      document.getElementById('summaryDateLabel').innerText = `${currentConfig.date} • ${timeStr}`;
+      updateSummaryView();
+    }
+
+    function selectGuests(btn, guestText) {
+      document.querySelectorAll('.guest-btn').forEach(b => {
+        b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+        b.classList.add('bg-surface-container-low', 'text-on-surface');
+      });
+      btn.classList.remove('bg-surface-container-low', 'text-on-surface');
+      btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+
+      let count = 2;
+      if (guestText.includes('1')) count = 1;
+      else if (guestText.includes('2')) count = 2;
+      else if (guestText.includes('3-4')) count = 4;
+      else if (guestText.includes('5-8')) count = 6;
+      else if (guestText.includes('8+')) count = 8;
+
+      currentConfig.guests = count;
+      currentConfig.guestLabel = guestText;
+      document.getElementById('summaryGuestLabel').innerText = guestText;
+      updateSummaryView();
+    }
+
+    function selectArea(card, areaName) {
+      document.querySelectorAll('.area-card').forEach(c => {
+        c.className = 'area-card relative rounded-lg overflow-hidden bg-surface-container text-on-surface p-2.5 flex flex-col gap-2 cursor-pointer transition-transform active:scale-[0.98]';
+        const indicator = c.querySelector('.area-indicator');
+        if (indicator) indicator.classList.add('hidden');
+      });
+
+      card.className = 'area-card relative rounded-lg overflow-hidden bg-primary text-on-primary p-2.5 flex flex-col gap-2 cursor-pointer shadow-sm transition-transform active:scale-[0.98]';
+      const curIndicator = card.querySelector('.area-indicator');
+      if (curIndicator) curIndicator.classList.remove('hidden');
+
+      currentConfig.area = areaName;
+      document.getElementById('summaryAreaLabel').innerText = areaName;
+      updateSummaryView();
+    }
+
+    function selectMenu(card, menuName, price) {
+      document.querySelectorAll('.menu-choice').forEach(c => {
+        c.classList.remove('bg-surface-container', 'shadow-sm');
+        c.classList.add('bg-surface-container-low');
+        const radioInner = c.querySelector('.menu-radio span');
+        if (radioInner) {
+          radioInner.className = 'w-2 h-2 rounded-full bg-transparent';
+        }
+        const radioOuter = c.querySelector('.menu-radio');
+        if (radioOuter) {
+          radioOuter.className = 'menu-radio w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 mt-1';
+        }
+      });
+
+      card.classList.remove('bg-surface-container-low');
+      card.classList.add('bg-surface-container', 'shadow-sm');
+      const curRadio = card.querySelector('.menu-radio');
+      if (curRadio) {
+        curRadio.className = 'menu-radio w-5 h-5 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-1';
+      }
+      const curRadioInner = card.querySelector('.menu-radio span');
+      if (curRadioInner) {
+        curRadioInner.className = 'w-2 h-2 rounded-full bg-surface-container-lowest';
+      }
+
+      currentConfig.menuName = menuName;
+      currentConfig.menuPrice = price;
+      document.getElementById('summaryMenuLabel').innerText = menuName;
+      updateSummaryView();
+    }
+
+    function toggleWine(toggle) {
+      currentConfig.winePairing = toggle.checked;
+      updateSummaryView();
+    }
+
+    function toggleOccasion(pill) {
+      document.querySelectorAll('.occasion-pill').forEach(p => {
+        p.className = 'occasion-pill px-3 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md transition-all';
+      });
+      pill.className = 'occasion-pill px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md transition-all shadow-sm';
+      document.getElementById('summaryOccasionLabel').innerText = pill.innerText;
+    }
+
+    function toggleFaq(faqId) {
+      const content = document.getElementById(`faq-content-${faqId}`);
+      const icon = document.getElementById(`faq-chevron-${faqId}`);
+      if (!content || !icon) return;
+
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.innerText = 'expand_less';
+      } else {
+        content.classList.add('hidden');
+        icon.innerText = 'expand_more';
+      }
+    }
+
+    function submitBooking() {
+      const form = document.getElementById('reservationForm');
+      if (form && !form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      alert(`Trân trọng cảm ơn Quý khách! Đã tiếp nhận yêu cầu đặt bàn lúc ${currentConfig.time}, ngày ${currentConfig.date} (${currentConfig.guestLabel}). L'Atelier sẽ liên hệ xác nhận trong 15 phút.`);
+    }
+
+    // Initialize initial calculations
+    updateSummaryView();
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_16px_rgba(44,30,22,0.06)]" data-active-classes="text-primary font-title-md font-medium"><div class="flex justify-around items-center h-20 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="trang-chu" href="#"><span class="material-symbols-outlined text-[22px]">home</span><span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Trang chủ</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="thuc-don" href="#"><span class="material-symbols-outlined text-[22px]">restaurant_menu</span><span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Thực đơn</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 transition-colors text-primary font-title-md font-medium" data-path="dat-ban" href="#"><span class="material-symbols-outlined text-[22px]">table_restaurant</span><span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Đặt bàn</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="cau-chuyen" href="#"><span class="material-symbols-outlined text-[22px]">auto_stories</span><span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Câu chuyện</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="lien-he" href="#"><span class="material-symbols-outlined text-[22px]">support_agent</span><span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Liên hệ</span></a></div></nav>
+
+</body></html>

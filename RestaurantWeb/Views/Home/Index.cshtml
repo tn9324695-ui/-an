@@ -1,0 +1,178 @@
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<div class="flex flex-col w-full">
+    <section class="relative w-full min-h-[88vh] -mt-20 pt-20 flex items-end pb-space-xl overflow-hidden bg-primary">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX3Wm3ai-5mpznc4LtrQLUc0_NlVQ9fnXqfa8-t2a0-DveaSTDen49ZL7ohB3wd64BjsxeLzWifFYIZ0bbTYgFF-DC4-mzRkVcHLFxwZ2gspzYXzoGeaYu857CM_ND0EpZ7Qtkrls513ZMLTVWIWv2lnD13JCK3uDVQtAW8Z4wNSZAsyC-H_N-o7r_0wThsIpz0m5anQUe2oU_7Jf2dj1mXislSdVjR71YVdDymG7C');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/45 to-primary/20"></div>
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-margin">
+            <div class="max-w-3xl">
+                <p class="font-label-md text-label-md uppercase text-primary-fixed-dim mb-space-md">L'Atelier · Thành Phố Hồ Chí Minh</p>
+                <h1 class="font-display-lg text-display-lg text-on-primary mb-space-md">Nghệ Thuật Ẩm Thực Đương Đại</h1>
+                <p class="font-body-lg text-body-lg text-primary-fixed max-w-xl mb-space-lg">
+                    Nơi nguyên liệu bản địa theo mùa được tôn vinh qua kỹ thuật chế biến tinh xảo, mang đến hành trình vị giác tĩnh lặng và đầy cảm xúc.
+                </p>
+                <div class="flex flex-wrap items-center gap-space-md">
+                    <a asp-controller="Reservation" asp-action="Index" class="px-space-lg py-3.5 bg-surface text-primary font-label-md text-label-md uppercase rounded hover:bg-primary-fixed transition-colors shadow-md">
+                        Đặt bàn ngay
+                    </a>
+                    <a asp-controller="Home" asp-action="Menu" class="px-space-lg py-3.5 bg-primary/40 backdrop-blur-md text-on-primary font-label-md text-label-md uppercase rounded hover:bg-primary/60 transition-colors">
+                        Khám phá thực đơn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-24 md:py-32 bg-surface">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+                <div class="lg:col-span-5 flex flex-col">
+                    <span class="font-label-sm text-label-sm uppercase text-secondary mb-space-sm">01 — Triết Lý Ẩm Thực</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-space-lg">Sự Giao Thoa Giữa Bản Địa &amp; Tinh Hoa</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-space-md">
+                        Tại L'Atelier, mỗi món ăn là một bức họa tối giản được kiến tạo từ những sản vật tươi ngon nhất của từng mùa. Chúng tôi tin rằng sự xa hoa đích thực nằm ở sự thuần khiết của hương vị và sự tận tâm trong từng công đoạn.
+                    </p>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-space-lg">
+                        Dưới ánh nến ấm áp của không gian gỗ trầm và vải lanh thô mộc, thực khách được mời bước vào một nhịp điệu chậm rãi, nơi mọi giác quan đều được đánh thức.
+                    </p>
+                    <div class="flex items-center gap-space-md pt-space-sm">
+                        <span class="material-symbols-outlined text-secondary text-[20px]">eco</span>
+                        <span class="font-label-md text-label-md uppercase text-secondary">Nguyên liệu hữu cơ tuyển chọn mỗi sáng</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 relative">
+                    <div class="rounded-lg overflow-hidden shadow-lg bg-surface-container-low">
+                        <img class="w-full h-[460px] object-cover" alt="Không gian L'Atelier" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmIpzCoLy2bEPqpHabftdqQmE-rOum7m6QY4UPo-XEUSoa0e-VspQvhZ6HCC29OfiPYDddp7NWQHmO_9NtFduBAv1D28rEbYEWserGC8mXHcP8GRL8xHc_02CuB57Afq2pB3vkSWfq-ZqZ3rBCZg09wqJuKiZcBV7y1pIVBARsjLLVRgTeNVDTJ497latVn5-qMlID_Pk4DK4ErE5sNRyrIfAT_U7vM-GcyU_7Jqh-" />
+                    </div>
+                    <div class="hidden md:flex items-center gap-space-md bg-surface-container-lowest p-space-md rounded-lg shadow-md -mt-10 ml-8 relative z-10 max-w-sm">
+                        <span class="font-headline-md text-headline-md text-secondary">14</span>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Bàn ăn giới hạn mỗi tối để đảm bảo sự riêng tư tuyệt đối.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-24 bg-surface-container-low" id="mon-dac-trung">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
+                <div>
+                    <span class="font-label-sm text-label-sm uppercase text-secondary mb-space-sm block">02 — Tuyệt Tác Theo Mùa</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Món Đặc Trưng</h2>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+                        Tuyển tập những sáng tạo tiêu biểu phản ánh rõ nét phong cách ẩm thực đương đại và sự trân trọng nguyên liệu Việt Nam.
+                    </p>
+                    <div class="flex items-center gap-3 shrink-0">
+                        <button type="button" onclick="document.getElementById('dish-carousel').scrollBy({left: -380, behavior: 'smooth'})" class="w-11 h-11 rounded-full border border-outline-variant bg-surface hover:bg-surface-container flex items-center justify-center text-primary transition-colors focus:outline-none" aria-label="Món trước">
+                            <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+                        </button>
+                        <button type="button" onclick="document.getElementById('dish-carousel').scrollBy({left: 380, behavior: 'smooth'})" class="w-11 h-11 rounded-full border border-outline-variant bg-surface hover:bg-surface-container flex items-center justify-center text-primary transition-colors focus:outline-none" aria-label="Món kế tiếp">
+                            <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dish-carousel" class="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
+                @foreach (var item in Model.FeaturedMenuItems)
+                {
+                    <article class="min-w-[320px] md:min-w-[360px] max-w-[380px] snap-start shrink-0 group bg-surface rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                        <a asp-controller="Home" asp-action="DishDetail" asp-route-id="@item.Id" class="overflow-hidden h-72 bg-surface-container block">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="@item.Name" src="@item.ImageUrl" />
+                        </a>
+                        <div class="p-space-lg flex flex-col flex-1 justify-between">
+                            <div>
+                                <div class="flex items-baseline justify-between gap-space-sm mb-space-sm">
+                                    <h3 class="font-headline-sm text-headline-sm text-primary">
+                                        <a asp-controller="Home" asp-action="DishDetail" asp-route-id="@item.Id" class="text-primary hover:text-secondary transition-colors">@item.Name</a>
+                                    </h3>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-surface-variant mb-space-md">@item.Description</p>
+                            </div>
+                            <div class="flex items-center justify-between pt-space-sm border-t border-outline-variant/30">
+                                <span class="font-label-sm text-label-sm uppercase text-secondary">@item.Category?.Name</span>
+                                <span class="font-title-md text-title-md text-primary">@item.EffectivePrice.ToString("N0") ₫</span>
+                            </div>
+                        </div>
+                    </article>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-24 bg-surface">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="bg-primary-container text-on-primary rounded-xl overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-12">
+                <div class="lg:col-span-7 p-space-lg md:p-space-xl flex flex-col justify-center">
+                    <span class="font-label-md text-label-md uppercase text-primary-fixed-dim mb-space-sm">03 — Trải Nghiệm Độc Bản</span>
+                    <h2 class="font-headline-lg text-headline-lg text-on-primary mb-space-md">Thực Đơn Nếm Thử 7 Món</h2>
+                    <p class="font-body-lg text-body-lg text-primary-fixed mb-space-lg max-w-xl">
+                        Hành trình ẩm thực được thiết kế riêng bởi Bếp trưởng, dẫn dắt thực khách qua 7 cung bậc hương vị từ khai vị thanh mát đến món chính nồng nàn, kết hợp cùng bộ sưu tập rượu vang tuyển chọn.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-space-lg mb-space-lg">
+                        <div>
+                            <p class="font-label-sm text-label-sm uppercase text-on-primary-container">Thực đơn tiêu chuẩn</p>
+                            <p class="font-headline-sm text-headline-sm text-on-primary">2.650.000 ₫ <span class="font-body-md text-body-md text-primary-fixed-dim">/ khách</span></p>
+                        </div>
+                        <div>
+                            <p class="font-label-sm text-label-sm uppercase text-on-primary-container">Kết hợp rượu vang</p>
+                            <p class="font-headline-sm text-headline-sm text-on-primary">+1.250.000 ₫ <span class="font-body-md text-body-md text-primary-fixed-dim">/ khách</span></p>
+                        </div>
+                    </div>
+                    <div>
+                        <a asp-controller="Reservation" asp-action="Index" asp-route-menuPackage="Tasting Menu Prestige (7 Món)" class="inline-flex items-center gap-space-sm px-space-lg py-3.5 bg-surface text-primary font-label-md text-label-md uppercase rounded hover:bg-primary-fixed transition-colors">
+                            <span>Đặt thực đơn nếm thử</span>
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 relative min-h-[340px]">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxhfSQsTSk8JqybDidnMVdK9GyMTRvFCvoTGw0j4dVC1MMefLR7ptAodII4ZYTJiq36Gob_pkupzzPoTTOqqUxYhO7NGonjEVrVl3025FJpeE_TV72LG3wfCMqaJ41o-EWpqcMULatHfARFTmceNKY5TPQ_hqEBU8Xp50oWlfqEBsqi89dB_Vj-a3viBH0jJXO9SI1e2-oRDb_FiZ4pdqq3wgJV9sbZXRZDunKhjci');"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-24 bg-surface-container-low" id="dat-ban">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+                <div class="lg:col-span-6">
+                    <span class="font-label-sm text-label-sm uppercase text-secondary mb-space-sm block">04 — Không Gian &amp; Đặt Bàn</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-space-md">Dành Riêng Một Buổi Tối Trọn Vẹn</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-space-lg">
+                        Chúng tôi khuyến khích quý khách đặt bàn trước ít nhất 24 giờ để đội ngũ L'Atelier chuẩn bị chu đáo nhất cho trải nghiệm của bạn.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-lg mb-space-lg">
+                        <div class="bg-surface p-space-md rounded-lg shadow-sm">
+                            <div class="flex items-center gap-space-sm text-secondary mb-space-xs">
+                                <span class="material-symbols-outlined text-[20px]">schedule</span>
+                                <span class="font-label-md text-label-md uppercase">Giờ mở cửa</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface">Thứ Ba – Chủ Nhật</p>
+                            <p class="font-body-md text-body-md text-on-surface-variant">17:30 – 23:00</p>
+                        </div>
+                        <div class="bg-surface p-space-md rounded-lg shadow-sm">
+                            <div class="flex items-center gap-space-sm text-secondary mb-space-xs">
+                                <span class="material-symbols-outlined text-[20px]">location_on</span>
+                                <span class="font-label-md text-label-md uppercase">Địa chỉ</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface">128 Đồng Khởi, Quận 1</p>
+                            <p class="font-body-md text-body-md text-on-surface-variant">TP. Hồ Chí Minh</p>
+                        </div>
+                    </div>
+                    <a asp-controller="Reservation" asp-action="Index" class="inline-flex items-center justify-center px-space-xl py-4 bg-primary text-on-primary font-label-md text-label-md uppercase rounded hover:bg-secondary transition-colors shadow-md">
+                        Đặt bàn ngay
+                    </a>
+                </div>
+                <div class="lg:col-span-6">
+                    <div class="w-full h-96 bg-cover bg-center rounded-xl shadow-md" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDlNZjniDNmP3BROteWwvLikWJOi_wB0mKf8FR9Gf4yMQiMiHgTZbTCm9DlhSP2lhJU7lutZCtXlKon7zHgg1qNzYOFoV1pkRfGGqg6RfULkHCbIql0Vp34zNE8voq0DdTIFg9FTTmWvKUmA-s2uO5yMeUnDJW4C_AyO_NYA8Q6RoE95GglbXoXKr_dm7WeBBGBFTg89ylZ2LZnoV01z-_R22GBNKRkyptd1SoesQCo');"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

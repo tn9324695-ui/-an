@@ -1,0 +1,45 @@
+@model Order
+@{
+    ViewData["Title"] = "Hoàn Tất Gọi Món";
+}
+
+<section class="w-full py-16 px-margin bg-surface">
+    <div class="max-w-3xl mx-auto bg-surface-container-low p-8 md:p-12 rounded-2xl shadow-lg">
+        <div class="text-center mb-6">
+            <span class="material-symbols-outlined text-4xl text-secondary">verified</span>
+            <h1 class="font-headline-md text-primary mt-2 mb-1">Đã Ghi Nhận Thực Đơn Của Quý Khách</h1>
+            <p class="text-sm text-on-surface-variant">Mã đơn: <strong class="text-secondary">@Model.OrderCode</strong></p>
+        </div>
+
+        <div class="bg-surface p-6 rounded-xl mb-6 space-y-2 text-sm">
+            <div><strong>Thực khách:</strong> @Model.CustomerName (@Model.CustomerPhone)</div>
+            <div><strong>Hình thức:</strong> @Model.OrderType | <strong>Thanh toán:</strong> @Model.PaymentMethod</div>
+            <div><strong>Bàn / Địa chỉ:</strong> @Model.CustomerAddress</div>
+        </div>
+
+        <ul class="space-y-2 pl-0 list-none border-t border-b border-outline-variant/30 py-4 mb-6 text-sm">
+            @foreach (var item in Model.OrderItems)
+            {
+                <li class="flex justify-between">
+                    <span>@item.Quantity x @item.MenuItem?.Name</span>
+                    <span class="font-medium">@item.SubTotal.ToString("N0") ₫</span>
+                </li>
+            }
+        </ul>
+
+        <div class="flex justify-between items-center font-headline-sm text-primary mb-8">
+            <span>Tổng cộng:</span>
+            <span>@Model.TotalAmount.ToString("N0") ₫</span>
+        </div>
+
+        <div class="flex justify-center gap-4">
+            <a asp-controller="Reservation" asp-action="Lookup" asp-route-phone="@Model.CustomerPhone" class="px-6 py-3 bg-primary text-on-primary font-label-sm uppercase rounded text-decoration-none">
+                Tra Cứu Tiến Độ
+            </a>
+            <a asp-controller="Home" asp-action="Index" class="px-6 py-3 bg-surface border border-outline-variant text-primary font-label-sm uppercase rounded text-decoration-none">
+                Về Trang Chủ
+            </a>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,560 @@
+@model List<MenuItem>
+@{
+    ViewData["Title"] = "Thực Đơn Đương Đại";
+    var starters = Model.Where(m => m.Category != null && m.Category.IconCss == "starters").ToList();
+    var mains = Model.Where(m => m.Category != null && m.Category.IconCss == "mains").ToList();
+    var desserts = Model.Where(m => m.Category != null && m.Category.IconCss == "desserts").ToList();
+    var wines = Model.Where(m => m.Category != null && m.Category.IconCss == "wines").ToList();
+}
+
+<div class="flex flex-col w-full">
+    <!-- Top Visual Banner & Philosophy -->
+    <section class="relative w-full bg-surface-container-low overflow-hidden">
+        <div class="max-w-7xl mx-auto px-margin pt-16 pb-20 lg:pt-24 lg:pb-28">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+                <div class="lg:col-span-7 flex flex-col items-start">
+                    <div class="inline-flex items-center gap-2 mb-space-xs">
+                        <span class="w-8 h-[1px] bg-secondary"></span>
+                        <span class="font-label-sm text-label-sm uppercase tracking-[0.25em] text-secondary">Bộ Sưu Tập Ẩm Thực Mùa Thu - Đông</span>
+                    </div>
+                    <h1 class="font-headline-lg text-headline-lg lg:font-display-lg lg:text-display-lg text-primary tracking-tight mt-2 mb-space-md">
+                        Thực Đơn Đương Đại
+                    </h1>
+                    <p class="font-headline-sm text-headline-sm italic text-secondary font-light mb-space-md max-w-xl">
+                        "Sự hòa quyện thi vị giữa thổ nhưỡng bản địa Việt Nam và cốt cách ẩm thực Pháp hiện đại."
+                    </p>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed mb-space-lg">
+                        Tại L'Atelier, mỗi món ăn là một câu chuyện độc bản về thời khắc giao mùa. Chúng tôi chắt lọc tinh hoa từ những vựa nông sản hữu cơ nguyên bản — từ cá hồi Sa Pa, nấm hương rừng Tây Bắc đến hạt ca cao Bến Tre, hoàn thiện qua kỹ thuật haute cuisine của nghệ thuật ẩm thực Pháp danh tiếng.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-space-md">
+                        <a class="px-space-lg py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded shadow-md hover:bg-secondary transition-all duration-300 flex items-center gap-2 text-decoration-none" href="#tasting-section">
+                            <span>Khám phá Tasting Menu</span>
+                            <span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+                        </a>
+                        <a asp-controller="Reservation" asp-action="Index" class="px-space-md py-space-sm bg-surface-container text-primary font-label-md text-label-md uppercase tracking-wider rounded hover:bg-surface-variant transition-colors flex items-center gap-2 text-decoration-none">
+                            <span class="material-symbols-outlined text-[18px]">event_seat</span>
+                            <span>Đặt Bàn Thưởng Thức</span>
+                        </a>
+                    </div>
+                    <div class="mt-space-xl flex flex-wrap items-center gap-6 text-on-surface-variant">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">eco</span>
+                            <span class="font-label-sm text-label-sm uppercase">100% Nông sản bền vững</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
+                            <span class="font-label-sm text-label-sm uppercase">Bếp Trưởng Điều Hành Alain Vũ</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary text-[20px]">wine_bar</span>
+                            <span class="font-label-sm text-label-sm uppercase">Sommelier Tuyển Chọn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative">
+                    <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+                        <img class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" alt="Coquilles Saint-Jacques au Safran" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqA31AoyG0s6i7Bplt_aPCU2GhiPp7I1rkWRwDSHl_mLGw_scTgsHgDn4fGTDjIxXejfL-jFRHTPfeXqJMzhpYsJ2eAE8yV2FiJUU5WEaazctb6qeifkoNpYAAYxAdAZOaUswnVznTjMdWBi1LZYt0ZBpD2ISDOaQn5tYZqqKeDyKkkXoLp-T8ZpWzhrgHQLlTt8NDZnnn0Mh-LO0g5swS4fBqsgRKJ0W1Jv485psU" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-space-md bg-surface-bright/95 backdrop-blur-md rounded shadow-lg">
+                            <span class="font-label-sm text-label-sm uppercase text-secondary tracking-widest">Món Ký Danh Của Mùa</span>
+                            <p class="font-headline-sm text-headline-sm text-primary mt-1 mb-0">Coquilles Saint-Jacques au Safran</p>
+                            <p class="font-body-md text-body-md text-on-surface-variant text-sm mt-0.5 mb-0">Sò điệp Hokkaido áp chảo, nhụy hoa nghệ tây &amp; hạt phỉ nướng</p>
+                        </div>
+                    </div>
+                    <div class="hidden sm:flex flex-col items-center justify-center absolute -top-4 -left-6 bg-primary text-on-primary w-24 h-24 rounded-full shadow-xl">
+                        <span class="font-label-sm text-[10px] tracking-widest uppercase text-secondary-fixed">Mùa Vụ</span>
+                        <span class="font-headline-sm text-headline-sm leading-none mt-1">2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Minimalist Navigation Category Bar -->
+    <section class="sticky top-20 z-40 bg-surface/95 backdrop-blur-md py-4 shadow-sm border-b border-outline-variant/25">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="flex items-center justify-between gap-4 overflow-x-auto pb-1">
+                <div class="flex items-center gap-2 md:gap-3" id="menu-tabs">
+                    <button class="menu-tab-btn active px-4 py-2 font-label-md text-label-md uppercase tracking-wider rounded transition-all bg-primary text-on-primary" data-cat="all" onclick="switchCategory('all')">
+                        Tất Cả (@Model.Count)
+                    </button>
+                    <button class="menu-tab-btn px-4 py-2 font-label-md text-label-md uppercase tracking-wider rounded transition-all bg-surface-container-low text-on-surface-variant hover:text-primary" data-cat="degustation" onclick="switchCategory('degustation')">
+                        Tasting Menu
+                    </button>
+                    <button class="menu-tab-btn px-4 py-2 font-label-md text-label-md uppercase tracking-wider rounded transition-all bg-surface-container-low text-on-surface-variant hover:text-primary" data-cat="starters" onclick="switchCategory('starters')">
+                        Khai Vị (@starters.Count)
+                    </button>
+                    <button class="menu-tab-btn px-4 py-2 font-label-md text-label-md uppercase tracking-wider rounded transition-all bg-surface-container-low text-on-surface-variant hover:text-primary" data-cat="mains" onclick="switchCategory('mains')">
+                        Món Chính (@mains.Count)
+                    </button>
+                    <button class="menu-tab-btn px-4 py-2 font-label-md text-label-md uppercase tracking-wider rounded transition-all bg-surface-container-low text-on-surface-variant hover:text-primary" data-cat="desserts" onclick="switchCategory('desserts')">
+                        Tráng Miệng (@desserts.Count)
+                    </button>
+                    <button class="menu-tab-btn px-4 py-2 font-label-md text-label-md uppercase tracking-wider rounded transition-all bg-surface-container-low text-on-surface-variant hover:text-primary" data-cat="wines" onclick="switchCategory('wines')">
+                        Rượu Vang &amp; Pairing (@wines.Count)
+                    </button>
+                </div>
+
+                <div class="hidden xl:flex items-center gap-4 shrink-0 text-xs font-body-md text-on-surface-variant">
+                    <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-secondary"></span> [GF] Gluten-free</span>
+                    <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-primary-fixed-dim"></span> [Nuts] Có hạt</span>
+                    <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-secondary-fixed"></span> [V] Vegetarian</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Tasting Menu / Degustation -->
+    <section class="category-block py-20 bg-surface" data-category="degustation" id="tasting-section">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-secondary">Trải Nghiệm Đỉnh Cao</span>
+                <h2 class="font-headline-lg text-headline-lg text-primary mt-1">Signature Degustation Experience</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-3">
+                    Hành trình vị giác đa giác quan được tuyển chọn và trình diễn theo nhịp độ tinh tế, tôn vinh tinh hoa đất trời cùng những dòng vang quý hiếm.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-xl">
+                <!-- Option 1: 5 Courses Découverte -->
+                <div class="relative bg-surface-container-low p-space-lg lg:p-space-xl rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex items-start justify-between gap-4 mb-space-md">
+                            <div>
+                                <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">5 Khóa Hương Vị</span>
+                                <h3 class="font-headline-md text-headline-md text-primary mt-1">Menu Découverte</h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant italic mb-0">Hành trình khám phá nguyên liệu theo mùa</p>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <span class="font-headline-md text-headline-md text-primary font-normal">1.850.000</span>
+                                <span class="block font-label-sm text-[10px] text-on-surface-variant uppercase">VND / Khách</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4 my-8">
+                            <div class="p-3 bg-surface-bright rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-primary">1. Amuse-Bouche Tĩnh Tại</span>
+                                    <span class="font-label-sm text-[10px] text-secondary uppercase">Khai màn</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1 mb-0">Bánh tartlette nấm rừng Tây Bắc, thạch trà cổ thụ Suối Giàng</p>
+                            </div>
+                            <div class="p-3 bg-surface-bright rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-primary">2. Coquilles Saint-Jacques</span>
+                                    <span class="font-label-sm text-[10px] text-secondary uppercase">Khai vị biển</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1 mb-0">Sò điệp Hokkaido áp chảo, nhụy nghệ tây Iran &amp; bọt sữa dừa Bến Tre</p>
+                            </div>
+                            <div class="p-3 bg-surface-bright rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-primary">3. Cabillaud Austral</span>
+                                    <span class="font-label-sm text-[10px] text-secondary uppercase">Món chính I</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1 mb-0">Cá tuyết Nam Cực hấp mềm, xốt bơ chanh chúc An Giang, măng tây xanh</p>
+                            </div>
+                            <div class="p-3 bg-surface-bright rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-primary">4. Canard de Trùng Khánh</span>
+                                    <span class="font-label-sm text-[10px] text-secondary uppercase">Món chính II</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1 mb-0">Ức vịt Trùng Khánh áp chảo giòn da, củ dền nướng than, xốt mận rừng</p>
+                            </div>
+                            <div class="p-3 bg-surface-bright rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-primary">5. Poire au Vin &amp; Vanille</span>
+                                    <span class="font-label-sm text-[10px] text-secondary uppercase">Ngọt ngào khép lại</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1 mb-0">Tart lê rim vang đỏ Bordeaux, kem bơ sữa Bourbon Vanilla Madagascar</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded bg-surface-container text-on-surface-variant text-sm flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-secondary text-[24px]">wine_bar</span>
+                                <div>
+                                    <p class="font-title-md text-title-md text-primary leading-tight mb-0">Sommelier Wine Pairing (5 ly)</p>
+                                    <p class="font-body-md text-xs text-on-surface-variant mb-0">Bordeaux Blanc, Bourgogne Pinot Noir &amp; Sauternes</p>
+                                </div>
+                            </div>
+                            <span class="font-title-md text-title-md text-primary shrink-0">+1.250.000 VND</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4">
+                        <a asp-controller="Reservation" asp-action="Index" asp-route-menuPackage="Tasting Menu Découverte (5 Món)" class="w-full py-3 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded text-center block hover:bg-secondary transition-colors text-decoration-none">
+                            Đặt Menu Découverte
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Option 2: 7 Courses Prestige -->
+                <div class="relative bg-primary-container text-on-primary p-space-lg lg:p-space-xl rounded-xl shadow-xl flex flex-col justify-between">
+                    <div class="absolute top-4 right-4 bg-secondary text-on-secondary px-3 py-1 rounded font-label-sm text-[10px] uppercase tracking-widest">
+                        Khuyên Dùng
+                    </div>
+                    <div>
+                        <div class="flex items-start justify-between gap-4 mb-space-md">
+                            <div>
+                                <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed">7 Khóa Thăng Hoa</span>
+                                <h3 class="font-headline-md text-headline-md text-surface-bright mt-1">Menu Prestige</h3>
+                                <p class="font-body-md text-body-md text-on-primary-container italic mb-0">Đỉnh cao nghệ thuật vị giác và nguyên liệu xa xỉ</p>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <span class="font-headline-md text-headline-md text-surface-bright font-normal">2.650.000</span>
+                                <span class="block font-label-sm text-[10px] text-on-primary-container uppercase">VND / Khách</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3.5 my-8">
+                            <div class="p-3 bg-tertiary-container/60 rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-surface-bright">1. Prélude de la Mer</span>
+                                    <span class="font-label-sm text-[10px] text-secondary-fixed uppercase">Khai vị</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-primary-container text-sm mt-0.5 mb-0">Trứng cá tầm Caviar Oscietra, bánh blini kiều mạch &amp; kem chua thảo mộc</p>
+                            </div>
+                            <div class="p-3 bg-tertiary-container/60 rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-surface-bright">2. Foie Gras &amp; Figue Sauvage</span>
+                                    <span class="font-label-sm text-[10px] text-secondary-fixed uppercase">Món gan ngỗng</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-primary-container text-sm mt-0.5 mb-0">Terrine gan ngỗng béo Périgord, mứt quả vả rừng Tây Bắc, brioche nướng</p>
+                            </div>
+                            <div class="p-3 bg-tertiary-container/60 rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-surface-bright">3. Saumon de Sa Pa Fumé</span>
+                                    <span class="font-label-sm text-[10px] text-secondary-fixed uppercase">Món cá nước lạnh</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-primary-container text-sm mt-0.5 mb-0">Cá hồi Sa Pa xông khói gỗ thông, nhũ tương dưa leo lên men &amp; dầu ngò tây</p>
+                            </div>
+                            <div class="p-3 bg-tertiary-container/60 rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-surface-bright">4. Homard Bleu Rôti</span>
+                                    <span class="font-label-sm text-[10px] text-secondary-fixed uppercase">Hải sản thượng hạng</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-primary-container text-sm mt-0.5 mb-0">Tôm hùm xanh đút lò bơ tỏi đen Lý Sơn, xốt bisque sánh mịn đượm vị biển khơi</p>
+                            </div>
+                            <div class="p-3 bg-tertiary-container/60 rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-surface-bright">5. Wagyu A5 Maturé 28 Jours</span>
+                                    <span class="font-label-sm text-[10px] text-secondary-fixed uppercase">Món chính độc bản</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-primary-container text-sm mt-0.5 mb-0">Thăn nội bò Wagyu A5 ủ khô 28 ngày, nấm truffle đen Truffe Noire, xốt rượu Porto</p>
+                            </div>
+                            <div class="p-3 bg-tertiary-container/60 rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-surface-bright">6. Trou Normand &amp; Agrumes</span>
+                                    <span class="font-label-sm text-[10px] text-secondary-fixed uppercase">Làm thanh vị giác</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-primary-container text-sm mt-0.5 mb-0">Sorbet bưởi da xanh &amp; thảo quả mộc mạc, giọt rượu vang nổ Champagne</p>
+                            </div>
+                            <div class="p-3 bg-tertiary-container/60 rounded">
+                                <div class="flex items-baseline justify-between">
+                                    <span class="font-title-md text-title-md text-surface-bright">7. Soufflé au Chocolat Marou 70%</span>
+                                    <span class="font-label-sm text-[10px] text-secondary-fixed uppercase">Tráng miệng</span>
+                                </div>
+                                <p class="font-body-md text-body-md text-on-primary-container text-sm mt-0.5 mb-0">Soufflé ấm nóng Marou single-origin, kem lạnh tiêu rừng Tiên Phước</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded bg-tertiary-container text-surface-bright text-sm flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-secondary-fixed text-[24px]">wine_bar</span>
+                                <div>
+                                    <p class="font-title-md text-title-md leading-tight mb-0">Grand Cru Wine Pairing (5 ly)</p>
+                                    <p class="font-body-md text-xs text-on-primary-container mb-0">Dom Pérignon, Meursault, Châteauneuf-du-Pape</p>
+                                </div>
+                            </div>
+                            <span class="font-title-md text-title-md shrink-0 text-secondary-fixed">+1.250.000 VND</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4">
+                        <a asp-controller="Reservation" asp-action="Index" asp-route-menuPackage="Tasting Menu Prestige (7 Món)" class="w-full py-3 bg-secondary hover:bg-secondary/90 text-on-secondary font-label-md text-label-md uppercase tracking-wider rounded text-center block transition-colors text-decoration-none">
+                            Đặt Menu Prestige
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Khai Vị (Starters / Entrées) -->
+    <section class="category-block py-16 bg-surface-container-low" data-category="starters" id="starters-section">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-secondary">Món Khởi Đầu Đầy Tinh Tế</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary mt-1">Khai Vị / Entrées</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-xl mb-0">
+                        Đánh thức các giác quan bằng sự giao thoa giữa độ tươi giòn, chất béo ngậy thanh tao và tầng hương vị đất mẹ.
+                    </p>
+                </div>
+                <span class="hidden md:block font-label-sm text-label-sm uppercase text-secondary tracking-widest">
+                    @starters.Count.ToString("D2") Tuyển Phẩm
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+                @foreach (var dish in starters)
+                {
+                    <div class="bg-surface-bright rounded-xl overflow-hidden shadow-sm flex flex-col group hover:-translate-y-1 transition-transform duration-300">
+                        <a asp-action="DishDetail" asp-route-id="@dish.Id" class="w-full h-56 relative overflow-hidden block">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="@dish.Name" src="@dish.ImageUrl" />
+                            @if (!string.IsNullOrEmpty(dish.DietaryTags))
+                            {
+                                <div class="absolute top-3 right-3 flex gap-1">
+                                    <span class="bg-primary/80 backdrop-blur-sm text-on-primary text-[10px] font-label-sm px-2 py-0.5 rounded">@dish.DietaryTags</span>
+                                </div>
+                            }
+                        </a>
+                        <div class="p-space-lg flex flex-col justify-between flex-grow">
+                            <div>
+                                <div class="flex justify-between items-baseline gap-2">
+                                    <h3 class="font-headline-sm text-headline-sm text-primary">
+                                        <a asp-action="DishDetail" asp-route-id="@dish.Id" class="text-primary text-decoration-none hover:text-secondary">@dish.Name</a>
+                                    </h3>
+                                    <span class="font-title-md text-title-md text-secondary shrink-0">@dish.EffectivePrice.ToString("N0") ₫</span>
+                                </div>
+                                @if (!string.IsNullOrEmpty(dish.FrenchSubtitle))
+                                {
+                                    <p class="font-label-sm text-[11px] text-secondary uppercase tracking-wider mt-0.5">@dish.FrenchSubtitle</p>
+                                }
+                                <p class="font-body-md text-body-md text-on-surface-variant text-sm mt-3 leading-relaxed">
+                                    @dish.Description
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-outline-variant/25 flex items-center justify-between text-xs text-on-surface-variant">
+                                <span class="italic font-light">@(dish.WinePairingNote ?? "Sommelier Pairing")</span>
+                                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                                    <input type="hidden" name="menuItemId" value="@dish.Id" />
+                                    <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                                    <button type="submit" class="text-primary hover:text-secondary font-label-sm text-[11px] uppercase tracking-wider flex items-center gap-1 bg-transparent border-0">
+                                        + Chọn món <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Món Chính (Main Courses / Plats Principaux) -->
+    <section class="category-block py-16 bg-surface" data-category="mains" id="mains-section">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-secondary">Trọng Tâm Của Bữa Tiệc</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary mt-1">Món Chính / Plats Principaux</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-xl mb-0">
+                        Sự chỉn chu tuyệt đối về nhiệt độ, thời gian ủ thịt và kỹ nghệ tạo nước xốt nền Pháp phức hợp.
+                    </p>
+                </div>
+                <span class="hidden md:block font-label-sm text-label-sm uppercase text-secondary tracking-widest">
+                    @mains.Count.ToString("D2") Tuyển Phẩm Độc Bản
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+                @foreach (var dish in mains)
+                {
+                    <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+                        <a asp-action="DishDetail" asp-route-id="@dish.Id" class="h-60 rounded-lg overflow-hidden relative mb-space-md block">
+                            <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="@dish.Name" src="@dish.ImageUrl" />
+                            @if (dish.IsFeatured)
+                            {
+                                <span class="absolute top-3 left-3 bg-primary text-on-primary text-[10px] font-label-sm uppercase px-2.5 py-1 rounded">
+                                    Bếp Trưởng Khuyên Dùng
+                                </span>
+                            }
+                        </a>
+                        <div>
+                            <div class="flex justify-between items-baseline gap-2">
+                                <h3 class="font-headline-sm text-headline-sm text-primary">
+                                    <a asp-action="DishDetail" asp-route-id="@dish.Id" class="text-primary text-decoration-none hover:text-secondary">@dish.Name</a>
+                                </h3>
+                                <span class="font-title-md text-title-md text-secondary shrink-0">@dish.EffectivePrice.ToString("N0") VND</span>
+                            </div>
+                            @if (!string.IsNullOrEmpty(dish.FrenchSubtitle))
+                            {
+                                <p class="font-label-sm text-[11px] text-secondary uppercase tracking-widest mt-0.5">@dish.FrenchSubtitle</p>
+                            }
+                            <p class="font-body-md text-body-md text-on-surface-variant text-sm mt-3 leading-relaxed">
+                                @dish.Description
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-outline-variant/25 flex items-center justify-between text-xs text-on-surface-variant">
+                            <div class="flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-secondary text-[16px]">wine_bar</span>
+                                <span>@(dish.WinePairingNote ?? "Grand Cru Pairing")</span>
+                            </div>
+                            <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                                <input type="hidden" name="menuItemId" value="@dish.Id" />
+                                <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                                <button type="submit" class="px-3.5 py-1.5 bg-primary text-on-primary font-label-sm text-[11px] uppercase rounded hover:bg-secondary transition-colors">
+                                    Chọn món này
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Tráng Miệng (Desserts) -->
+    <section class="category-block py-16 bg-surface-container-low" data-category="desserts" id="desserts-section">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-secondary">Nốt Trầm Êm Dịu Cuối Bữa</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary mt-1">Tráng Miệng / Les Desserts</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-xl mb-0">
+                        Bản hòa tấu ngọt ngào từ chocolate thủ công Việt Nam, hương vani Bourbon Madagascar và trái cây mùa màng.
+                    </p>
+                </div>
+                <span class="hidden md:block font-label-sm text-label-sm uppercase text-secondary tracking-widest">
+                    Sáng Tạo Ngọt Ngào
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+                @foreach (var dish in desserts)
+                {
+                    <div class="bg-surface-bright p-space-lg rounded-xl shadow-sm flex flex-col md:flex-row gap-6 items-center">
+                        <a asp-action="DishDetail" asp-route-id="@dish.Id" class="w-full md:w-44 h-44 rounded-lg overflow-hidden shrink-0 block">
+                            <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="@dish.Name" src="@dish.ImageUrl" />
+                        </a>
+                        <div class="flex flex-col justify-between w-full">
+                            <div>
+                                <div class="flex justify-between items-baseline gap-2">
+                                    <h3 class="font-headline-sm text-headline-sm text-primary">
+                                        <a asp-action="DishDetail" asp-route-id="@dish.Id" class="text-primary text-decoration-none hover:text-secondary">@dish.Name</a>
+                                    </h3>
+                                    <span class="font-title-md text-title-md text-secondary shrink-0">@dish.EffectivePrice.ToString("N0") ₫</span>
+                                </div>
+                                @if (!string.IsNullOrEmpty(dish.FrenchSubtitle))
+                                {
+                                    <p class="font-label-sm text-[11px] text-secondary uppercase tracking-widest mt-0.5">@dish.FrenchSubtitle</p>
+                                }
+                                <p class="font-body-md text-body-md text-on-surface-variant text-sm mt-2 leading-relaxed">
+                                    @dish.Description
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-outline-variant/25 flex items-center justify-between text-xs text-on-surface-variant">
+                                <span>@(dish.WinePairingNote ?? "Phục vụ nóng tại bàn")</span>
+                                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                                    <input type="hidden" name="menuItemId" value="@dish.Id" />
+                                    <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                                    <button type="submit" class="font-label-sm text-[10px] uppercase text-primary bg-surface-container hover:bg-secondary hover:text-on-secondary px-3 py-1 rounded transition-colors">
+                                        + Chọn món
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Sommelier Selection (Wine List) -->
+    <section class="category-block py-20 bg-surface" data-category="wines" id="wines-section">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-secondary">Hầm Rượu L'Atelier</span>
+                <h2 class="font-headline-lg text-headline-lg text-primary mt-1">Sommelier Selection</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-3">
+                    Hơn 350 nhãn rượu vang danh giá từ Bordeaux, Bourgogne, thung lũng Loire và Tân thế giới, được kiểm soát nhiệt độ nghiêm ngặt ở 14°C.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+                @foreach (var wine in wines)
+                {
+                    <div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="h-48 rounded-lg overflow-hidden mb-4">
+                                <img src="@wine.ImageUrl" alt="@wine.Name" class="w-full h-full object-cover" />
+                            </div>
+                            <div class="flex justify-between items-baseline gap-2">
+                                <h3 class="font-headline-sm text-headline-sm text-primary">@wine.Name</h3>
+                                <span class="font-title-md text-title-md text-secondary shrink-0">@wine.EffectivePrice.ToString("N0") ₫</span>
+                            </div>
+                            <p class="font-label-sm text-[11px] text-secondary uppercase tracking-wider mt-1">@wine.FrenchSubtitle</p>
+                            <p class="font-body-md text-sm text-on-surface-variant mt-2">@wine.Description</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-outline-variant/25 flex items-center justify-between text-xs text-secondary">
+                            <span class="italic">@wine.WinePairingNote</span>
+                            <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                                <input type="hidden" name="menuItemId" value="@wine.Id" />
+                                <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                                <button type="submit" class="px-3 py-1 bg-primary text-on-primary font-label-sm text-[10px] uppercase rounded hover:bg-secondary">
+                                    Đặt vang
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Bottom Call To Action -->
+    <section class="py-20 bg-surface-container-low">
+        <div class="max-w-7xl mx-auto px-margin">
+            <div class="bg-primary text-on-primary rounded-2xl p-space-lg lg:p-space-xl shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-secondary/20 blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+                    <div class="lg:col-span-8 flex flex-col">
+                        <span class="font-label-sm text-label-sm uppercase tracking-[0.25em] text-secondary-fixed mb-2">Quy Ước Ẩm Thực Tận Tâm</span>
+                        <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-surface-bright leading-tight mb-space-md">
+                            Sẵn Sàng Cho Trải Nghiệm Ẩm Thực Đỉnh Cao Tại L'Atelier?
+                        </h2>
+                        <p class="font-body-md text-body-md text-surface-variant max-w-2xl leading-relaxed mb-6">
+                            Chúng tôi luôn sẵn lòng điều chỉnh nguyên liệu cho thực khách ăn chay, dị ứng đậu, sữa hoặc kiêng gluten khi được thông báo trước tối thiểu 24 giờ.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-4 flex flex-col gap-4 items-start lg:items-end">
+                        <a asp-controller="Reservation" asp-action="Index" class="w-full sm:w-auto px-8 py-4 bg-secondary hover:bg-secondary/90 text-on-secondary font-label-md text-label-md uppercase tracking-widest rounded-lg shadow-lg text-center transition-all text-decoration-none">
+                            Đặt Bàn Thưởng Thức
+                        </a>
+                        <a href="tel:+842838299999" class="w-full sm:w-auto px-6 py-3 bg-primary-container text-surface-bright hover:bg-tertiary-container font-label-md text-label-md uppercase tracking-wider rounded text-center transition-colors flex items-center justify-center gap-2 text-decoration-none">
+                            <span class="material-symbols-outlined text-[16px]">call</span>
+                            <span>Hotline Concierge: 028 3829 9999</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <script>
+        function switchCategory(cat) {
+            const blocks = document.querySelectorAll('.category-block');
+            const tabs = document.querySelectorAll('.menu-tab-btn');
+
+            tabs.forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.classList.add('bg-primary', 'text-on-primary');
+                    btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+                } else {
+                    btn.classList.remove('bg-primary', 'text-on-primary');
+                    btn.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+                }
+            });
+
+            if (cat === 'all') {
+                blocks.forEach(b => b.classList.remove('hidden'));
+            } else {
+                blocks.forEach(b => {
+                    if (b.getAttribute('data-category') === cat) {
+                        b.classList.remove('hidden');
+                    } else {
+                        b.classList.add('hidden');
+                    }
+                });
+            }
+        }
+    </script>
+}
+
